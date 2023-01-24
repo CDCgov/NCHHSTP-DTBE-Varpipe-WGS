@@ -22,14 +22,14 @@ To use the image with references, run the following commands
 
 ```console
 docker pull ghcr.io/cdcgov/varpipe_wgs_with_refs:latest
-docker run -it -v \<path to data\>:/varpipe_wgs/data ghcr.io/cdcgov/varpipe_wgs_with_refs:latest
+docker run -it -v <path to data>:/varpipe_wgs/data ghcr.io/cdcgov/varpipe_wgs_with_refs:latest
 ```
 
 To use the image without references you will need to change the container name in the command to varpipe_wgs_without_refs:latest, and you will also need to specify a folder with the references to be used by clockwork. This folder must be mounted to the container as /varpipe_wgs/tools/clockwork-0.11.3/OUT.
 
 ```console
 docker pull ghcr.io/cdcgov/varpipe_wgs_with_refs:latest
-docker run -it -v ./data:/varpipe_wgs/data -v \<path to references\>:/varpipe_wgs/tools/clockwork-0.11.3/OUT ghcr.io/cdcgov/varpipe_wgs_without_refs:latest
+docker run -it -v <path to data>:/varpipe_wgs/data -v <path to references>:/varpipe_wgs/tools/clockwork-0.11.3/OUT ghcr.io/cdcgov/varpipe_wgs_without_refs:latest
 ```
 
 ### Run the pipeline ###
@@ -76,7 +76,7 @@ The script builds the image without references by default, to build the image in
 Once you have downloaded or built the .sif file containing the singularity image, the command to start and connect to the container that includes references is:
 
 ```console
-singularity shell --bind ./data:/varpipe_wgs/data pipeline_with_refs.sif
+singularity shell --bind <path to data>:/varpipe_wgs/data pipeline_with_refs.sif
 ```
 
 As with Docker, to run the pipeline without references you will need to supply clockwork compatible references and bind it to the image as the /varpipe_wgs/tools/clockwork-0.11.3/OUT directory
@@ -102,7 +102,7 @@ cd /varpipe_wgs/data
 ./runVarpipeline.sh
 ```
 
-That will identify all gzipped fastq files in the directory and run the pipeline over them, creating a results folder named "Output_<MM>_<DD>_<YYYY>"
+That will identify all gzipped fastq files in the directory and run the pipeline over them, creating a results folder named "Output_\<MM\>_\<DD\>_\<YYYY\>"
 
 When the pipeline is finished you can disconnect from and close the container by pressing CTRL+D. You can then review the results.
 
@@ -125,18 +125,14 @@ First, clone and dowload this repository with the command
 ```console
 git clone https://github.com/CDCGov/NCHHSTP-DTBE-Varpipe-WGS.git
 ```
+Then, simply run setup.sh to finish the installation. This script runs several steps:
 
-Next update the script tools/clockwork-0.11.3/clockwork script to correctly point to the clockwork 0.11.3 image
+ - Downloads the clockwork singularity image
+ - Downloads GATK
+ - Builds a reference fasta and creates BWA indexes
 
-Lastly, run the get_gatk.sh script to download and install GATK
 
-### Download the Reference Data ###
-
-In order to run the pipeline you must supply Clockwork with a set of references files to use for decontamination. To download and use the default references, run the command
-
-```console
-./download_references.sh
-```
+Latly, update the script tools/clockwork-0.11.3/clockwork script to correctly point to the clockwork 0.11.3 image
 
 ### Run the Pipeline ###
 
@@ -147,7 +143,7 @@ cd data/
 ./runVarpipeline.sh
 ```
 
-That will identify all gzipped fastq files in the directory and run the pipeline over them, creating a results folder named "Output_<MM>_<DD>_<YYYY>"
+That will identify all gzipped fastq files in the directory and run the pipeline over them, creating a results folder named "Output_\<MM\>_\<DD\>_\<YYYY\>"
 
 ## Public Domain Standard Notice
 This repository constitutes a work of the United States Government and is not
