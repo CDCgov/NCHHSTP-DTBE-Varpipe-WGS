@@ -7,3 +7,5 @@ work/
 *.img
 data/*fastq.gz
 data/Output*
+tools/clockwork-0.11.3/OUT/*gz
+tools/clockwork-0.11.3/*img
