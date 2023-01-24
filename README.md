@@ -56,7 +56,7 @@ The singularity images are too large to include in this repository, but the vers
 
 
 ```console
-singularity pull library://reagank/varpipe_wgs/pipeline_with_references
+singularity pull library://reagank/varpipe_wgs/pipeline_with_refs
 ```
 
 The Singularity images can also be built locally using the provided build_singularity.sh script.
