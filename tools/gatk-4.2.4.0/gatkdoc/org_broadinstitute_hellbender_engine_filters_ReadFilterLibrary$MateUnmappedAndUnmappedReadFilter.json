@@ -1,0 +1,9 @@
+{
+  "summary": "Filters reads whose mate is unmapped as well as unmapped reads.",
+  "arguments": [],
+  "description": "Filter reads whose mate is unmapped as well as unmapped reads.",
+  "name": "MateUnmappedAndUnmappedReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

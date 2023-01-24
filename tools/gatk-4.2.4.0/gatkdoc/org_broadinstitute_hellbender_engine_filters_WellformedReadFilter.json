@@ -1,0 +1,9 @@
+{
+  "summary": "Keep only reads that are well-formed",
+  "arguments": [],
+  "description": "Tests whether a read is \u0026quot;well-formed\u0026quot; -- that is, is free of major internal inconsistencies and issues that could lead\n to errors downstream. If a read passes this filter, the rest of the engine should be able to process it without\n blowing up.\n\n \u003cp\u003e\u003cb\u003eWell-formed reads definition\u003c/b\u003e\u003c/p\u003e\n \u003cul\u003e\n     \u003cli\u003e\u003cb\u003eAlignment coordinates:\u003c/b\u003e start larger than 0 and end after the start position.\u003c/li\u003e\n     \u003cli\u003e\u003cb\u003eAlignment agrees with header:\u003c/B\u003e contig exists and start is within its range.\u003c/li\u003e\n     \u003cli\u003e\u003cb\u003eRead Group and Sequence are present\u003c/b\u003e\u003c/li\u003e\n     \u003cli\u003e\u003cb\u003eConsistent read length:\u003c/b\u003e bases match in length with the qualities and the CIGAR string.\u003c/b\u003e\u003c/li\u003e\n     \u003cli\u003e\u003cb\u003eDo not contain skipped regions:\u003c/b\u003e represented by the \u0027N\u0027 operator in the CIGAR string.\u003c/li\u003e\n \u003c/ul\u003e",
+  "name": "WellformedReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

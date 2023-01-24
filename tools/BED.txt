@@ -1,0 +1,6 @@
+#CHROM	START	END	GENENAME	GENEID	STRAND
+NC_000962	2153889	2156111	katG	Rv1908c	reverse
+NC_000962	2156112	2156148	Intragenic(Rv1908c..Rv1909c)	Intragenic(Rv1908c..Rv190)	reverse_promoter
+NC_000962	2156593	2156705	Intragenic(Rv1909c..Rv1910c)	Intragenic(Rv1909c..Rv1910c)	reverse_promoter	
+NC_000962	2288681	2289241	pncA	Rv2043c	reverse
+NC_000962	2289242	2289281	Intragenic(Rv2043c..Rv2044c)	Intragenic(Rv2043c..Rv2044c)	reverse_promoter

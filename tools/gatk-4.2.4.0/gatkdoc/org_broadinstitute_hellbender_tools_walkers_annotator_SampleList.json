@@ -1,0 +1,9 @@
+{
+  "summary": "List of samples that are not homozygous reference at a variant site (Samples)",
+  "arguments": [],
+  "description": "List samples that are non-reference at a given variant site\n\n \u003cp\u003eThe output is a list of the samples that are genotyped as having one or more variant alleles. This allows you to\n easily determine which samples are non-reference (heterozygous or homozygous-variant) and compare them to samples\n that are homozygous-reference. This annotation is particularly useful for large cohorts where the genotype fields are\n difficult to manually match with sample names.\u003c/p\u003e",
+  "name": "SampleList",
+  "group": "Variant Annotations",
+  "beta": false,
+  "experimental": false
+}

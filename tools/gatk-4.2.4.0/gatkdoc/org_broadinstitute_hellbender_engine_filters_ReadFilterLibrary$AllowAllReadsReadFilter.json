@@ -1,0 +1,9 @@
+{
+  "summary": "Do not filter out any read",
+  "arguments": [],
+  "description": "Do not filter out any read.",
+  "name": "AllowAllReadsReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

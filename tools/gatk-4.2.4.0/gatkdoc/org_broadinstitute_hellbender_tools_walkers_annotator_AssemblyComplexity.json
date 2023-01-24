@@ -1,0 +1,9 @@
+{
+  "summary": "Describe the complexity of an assembly region",
+  "arguments": [],
+  "description": "",
+  "name": "AssemblyComplexity",
+  "group": "Variant Annotations",
+  "beta": false,
+  "experimental": false
+}

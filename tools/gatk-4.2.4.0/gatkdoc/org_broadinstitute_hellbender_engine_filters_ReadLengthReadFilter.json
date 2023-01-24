@@ -1,0 +1,40 @@
+{
+  "summary": "Keep only reads whose length is within a certain range",
+  "arguments": [
+    {
+      "summary": "Keep only reads with length at most equal to the specified value",
+      "name": "--max-read-length",
+      "synonyms": "NA",
+      "type": "Integer",
+      "required": "yes",
+      "fulltext": "",
+      "defaultValue": "null",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "required",
+      "options": []
+    },
+    {
+      "summary": "Keep only reads with length at least equal to the specified value",
+      "name": "--min-read-length",
+      "synonyms": "NA",
+      "type": "int",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "1",
+      "minValue": "-Infinity",
+      "maxValue": "Infinity",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    }
+  ],
+  "description": "Keep only reads whose length is \u0026ge; min value and \u0026le; max value.",
+  "name": "ReadLengthReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

@@ -1,0 +1,9 @@
+{
+  "summary": "Filter out reads marked as duplicate",
+  "arguments": [],
+  "description": "Filter out reads marked as duplicate (0x400).",
+  "name": "NotDuplicateReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

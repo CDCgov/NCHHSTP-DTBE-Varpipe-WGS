@@ -1,0 +1,9 @@
+{
+  "summary": "Keep only reads that are properly paired",
+  "arguments": [],
+  "description": "Keep only paired reads that are properly paired (0x1 and 0x2). Removes single ended reads.",
+  "name": "ProperlyPairedReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

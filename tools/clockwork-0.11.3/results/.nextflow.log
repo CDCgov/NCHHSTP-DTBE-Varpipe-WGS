@@ -1,0 +1,55 @@
+Aug-06 11:55:41.641 [main] DEBUG nextflow.cli.Launcher - $> nextflow run hello
+Aug-06 11:55:41.808 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 20.07.1
+Aug-06 11:55:41.853 [main] DEBUG nextflow.scm.AssetManager - Listing projects in folder: /scicomp/home/krt7/.nextflow/assets
+Aug-06 11:55:41.867 [main] INFO  nextflow.cli.CmdRun - Pulling nextflow-io/hello ...
+Aug-06 11:55:41.882 [main] DEBUG nextflow.scm.RepositoryProvider - Request [credentials -:-] -> https://api.github.com/repos/nextflow-io/hello/contents/nextflow.config
+Aug-06 11:55:44.528 [main] DEBUG nextflow.scm.RepositoryProvider - Request [credentials -:-] -> https://api.github.com/repos/nextflow-io/hello/contents/main.nf
+Aug-06 11:55:44.619 [main] DEBUG nextflow.scm.RepositoryProvider - Request [credentials -:-] -> https://api.github.com/repos/nextflow-io/hello
+Aug-06 11:55:44.697 [main] DEBUG nextflow.scm.AssetManager - Pulling nextflow-io/hello -- Using remote clone url: https://github.com/nextflow-io/hello.git
+Aug-06 11:55:47.068 [main] INFO  nextflow.cli.CmdRun -  downloaded from https://github.com/nextflow-io/hello.git
+Aug-06 11:55:47.135 [main] DEBUG nextflow.scm.AssetManager - Git config: /scicomp/home/krt7/.nextflow/assets/nextflow-io/hello/.git/config; branch: master; remote: origin; url: https://github.com/nextflow-io/hello.git
+Aug-06 11:55:47.135 [main] INFO  nextflow.cli.CmdRun - Launching `nextflow-io/hello` [pensive_easley] - revision: 96eb04d6a4 [master]
+Aug-06 11:55:47.198 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /scicomp/home/krt7/.nextflow/assets/nextflow-io/hello/nextflow.config
+Aug-06 11:55:47.200 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /scicomp/home/krt7/.nextflow/assets/nextflow-io/hello/nextflow.config
+Aug-06 11:55:47.213 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Aug-06 11:55:47.377 [main] DEBUG nextflow.Session - Session uuid: 4490c65f-e1d6-473c-9b87-3f14bdac6e7b
+Aug-06 11:55:47.378 [main] DEBUG nextflow.Session - Run name: pensive_easley
+Aug-06 11:55:47.379 [main] DEBUG nextflow.Session - Executor pool size: 32
+Aug-06 11:55:47.403 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 20.07.1 build 5412
+  Created: 24-07-2020 15:18 UTC (11:18 EDT)
+  System: Linux 3.10.0-1127.el7.x86_64
+  Runtime: Groovy 2.5.11 on Java HotSpot(TM) 64-Bit Server VM 1.8.0_131-b11
+  Encoding: UTF-8 (UTF-8)
+  Process: 51879@biolinux.biotech.cdc.gov [10.128.41.131]
+  CPUs: 32 - Mem: 1007.6 GB (25.5 GB) - Swap: 256 GB (252.9 GB)
+Aug-06 11:55:47.781 [main] DEBUG nextflow.Session - Work-dir: /scicomp/home/krt7/internal/clockwork-0.9.0/results/work [nfs]
+Aug-06 11:55:47.782 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /scicomp/home/krt7/.nextflow/assets/nextflow-io/hello/bin
+Aug-06 11:55:47.837 [main] DEBUG nextflow.Session - Observer factory: TowerFactory
+Aug-06 11:55:47.839 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Aug-06 11:55:48.363 [main] DEBUG nextflow.Session - Session start invoked
+Aug-06 11:55:48.585 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Aug-06 11:55:48.599 [main] DEBUG nextflow.Session - Workflow process names [dsl1]: sayHello
+Aug-06 11:55:48.726 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Aug-06 11:55:48.727 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Aug-06 11:55:48.736 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Aug-06 11:55:48.745 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=32; memory=1007.6 GB; capacity=32; pollInterval=100ms; dumpInterval=5m
+Aug-06 11:55:49.164 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Aug-06 11:55:49.164 [main] DEBUG nextflow.Session - Session await
+Aug-06 11:55:49.847 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Aug-06 11:55:49.855 [Task submitter] INFO  nextflow.Session - [02/762f27] Submitted process > sayHello (4)
+Aug-06 11:55:49.893 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Aug-06 11:55:49.894 [Task submitter] INFO  nextflow.Session - [41/e59bd8] Submitted process > sayHello (2)
+Aug-06 11:55:49.995 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Aug-06 11:55:49.996 [Task submitter] INFO  nextflow.Session - [88/fe8525] Submitted process > sayHello (3)
+Aug-06 11:55:50.282 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Aug-06 11:55:50.282 [Task submitter] INFO  nextflow.Session - [c7/b906ab] Submitted process > sayHello (1)
+Aug-06 11:55:50.693 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: sayHello (4); status: COMPLETED; exit: 0; error: -; workDir: /scicomp/home/krt7/internal/clockwork-0.9.0/results/work/02/762f27f272fa883c9ca14f22aec276]
+Aug-06 11:55:50.710 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: sayHello (2); status: COMPLETED; exit: 0; error: -; workDir: /scicomp/home/krt7/internal/clockwork-0.9.0/results/work/41/e59bd8e98c4fdd5a2f75de19384b7c]
+Aug-06 11:55:50.715 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: sayHello (3); status: COMPLETED; exit: 0; error: -; workDir: /scicomp/home/krt7/internal/clockwork-0.9.0/results/work/88/fe852569e961a8b196300f6394b51f]
+Aug-06 11:55:50.730 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: sayHello (1); status: COMPLETED; exit: 0; error: -; workDir: /scicomp/home/krt7/internal/clockwork-0.9.0/results/work/c7/b906ab4594679a3fbb545e00576a41]
+Aug-06 11:55:50.737 [main] DEBUG nextflow.Session - Session await > all process finished
+Aug-06 11:55:50.829 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Aug-06 11:55:50.845 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=4; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=2.4s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=4; peakCpus=4; peakMemory=0; ]
+Aug-06 11:55:50.956 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+Aug-06 11:55:50.990 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

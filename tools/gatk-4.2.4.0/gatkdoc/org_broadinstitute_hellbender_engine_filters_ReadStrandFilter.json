@@ -1,0 +1,25 @@
+{
+  "summary": "Keep only reads whose strand is as specified",
+  "arguments": [
+    {
+      "summary": "Keep only reads on the reverse strand",
+      "name": "--keep-reverse-strand-only",
+      "synonyms": "NA",
+      "type": "Boolean",
+      "required": "yes",
+      "fulltext": "",
+      "defaultValue": "null",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "required",
+      "options": []
+    }
+  ],
+  "description": "Keep only reads whose strand is either forward (not 0x10) or reverse (0x10), as specified.\n\n \u003cp\u003eBy default the filter keeps only forward reads (not 0x10).\u003c/p\u003e",
+  "name": "ReadStrandFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

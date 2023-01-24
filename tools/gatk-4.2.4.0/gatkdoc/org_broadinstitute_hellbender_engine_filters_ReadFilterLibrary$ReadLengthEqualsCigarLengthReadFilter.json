@@ -1,0 +1,9 @@
+{
+  "summary": "Filter out reads  where the read and CIGAR do not match in length",
+  "arguments": [],
+  "description": "Filter out reads where the read and CIGAR do not match in length.\n\n \u003cp\u003eNote: unmapped reads pass this filter. See MappedReadFilter for criteria defining an unmapped read.\u003c/p\u003e",
+  "name": "ReadLengthEqualsCigarLengthReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

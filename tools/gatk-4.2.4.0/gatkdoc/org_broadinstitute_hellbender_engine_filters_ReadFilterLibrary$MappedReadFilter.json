@@ -1,0 +1,9 @@
+{
+  "summary": "Filter out unmapped reads",
+  "arguments": [],
+  "description": "Filter out unmapped reads.\n\n \u003cp\u003eUnmapped reads are defined by three criteria:\u003c/p\u003e\n\n \u003cul\u003e\n     \u003cli\u003eSAM flag value 0x4\u003c/li\u003e\n     \u003cli\u003eAn asterisk for reference name or RNAME (column 3 of a SAM record)\u003c/li\u003e\n     \u003cli\u003eA zero value for leftmost mapping position for POS (column 4 of SAM record)\u003c/li\u003e\n \u003c/ul\u003e",
+  "name": "MappedReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

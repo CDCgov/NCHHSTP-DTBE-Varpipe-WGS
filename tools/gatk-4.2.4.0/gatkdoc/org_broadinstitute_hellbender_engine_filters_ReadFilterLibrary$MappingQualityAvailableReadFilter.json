@@ -1,0 +1,9 @@
+{
+  "summary": "Filter out reads without available mapping quality",
+  "arguments": [],
+  "description": "Filter out reads without available mapping quality (MAPQ\u003d255).",
+  "name": "MappingQualityAvailableReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

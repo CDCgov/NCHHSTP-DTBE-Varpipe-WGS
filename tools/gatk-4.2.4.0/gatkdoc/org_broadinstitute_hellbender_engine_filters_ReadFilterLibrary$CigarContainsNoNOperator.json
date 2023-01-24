@@ -1,0 +1,9 @@
+{
+  "summary": "Filter out reads with CIGAR containing N operator",
+  "arguments": [],
+  "description": "Filter out reads containing skipped region from the reference (CIGAR strings with \u0027N\u0027 operator).",
+  "name": "CigarContainsNoNOperator",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

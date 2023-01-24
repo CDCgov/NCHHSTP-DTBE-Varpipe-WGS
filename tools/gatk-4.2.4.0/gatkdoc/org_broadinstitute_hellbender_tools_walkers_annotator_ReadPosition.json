@@ -1,0 +1,9 @@
+{
+  "summary": "Median distance of variant starts from ends of reads supporting each allele (MPOS)",
+  "arguments": [],
+  "description": "Median distance of variant starts from ends of reads supporting each alt allele.\n\n \u003c/p\u003eThe output is an array containing, for each alt allele, the median distance of the variant start from the closest read end over all reads that best match that allele.\u003c/p\u003e\n \u003c/p\u003eFor example, for variant context with ref allele A and alt allele C the read position for alt-supporting read GGGGCTT is 2 because the A to C\n substitution is 2 bases from the right end of the read, which is less than its distance from the left end.\n For variant context with ref allele AG and alt allele A (deletion) the read position of alt-supporting read ATTTTT is 0.\n For variant context with ref allele A and alt allele AG (insertion) the read position of alt-supporting read TTTTAG is 1.\u003c/p\u003e\n \u003cp\u003eThe annotation considers only the read\u0027s bases themselves and not the position they map to with respect to the reference.  For example,\n suppose a substitution is preceded by 80 matching bases and followed by 10 matching bases, a 10-base deletion, and 10 more matching bases.  Its distance from the end of the read\n is 20 bases, not 30 bases, because the deleted bases belong to the reference, not the read.  Similarly soft-clipped bases are counted in the distance.\u003c/p\u003e\n \u003cp\u003eThis annotation is useful for filtering alignment artifacts.\u003c/p\u003e",
+  "name": "ReadPosition",
+  "group": "Variant Annotations",
+  "beta": false,
+  "experimental": false
+}

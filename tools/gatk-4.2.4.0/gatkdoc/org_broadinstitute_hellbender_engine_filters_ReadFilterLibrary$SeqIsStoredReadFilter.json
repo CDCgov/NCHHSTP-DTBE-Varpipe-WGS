@@ -1,0 +1,9 @@
+{
+  "summary": "Keep only reads with sequenced bases",
+  "arguments": [],
+  "description": "Keep only reads with sequenced bases.",
+  "name": "SeqIsStoredReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

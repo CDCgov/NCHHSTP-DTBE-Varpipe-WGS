@@ -1,0 +1,9 @@
+{
+  "summary": "Keep only reads whose mate maps to the same contig or is unmapped",
+  "arguments": [],
+  "description": "Keep only reads that have a mate that maps to the same contig (RNEXT is \"\u003d\"), is single ended (not 0x1) or has an unmapped mate (0x8).\n\n \u003cp\u003eSee MappedReadFilter for criteria defining an unmapped read.\u003c/p\u003e",
+  "name": "MateOnSameContigOrNoMappedMateReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

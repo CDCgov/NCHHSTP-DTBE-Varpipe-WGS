@@ -1,0 +1,9 @@
+{
+  "summary": "Variant allele fraction for a genotype",
+  "arguments": [],
+  "description": "Variant allele fraction for each sample.\n\n \u003cp\u003eThis annotation describes the proportion of the sample\u0027s reads that support the variant allele(s). It uses only reads that are actually considered informative by HaplotypeCaller (HC) or Mutect2, using pre-read likelihoods that are produced internally by HC/Mutect2.\u003c/p\u003e\n \u003cp\u003eIn this context, an informative read is defined as one that allows the allele it carries to be easily distinguished. In contrast, a read might be considered uninformative if, for example, it only partially overlaps a short tandem repeat and it is not clear whether the read contains the reference allele or an extra repeat.\u003c/p\u003e\n\n \u003cp\u003eSee the method documentation on \u003ca href\u003d\"http://www.broadinstitute.org/gatk/guide/article?id\u003d4721\"\u003eusing coverage information\u003c/a\u003e for important interpretation details.\u003c/p\u003e\n\n \u003ch3\u003eCaveats\u003c/h3\u003e\n \u003cul\u003e\n     \u003cli\u003eIf a genotype is already annotated with allele fraction (as by the SomaticGenotypingEngine if `--get-af-from-ad` is not specified), the value will not be recalculated.\u003c/li\u003e\n \u003c/ul\u003e\n\n \u003ch3\u003eRelated annotations\u003c/h3\u003e\n \u003cul\u003e\n     \u003cli\u003e\u003cb\u003eDepthPerAlleleBySample\u003c/b\u003e calculates depth of coverage for each allele per sample (AD).\u003c/li\u003e\n \u003c/ul\u003e",
+  "name": "AlleleFraction",
+  "group": "Variant Annotations",
+  "beta": false,
+  "experimental": false
+}

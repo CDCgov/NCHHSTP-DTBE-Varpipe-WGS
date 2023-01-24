@@ -1,0 +1,35 @@
+tools:
+    bcftools: /bcftools
+    bedtools: /bedtools
+    bwa: /bwa
+    samtools: /samtools
+    picard: /picard.jar
+    trimmomatic: /trimmomatic-0.39.jar
+    gatk: /gatk-4.2.4.0/gatk 
+    annotator: /snpEff/snpEff.jar
+    nextflow: /clockwork-0.11.3/results/nextflow
+    remove_contam: /clockwork-0.11.3/nextflow/remove_contam.nf
+    ref_fasta: /clockwork-0.11.3/OUT/ref.fa
+    ref_metadata: /clockwork-0.11.3/OUT/remove_contam_metadata.tsv         
+scripts:
+    parser: /parse_annotation.py
+    creater: /create_annotation.py
+    interpreter: /interprete.py
+    reported: /reportable.txt
+    included: /intervals.bed
+    stats_estimator: /stats_estimator.py
+    genome_stats_estimator: /genome_stats_estimator.py
+    bedlist_amp: /amp_bed.txt
+    bedlist_one: /bed_1.txt
+    bedlist_two: /bed_2.txt
+    bedstruct: /BED.txt      
+    target_cov_estimator: /target_coverage_estimator.py
+    genome_cov_estimator: /genome_coverage_estimator.py
+    mutationloci: /mutation_loci.txt
+    lineages: /lineage_markers.txt
+    lineage_parser: /lineage_parser.py
+    struct_parser: /structvar_parser.py
+    create_report: /create_report.py
+    print_report: /pdf_print.py
+other:
+    threads: '12'

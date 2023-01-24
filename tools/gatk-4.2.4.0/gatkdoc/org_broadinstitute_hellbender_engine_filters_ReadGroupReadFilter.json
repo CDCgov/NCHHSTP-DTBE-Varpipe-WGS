@@ -1,0 +1,25 @@
+{
+  "summary": "Keep only reads from the specified read group",
+  "arguments": [
+    {
+      "summary": "The name of the read group to keep",
+      "name": "--keep-read-group",
+      "synonyms": "NA",
+      "type": "String",
+      "required": "yes",
+      "fulltext": "",
+      "defaultValue": "null",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "required",
+      "options": []
+    }
+  ],
+  "description": "Keep only reads from the specified read group. Discards reads lacking an RG tag.\n\n \u003cp\u003eMatching is done by case-sensitive exact match.\u003c/p\u003e",
+  "name": "ReadGroupReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

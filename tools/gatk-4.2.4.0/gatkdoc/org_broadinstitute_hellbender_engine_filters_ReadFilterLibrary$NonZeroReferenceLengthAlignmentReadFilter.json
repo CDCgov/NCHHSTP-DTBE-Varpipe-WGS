@@ -1,0 +1,9 @@
+{
+  "summary": "Filter out reads that do not align to the reference",
+  "arguments": [],
+  "description": "Filter out reads that do not align to the reference. Filter interprets each of the CIGAR operators M, D, N, \u003d and X as alignment.",
+  "name": "NonZeroReferenceLengthAlignmentReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

@@ -1,0 +1,25 @@
+{
+  "summary": "Keep only reads from the specified library",
+  "arguments": [
+    {
+      "summary": "Name of the library to keep",
+      "name": "--library",
+      "synonyms": "-library",
+      "type": "Set[String]",
+      "required": "yes",
+      "fulltext": "",
+      "defaultValue": "[]",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "required",
+      "options": []
+    }
+  ],
+  "description": "Keep only reads from the specified library.",
+  "name": "LibraryReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

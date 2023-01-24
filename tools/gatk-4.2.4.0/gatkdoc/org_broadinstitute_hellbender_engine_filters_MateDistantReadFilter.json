@@ -1,0 +1,25 @@
+{
+  "summary": "Keep only paired reads with mates mapped \u003e\u003d mate-too-distant-length (default 1KB) apart or on different contigs",
+  "arguments": [
+    {
+      "summary": "Minimum start location difference at which mapped mates are considered distant",
+      "name": "--mate-too-distant-length",
+      "synonyms": "NA",
+      "type": "int",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "1000",
+      "minValue": "-Infinity",
+      "maxValue": "Infinity",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    }
+  ],
+  "description": "Keep only paired reads that are not near each other in a coordinate-sorted source of reads.\n (I.e., they\u0027re both mapped, but mapped to different contigs, or are mapped too far apart on the same contig.)\n\n \u003cp\u003eSee MappedReadFilter for criteria defining an mapped read.\u003c/p\u003e",
+  "name": "MateDistantReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

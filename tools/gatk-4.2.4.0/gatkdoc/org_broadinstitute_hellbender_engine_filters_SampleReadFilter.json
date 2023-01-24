@@ -1,0 +1,25 @@
+{
+  "summary": "Keep only reads for a given sample",
+  "arguments": [
+    {
+      "summary": "The name of the sample(s) to keep, filtering out all others",
+      "name": "--sample",
+      "synonyms": "-sample",
+      "type": "Set[String]",
+      "required": "yes",
+      "fulltext": "",
+      "defaultValue": "[]",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "required",
+      "options": []
+    }
+  ],
+  "description": "Keep only reads for a given sample.\n\n \u003cp\u003eMatching is done by case-sensitive exact match.\u003c/p\u003e",
+  "name": "SampleReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

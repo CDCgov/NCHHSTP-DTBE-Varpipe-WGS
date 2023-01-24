@@ -1,0 +1,40 @@
+{
+  "summary": "Keep only read pairs with insert length less than or equal to the given value",
+  "arguments": [
+    {
+      "summary": "Maximum length of fragment (insert size)",
+      "name": "--max-fragment-length",
+      "synonyms": "NA",
+      "type": "int",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "1000000",
+      "minValue": "-Infinity",
+      "maxValue": "Infinity",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    },
+    {
+      "summary": "Minimum length of fragment (insert size)",
+      "name": "--min-fragment-length",
+      "synonyms": "NA",
+      "type": "int",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "0",
+      "minValue": "-Infinity",
+      "maxValue": "Infinity",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    }
+  ],
+  "description": "Keep only read pairs (0x1) with absolute insert length less than or equal to the specified maximum,\n and/or greater than or equal to the specified minimum.\n\n \u003cp\u003eTaking absolute values allows inclusion of pairs where the mate of the read being considered is at a smaller genomic coordinate.\n Insert length is the difference between the 5\u0027 outer ends of mates, akin to a SAM record\u0027s TLEN (column 9).\n Length is zero for single-end reads or when the information is unavailable.",
+  "name": "FragmentLengthReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

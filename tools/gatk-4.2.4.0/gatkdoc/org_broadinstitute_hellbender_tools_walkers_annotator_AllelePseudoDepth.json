@@ -1,0 +1,55 @@
+{
+  "summary": "Total depth of coverage per sample and over all samples (DP)",
+  "arguments": [
+    {
+      "summary": "By default we don\u0027t keep the prior use in the output counts ase it makes it easier to interpretthis quantity as the number of supporting reads specially in low depth sites. We this toggled the prior is included",
+      "name": "--dirichlet-keep-prior-in-count",
+      "synonyms": "NA",
+      "type": "boolean",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "false",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    },
+    {
+      "summary": "Pseudo-count used as prior for all alleles. The default is 1.0 resulting in a flat prior",
+      "name": "--dirichlet-prior-pseudo-count",
+      "synonyms": "NA",
+      "type": "double",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "1.0",
+      "minValue": "-Infinity",
+      "maxValue": "Infinity",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "advanced",
+      "options": []
+    },
+    {
+      "summary": "A what rate the weight of a read decreases base on its informativeness; e.g. 1.0 is linear decay (default), 2.0 is for quadratic decay",
+      "name": "--pseudo-count-weight-decay-rate",
+      "synonyms": "NA",
+      "type": "double",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "1.0",
+      "minValue": "0.0",
+      "maxValue": "Infinity",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    }
+  ],
+  "description": "",
+  "name": "AllelePseudoDepth",
+  "group": "Variant Annotations",
+  "beta": false,
+  "experimental": false
+}

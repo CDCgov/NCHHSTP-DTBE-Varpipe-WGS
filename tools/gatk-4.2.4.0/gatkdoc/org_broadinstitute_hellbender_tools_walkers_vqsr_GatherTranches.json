@@ -1,0 +1,280 @@
+{
+  "summary": "Gathers scattered VQSLOD tranches into a single file",
+  "arguments": [
+    {
+      "summary": "read one or more arguments files and add them to the command line",
+      "name": "--arguments_file",
+      "synonyms": "NA",
+      "type": "List[File]",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "[]",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    },
+    {
+      "summary": "A configuration file to use with the GATK.",
+      "name": "--gatk-config-file",
+      "synonyms": "NA",
+      "type": "String",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "null",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "common",
+      "options": []
+    },
+    {
+      "summary": "If the GCS bucket channel errors out, how many times it will attempt to re-initiate the connection",
+      "name": "--gcs-max-retries",
+      "synonyms": "-gcs-retries",
+      "type": "int",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "20",
+      "minValue": "-Infinity",
+      "maxValue": "Infinity",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    },
+    {
+      "summary": "Project to bill when accessing \"requester pays\" buckets. If unset, these buckets cannot be accessed.  User must have storage.buckets.get permission on the bucket being accessed.",
+      "name": "--gcs-project-for-requester-pays",
+      "synonyms": "NA",
+      "type": "String",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "\"\"",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    },
+    {
+      "summary": "display the help message",
+      "name": "--help",
+      "synonyms": "-h",
+      "type": "boolean",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "false",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    },
+    {
+      "summary": "List of scattered tranches files",
+      "name": "--input",
+      "synonyms": "-I",
+      "type": "List[GATKPath]",
+      "required": "yes",
+      "fulltext": "",
+      "defaultValue": "[]",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "required",
+      "options": []
+    },
+    {
+      "summary": "Recalibration mode to employ",
+      "name": "--mode",
+      "synonyms": "-mode",
+      "type": "Mode",
+      "required": "yes",
+      "fulltext": "Use either SNP for recalibrating only SNPs (emitting indels untouched in the output VCF) or INDEL for indels (emitting SNPs untouched in the output VCF). There is also a BOTH option for recalibrating both SNPs and indels simultaneously, but this is meant for testing purposes only and should not be used in actual analyses.",
+      "defaultValue": "null",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "required",
+      "options": [
+        {
+          "summary": "",
+          "name": "SNP"
+        },
+        {
+          "summary": "",
+          "name": "INDEL"
+        },
+        {
+          "summary": "",
+          "name": "BOTH"
+        }
+      ]
+    },
+    {
+      "summary": "File to output the gathered tranches file to",
+      "name": "--output",
+      "synonyms": "-O",
+      "type": "GATKPath",
+      "required": "yes",
+      "fulltext": "",
+      "defaultValue": "null",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "required",
+      "options": []
+    },
+    {
+      "summary": "Whether to suppress job-summary info on System.err.",
+      "name": "--QUIET",
+      "synonyms": "NA",
+      "type": "Boolean",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "false",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "common",
+      "options": []
+    },
+    {
+      "summary": "display hidden arguments",
+      "name": "--showHidden",
+      "synonyms": "-showHidden",
+      "type": "boolean",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "false",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "advanced",
+      "options": []
+    },
+    {
+      "summary": "Temp directory to use.",
+      "name": "--tmp-dir",
+      "synonyms": "NA",
+      "type": "GATKPath",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "null",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "common",
+      "options": []
+    },
+    {
+      "summary": "The levels of truth sensitivity at which to slice the data. (in percent, that is 1.0 for 1 percent)",
+      "name": "--truth-sensitivity-tranche",
+      "synonyms": "-tranche",
+      "type": "List[Double]",
+      "required": "no",
+      "fulltext": "Add truth sensitivity slices through the call set at the given values. The default values are 100.0, 99.9, 99.0, and 90.0\n which will result in 4 estimated tranches in the final call set: the full set of calls (100% sensitivity at the accessible\n sites in the truth set), a 99.9% truth sensitivity tranche, along with progressively smaller tranches at 99% and 90%.",
+      "defaultValue": "[100.0, 99.9, 99.0, 90.0]",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    },
+    {
+      "summary": "Whether to use the JdkDeflater (as opposed to IntelDeflater)",
+      "name": "--use-jdk-deflater",
+      "synonyms": "-jdk-deflater",
+      "type": "boolean",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "false",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "common",
+      "options": []
+    },
+    {
+      "summary": "Whether to use the JdkInflater (as opposed to IntelInflater)",
+      "name": "--use-jdk-inflater",
+      "synonyms": "-jdk-inflater",
+      "type": "boolean",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "false",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "common",
+      "options": []
+    },
+    {
+      "summary": "Control verbosity of logging.",
+      "name": "--verbosity",
+      "synonyms": "-verbosity",
+      "type": "LogLevel",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "INFO",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "common",
+      "options": [
+        {
+          "summary": "",
+          "name": "ERROR"
+        },
+        {
+          "summary": "",
+          "name": "WARNING"
+        },
+        {
+          "summary": "",
+          "name": "INFO"
+        },
+        {
+          "summary": "",
+          "name": "DEBUG"
+        }
+      ]
+    },
+    {
+      "summary": "display the version number for this tool",
+      "name": "--version",
+      "synonyms": "NA",
+      "type": "boolean",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "false",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    }
+  ],
+  "description": "",
+  "name": "GatherTranches",
+  "group": "Other",
+  "beta": true,
+  "experimental": false
+}

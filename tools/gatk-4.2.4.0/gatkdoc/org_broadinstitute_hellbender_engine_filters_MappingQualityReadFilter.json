@@ -1,0 +1,40 @@
+{
+  "summary": "Keep only reads with mapping qualities within a specified range",
+  "arguments": [
+    {
+      "summary": "Maximum mapping quality to keep (inclusive)",
+      "name": "--maximum-mapping-quality",
+      "synonyms": "NA",
+      "type": "Integer",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "null",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    },
+    {
+      "summary": "Minimum mapping quality to keep (inclusive)",
+      "name": "--minimum-mapping-quality",
+      "synonyms": "NA",
+      "type": "int",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "10",
+      "minValue": "-Infinity",
+      "maxValue": "Infinity",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    }
+  ],
+  "description": "Keep only reads with mapping qualities within a specified range.\n\n \u003cp\u003eNote: this filter is not designed to handle the unavailable mapping quality (255).\n Use MappingQualityAvailableReadFilter to explicitly filter out reads with unavailable quality.\u003c/p\u003e",
+  "name": "MappingQualityReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

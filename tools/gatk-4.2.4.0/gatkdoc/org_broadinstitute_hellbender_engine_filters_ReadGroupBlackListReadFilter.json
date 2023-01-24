@@ -1,0 +1,25 @@
+{
+  "summary": "Keep records that don\u0027t match the specified filter string(s).",
+  "arguments": [
+    {
+      "summary": "A read group filter expression in the form \"attribute:value\", where \"attribute\" is a two character read group attribute such as \"RG\" or \"PU\".",
+      "name": "--read-group-black-list",
+      "synonyms": "NA",
+      "type": "List[String]",
+      "required": "yes",
+      "fulltext": "",
+      "defaultValue": "[]",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "required",
+      "options": []
+    }
+  ],
+  "description": "Keep records that don\u0027t match the specified filter string(s). Filter strings consist of a two character\n read group tag name such as \"RG\", \"PU\", etc., as defined by SAMReadGroupRecord, followed by a\n \":\", and then the specific value to use for filtering.\n\n \u003cp\u003eFor example, this filter value uses the platform unit (PU) tag:\n   \u003ccode\u003ePU:1000G-mpimg-080821-1_1\u003c/code\u003e\n to filter out reads with the read group platform unit value \u003ccode\u003e1000G-mpimg-080821-1_1\u003c/code\u003e\u003c/p\u003e",
+  "name": "ReadGroupBlackListReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

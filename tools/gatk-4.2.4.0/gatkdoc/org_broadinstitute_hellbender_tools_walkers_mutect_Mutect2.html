@@ -1,0 +1,4428 @@
+<?php
+
+	include '../../../../common/include/common.php';
+    include_once '../../../config.php';
+    $module = modules::GATK;
+    $name = docSN::toolDocs;
+
+    printHeader($module, $name, topSN::guide);
+
+    $selected_major_version = 4;
+    $dirs = lookupVersionDirs($selected_major_version);
+?>
+
+<link type='text/css' rel='stylesheet' href='gatkDoc.css'>
+
+<div class="row hide_me_html" style="margin: 14px 3px 14px 3px;" id="tippy-top">
+
+	<i class='<?php print ico::toolDocsIcon; ?>'></i> <em>Showing tool doc from version 4.2.4.0 | The latest version is <?php print $latest_version; ?></em>
+	<div class="btn-group pull-right">
+		<a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#">
+			4.2.4.0
+			<span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<?php foreach($dirs as $dir) { ?>
+			<li class="hide_me_html"><a tabindex='-1' href='../<?=$dir?>' ><?=$dir?></a></li>
+			<?php } ?>
+		</ul>
+	</div>
+	<hr />
+
+</div>
+
+
+<div class='row' id="top">
+
+
+
+	<?php $group = 'Short Variant Discovery'; ?>
+
+	<section class="col-md-4">
+		<aside class="well">
+			<a class="hide_me_php" href="index.html"><h4><i class='fa fa-chevron-left'></i> Back to Tool Documentation Index</h4></a>
+			<a class="hide_me_html" href=".."><h4><i class='fa fa-chevron-left'></i> Back to Tool Documentation Index</h4></a>
+		</aside>
+		<aside class="well hide_me_html">
+			<h3>Browse tools by category</h3>
+
+        <style>
+            #sidenav .accordion-body a {
+                color : gray;
+            }
+
+            .accordion-body li {
+                list-style : none;
+            }
+        </style>
+
+        <ul class="nav nav-pills nav-stacked" id="sidenav">
+        		<hr>
+        		<hr>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#CopyNumberVariantDiscovery">Copy Number Variant Discovery</a>
+							<div id="CopyNumberVariantDiscovery"
+								<?php echo ($group == 'Copy Number Variant Discovery')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_AnnotateIntervals.html">AnnotateIntervals</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_CallCopyRatioSegments.html">CallCopyRatioSegments</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_CreateReadCountPanelOfNormals.html">CreateReadCountPanelOfNormals</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_DenoiseReadCounts.html">DenoiseReadCounts</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_DetermineGermlineContigPloidy.html">DetermineGermlineContigPloidy</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_FilterIntervals.html">FilterIntervals</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_GermlineCNVCaller.html">GermlineCNVCaller</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_ModelSegments.html">ModelSegments</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_plotting_PlotDenoisedCopyRatios.html">PlotDenoisedCopyRatios</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_plotting_PlotModeledSegments.html">PlotModeledSegments</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_PostprocessGermlineCNVCalls.html">PostprocessGermlineCNVCalls</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#CoverageAnalysis">Coverage Analysis</a>
+							<div id="CoverageAnalysis"
+								<?php echo ($group == 'Coverage Analysis')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_rnaseq_ASEReadCounter.html">ASEReadCounter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_AnalyzeSaturationMutagenesis.html">AnalyzeSaturationMutagenesis</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_CollectAllelicCounts.html">CollectAllelicCounts</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_CollectReadCounts.html">CollectReadCounts</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_CountBases.html">CountBases</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_CountBasesSpark.html">CountBasesSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_CountReads.html">CountReads</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_CountReadsSpark.html">CountReadsSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_coverage_DepthOfCoverage.html">DepthOfCoverage</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_rnaseq_GeneExpressionEvaluation.html">GeneExpressionEvaluation</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_contamination_GetPileupSummaries.html">GetPileupSummaries</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_LocalAssembler.html">LocalAssembler</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_qc_Pileup.html">Pileup</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_PileupSpark.html">PileupSpark</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#DiagnosticsandQualityControl">Diagnostics and Quality Control</a>
+							<div id="DiagnosticsandQualityControl"
+								<?php echo ($group == 'Diagnostics and Quality Control')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="picard_vcf_AccumulateVariantCallingMetrics.html">AccumulateVariantCallingMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_bqsr_AnalyzeCovariates.html">AnalyzeCovariates</a>
+											</li>
+											<li>
+												<a href="picard_sam_BamIndexStats.html">BamIndexStats (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_evidence_CalcMetadataSpark.html">CalcMetadataSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_contamination_CalculateContamination.html">CalculateContamination</a>
+											</li>
+											<li>
+												<a href="picard_fingerprint_CalculateFingerprintMetrics.html">CalculateFingerprintMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_CalculateReadGroupChecksum.html">CalculateReadGroupChecksum (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_fingerprint_CheckFingerprint.html">CheckFingerprint (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_qc_CheckPileup.html">CheckPileup</a>
+											</li>
+											<li>
+												<a href="picard_sam_CheckTerminatorBlock.html">CheckTerminatorBlock (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_fingerprint_ClusterCrosscheckMetrics.html">ClusterCrosscheckMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectAlignmentSummaryMetrics.html">CollectAlignmentSummaryMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_arrays_CollectArraysVariantCallingMetrics.html">CollectArraysVariantCallingMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectBaseDistributionByCycle.html">CollectBaseDistributionByCycle (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_CollectBaseDistributionByCycleSpark.html">CollectBaseDistributionByCycleSpark</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectGcBiasMetrics.html">CollectGcBiasMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_illumina_quality_CollectHiSeqXPfFailMetrics.html">CollectHiSeqXPfFailMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_directed_CollectHsMetrics.html">CollectHsMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_replicates_CollectIndependentReplicateMetrics.html">CollectIndependentReplicateMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectInsertSizeMetrics.html">CollectInsertSizeMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_CollectInsertSizeMetricsSpark.html">CollectInsertSizeMetricsSpark</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectJumpingLibraryMetrics.html">CollectJumpingLibraryMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectMultipleMetrics.html">CollectMultipleMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_CollectMultipleMetricsSpark.html">CollectMultipleMetricsSpark</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectOxoGMetrics.html">CollectOxoGMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectQualityYieldMetrics.html">CollectQualityYieldMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_CollectQualityYieldMetricsSpark.html">CollectQualityYieldMetricsSpark</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectRawWgsMetrics.html">CollectRawWgsMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectRnaSeqMetrics.html">CollectRnaSeqMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectRrbsMetrics.html">CollectRrbsMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_SamErrorMetric_CollectSamErrorMetrics.html">CollectSamErrorMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_artifacts_CollectSequencingArtifactMetrics.html">CollectSequencingArtifactMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_directed_CollectTargetedPcrMetrics.html">CollectTargetedPcrMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_vcf_CollectVariantCallingMetrics.html">CollectVariantCallingMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectWgsMetrics.html">CollectWgsMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectWgsMetricsWithNonZeroCoverage.html">CollectWgsMetricsWithNonZeroCoverage (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_validation_CompareBaseQualities.html">CompareBaseQualities</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_validation_CompareDuplicatesSpark.html">CompareDuplicatesSpark</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CompareMetrics.html">CompareMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_CompareSAMs.html">CompareSAMs (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_artifacts_ConvertSequencingArtifactToOxoG.html">ConvertSequencingArtifactToOxoG (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_fingerprint_CrosscheckFingerprints.html">CrosscheckFingerprints (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_markduplicates_EstimateLibraryComplexity.html">EstimateLibraryComplexity (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_FlagStat.html">FlagStat</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_FlagStatSpark.html">FlagStatSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_GetSampleName.html">GetSampleName</a>
+											</li>
+											<li>
+												<a href="picard_analysis_MeanQualityByCycle.html">MeanQualityByCycle (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_MeanQualityByCycleSpark.html">MeanQualityByCycleSpark</a>
+											</li>
+											<li>
+												<a href="picard_analysis_QualityScoreDistribution.html">QualityScoreDistribution (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_QualityScoreDistributionSpark.html">QualityScoreDistributionSpark</a>
+											</li>
+											<li>
+												<a href="picard_sam_ValidateSamFile.html">ValidateSamFile (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_ViewSam.html">ViewSam (Picard)</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#IntervalsManipulation">Intervals Manipulation</a>
+							<div id="IntervalsManipulation"
+								<?php echo ($group == 'Intervals Manipulation')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="picard_util_BedToIntervalList.html">BedToIntervalList (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_util_IntervalListToBed.html">IntervalListToBed (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_util_IntervalListTools.html">IntervalListTools (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_util_LiftOverIntervalList.html">LiftOverIntervalList (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_PreprocessIntervals.html">PreprocessIntervals</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_SplitIntervals.html">SplitIntervals</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#Metagenomics">Metagenomics</a>
+							<div id="Metagenomics"
+								<?php echo ($group == 'Metagenomics')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqBuildKmers.html">PathSeqBuildKmers</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqBuildReferenceTaxonomy.html">PathSeqBuildReferenceTaxonomy</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqBwaSpark.html">PathSeqBwaSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqFilterSpark.html">PathSeqFilterSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqPipelineSpark.html">PathSeqPipelineSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqScoreSpark.html">PathSeqScoreSpark</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#Other">Other</a>
+							<div id="Other"
+								<?php echo ($group == 'Other')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_CreateHadoopBamSplittingIndex.html">CreateHadoopBamSplittingIndex</a>
+											</li>
+											<li>
+												<a href="picard_util_FifoBuffer.html">FifoBuffer (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_bqsr_GatherBQSRReports.html">GatherBQSRReports</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_vqsr_GatherTranches.html">GatherTranches</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_IndexFeatureFile.html">IndexFeatureFile</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_ParallelCopyGCSDirectoryIntoHDFSSpark.html">ParallelCopyGCSDirectoryIntoHDFSSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_ReadAnonymizer.html">ReadAnonymizer</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_variantutils_ReblockGVCF.html">ReblockGVCF</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#ReadDataManipulation">Read Data Manipulation</a>
+							<div id="ReadDataManipulation"
+								<?php echo ($group == 'Read Data Manipulation')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="picard_sam_AddCommentsToBam.html">AddCommentsToBam (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_AddOATag.html">AddOATag (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_AddOrReplaceReadGroups.html">AddOrReplaceReadGroups (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_bqsr_ApplyBQSR.html">ApplyBQSR</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_ApplyBQSRSpark.html">ApplyBQSRSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_BQSRPipelineSpark.html">BQSRPipelineSpark</a>
+											</li>
+											<li>
+												<a href="picard_fastq_BamToBfq.html">BamToBfq (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_bqsr_BaseRecalibrator.html">BaseRecalibrator</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_BaseRecalibratorSpark.html">BaseRecalibratorSpark</a>
+											</li>
+											<li>
+												<a href="picard_sam_BuildBamIndex.html">BuildBamIndex (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_BwaAndMarkDuplicatesPipelineSpark.html">BwaAndMarkDuplicatesPipelineSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_bwa_BwaSpark.html">BwaSpark</a>
+											</li>
+											<li>
+												<a href="picard_sam_CleanSam.html">CleanSam (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_ClipReads.html">ClipReads</a>
+											</li>
+											<li>
+												<a href="picard_sam_markduplicates_CollectDuplicateMetrics.html">CollectDuplicateMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_ConvertHeaderlessHadoopBamShardToBam.html">ConvertHeaderlessHadoopBamShardToBam</a>
+											</li>
+											<li>
+												<a href="picard_sam_DownsampleSam.html">DownsampleSam (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_utils_ExtractOriginalAlignmentRecordsByNameSpark.html">ExtractOriginalAlignmentRecordsByNameSpark</a>
+											</li>
+											<li>
+												<a href="picard_sam_FastqToSam.html">FastqToSam (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_FilterSamReads.html">FilterSamReads (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_FixMateInformation.html">FixMateInformation (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_FixMisencodedBaseQualityReads.html">FixMisencodedBaseQualityReads</a>
+											</li>
+											<li>
+												<a href="picard_sam_GatherBamFiles.html">GatherBamFiles (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_LeftAlignIndels.html">LeftAlignIndels</a>
+											</li>
+											<li>
+												<a href="picard_sam_markduplicates_MarkDuplicates.html">MarkDuplicates (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_transforms_markduplicates_MarkDuplicatesSpark.html">MarkDuplicatesSpark</a>
+											</li>
+											<li>
+												<a href="picard_sam_markduplicates_MarkDuplicatesWithMateCigar.html">MarkDuplicatesWithMateCigar (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_MergeBamAlignment.html">MergeBamAlignment (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_MergeSamFiles.html">MergeSamFiles (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_PositionBasedDownsampleSam.html">PositionBasedDownsampleSam (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_PrintDistantMates.html">PrintDistantMates</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_PrintReads.html">PrintReads</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_PrintReadsHeader.html">PrintReadsHeader</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_PrintReadsSpark.html">PrintReadsSpark</a>
+											</li>
+											<li>
+												<a href="picard_sam_ReorderSam.html">ReorderSam (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_ReplaceSamHeader.html">ReplaceSamHeader (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_RevertBaseQualityScores.html">RevertBaseQualityScores</a>
+											</li>
+											<li>
+												<a href="picard_sam_RevertOriginalBaseQualitiesAndAddMateCigar.html">RevertOriginalBaseQualitiesAndAddMateCigar (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_RevertSam.html">RevertSam (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_RevertSamSpark.html">RevertSamSpark</a>
+											</li>
+											<li>
+												<a href="picard_sam_SamFormatConverter.html">SamFormatConverter (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_SamToFastq.html">SamToFastq (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_SetNmAndUqTags.html">SetNmAndUqTags (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_SetNmMdAndUqTags.html">SetNmMdAndUqTags (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_markduplicates_SimpleMarkDuplicatesWithMateCigar.html">SimpleMarkDuplicatesWithMateCigar (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_SortSam.html">SortSam (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_SortSamSpark.html">SortSamSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_rnaseq_SplitNCigarReads.html">SplitNCigarReads</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_SplitReads.html">SplitReads</a>
+											</li>
+											<li>
+												<a href="picard_sam_SplitSamByLibrary.html">SplitSamByLibrary (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_SplitSamByNumberOfReads.html">SplitSamByNumberOfReads (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_markduplicates_UmiAwareMarkDuplicatesWithMateCigar.html">UmiAwareMarkDuplicatesWithMateCigar (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_UnmarkDuplicates.html">UnmarkDuplicates</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#Reference">Reference</a>
+							<div id="Reference"
+								<?php echo ($group == 'Reference')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="picard_util_BaitDesigner.html">BaitDesigner (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_BwaMemIndexImageCreator.html">BwaMemIndexImageCreator</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_dragstr_ComposeSTRTableFile.html">ComposeSTRTableFile</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_fasta_CountBasesInReference.html">CountBasesInReference</a>
+											</li>
+											<li>
+												<a href="picard_sam_CreateSequenceDictionary.html">CreateSequenceDictionary (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_reference_ExtractSequences.html">ExtractSequences (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_fasta_FastaAlternateReferenceMaker.html">FastaAlternateReferenceMaker</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_fasta_FastaReferenceMaker.html">FastaReferenceMaker</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_evidence_FindBadGenomicKmersSpark.html">FindBadGenomicKmersSpark</a>
+											</li>
+											<li>
+												<a href="picard_reference_NonNFastaSize.html">NonNFastaSize (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_reference_NormalizeFasta.html">NormalizeFasta (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_util_ScatterIntervalsByNs.html">ScatterIntervalsByNs (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_fasta_ShiftFasta.html">ShiftFasta</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#ShortVariantDiscovery">Short Variant Discovery</a>
+							<div id="ShortVariantDiscovery"
+								<?php echo ($group == 'Short Variant Discovery')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_dragstr_CalibrateDragstrModel.html">CalibrateDragstrModel</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_CombineGVCFs.html">CombineGVCFs</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_genomicsdb_GenomicsDBImport.html">GenomicsDBImport</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_GenotypeGVCFs.html">GenotypeGVCFs</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_gnarlyGenotyper_GnarlyGenotyper.html">GnarlyGenotyper</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_haplotypecaller_HaplotypeCaller.html">HaplotypeCaller</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_HaplotypeCallerSpark.html">HaplotypeCallerSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_readorientation_LearnReadOrientationModel.html">LearnReadOrientationModel</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_mutect_Mutect2.html">Mutect2</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_ReadsPipelineSpark.html">ReadsPipelineSpark</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#StructuralVariantDiscovery">Structural Variant Discovery</a>
+							<div id="StructuralVariantDiscovery"
+								<?php echo ($group == 'Structural Variant Discovery')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_discovery_inference_CpxVariantReInterpreterSpark.html">CpxVariantReInterpreterSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_discovery_DiscoverVariantsFromContigAlignmentsSAMSpark.html">DiscoverVariantsFromContigAlignmentsSAMSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_evidence_ExtractSVEvidenceSpark.html">ExtractSVEvidenceSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_evidence_FindBreakpointEvidenceSpark.html">FindBreakpointEvidenceSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_sv_PrintSVEvidence.html">PrintSVEvidence</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_StructuralVariationDiscoveryPipelineSpark.html">StructuralVariationDiscoveryPipelineSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_discovery_SvDiscoverFromLocalAssemblyContigAlignmentsSpark.html">SvDiscoverFromLocalAssemblyContigAlignmentsSpark</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#VariantEvaluationandRefinement">Variant Evaluation and Refinement</a>
+							<div id="VariantEvaluationandRefinement"
+								<?php echo ($group == 'Variant Evaluation and Refinement')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_validation_AnnotateVcfWithBamDepth.html">AnnotateVcfWithBamDepth</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_validation_AnnotateVcfWithExpectedAlleleFraction.html">AnnotateVcfWithExpectedAlleleFraction</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_variantutils_CalculateGenotypePosteriors.html">CalculateGenotypePosteriors</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_validation_CalculateMixingFractions.html">CalculateMixingFractions</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_validation_Concordance.html">Concordance</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_validation_CountFalsePositives.html">CountFalsePositives</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_CountVariants.html">CountVariants</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_CountVariantsSpark.html">CountVariantsSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_validation_EvaluateInfoFieldConcordance.html">EvaluateInfoFieldConcordance</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_funcotator_FilterFuncotations.html">FilterFuncotations</a>
+											</li>
+											<li>
+												<a href="picard_vcf_MendelianViolations_FindMendelianViolations.html">FindMendelianViolations (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_funcotator_FuncotateSegments.html">FuncotateSegments</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_funcotator_Funcotator.html">Funcotator</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_funcotator_FuncotatorDataSourceDownloader.html">FuncotatorDataSourceDownloader</a>
+											</li>
+											<li>
+												<a href="picard_vcf_GenotypeConcordance.html">GenotypeConcordance (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_validation_basicshortmutpileup_ValidateBasicSomaticShortMutations.html">ValidateBasicSomaticShortMutations</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_variantutils_ValidateVariants.html">ValidateVariants</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_varianteval_VariantEval.html">VariantEval</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_variantutils_VariantsToTable.html">VariantsToTable</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#VariantFiltering">Variant Filtering</a>
+							<div id="VariantFiltering"
+								<?php echo ($group == 'Variant Filtering')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_vqsr_ApplyVQSR.html">ApplyVQSR</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_vqsr_CNNScoreVariants.html">CNNScoreVariants</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_vqsr_CNNVariantTrain.html">CNNVariantTrain</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_vqsr_CNNVariantWriteTensors.html">CNNVariantWriteTensors</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_mutect_CreateSomaticPanelOfNormals.html">CreateSomaticPanelOfNormals</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_realignmentfilter_FilterAlignmentArtifacts.html">FilterAlignmentArtifacts</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_mutect_filtering_FilterMutectCalls.html">FilterMutectCalls</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_vqsr_FilterVariantTranches.html">FilterVariantTranches</a>
+											</li>
+											<li>
+												<a href="picard_vcf_filter_FilterVcf.html">FilterVcf (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_filters_VariantFiltration.html">VariantFiltration</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_vqsr_VariantRecalibrator.html">VariantRecalibrator</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#VariantManipulation">Variant Manipulation</a>
+							<div id="VariantManipulation"
+								<?php echo ($group == 'Variant Manipulation')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="picard_vcf_FixVcfHeader.html">FixVcfHeader (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_vcf_GatherVcfs.html">GatherVcfs (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_GatherVcfsCloud.html">GatherVcfsCloud</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_variantutils_LeftAlignAndTrimVariants.html">LeftAlignAndTrimVariants</a>
+											</li>
+											<li>
+												<a href="picard_vcf_LiftoverVcf.html">LiftoverVcf (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_vcf_MakeSitesOnlyVcf.html">MakeSitesOnlyVcf (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_vcf_MergeVcfs.html">MergeVcfs (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_PrintVariantsSpark.html">PrintVariantsSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_validation_RemoveNearbyIndels.html">RemoveNearbyIndels</a>
+											</li>
+											<li>
+												<a href="picard_vcf_RenameSampleInVcf.html">RenameSampleInVcf (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_variantutils_SelectVariants.html">SelectVariants</a>
+											</li>
+											<li>
+												<a href="picard_vcf_SortVcf.html">SortVcf (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_vcf_SplitVcfs.html">SplitVcfs (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_variantutils_UpdateVCFSequenceDictionary.html">UpdateVCFSequenceDictionary</a>
+											</li>
+											<li>
+												<a href="picard_vcf_UpdateVcfSequenceDictionary.html">UpdateVcfSequenceDictionary (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_VariantAnnotator.html">VariantAnnotator</a>
+											</li>
+											<li>
+												<a href="picard_vcf_VcfFormatConverter.html">VcfFormatConverter (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_vcf_VcfToIntervalList.html">VcfToIntervalList (Picard)</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+        		<hr>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#BaseCalling">Base Calling</a>
+							<div id="BaseCalling"
+								<?php echo ($group == 'Base Calling')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="picard_illumina_CheckIlluminaDirectory.html">CheckIlluminaDirectory (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_illumina_CollectIlluminaBasecallingMetrics.html">CollectIlluminaBasecallingMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_illumina_CollectIlluminaLaneMetrics.html">CollectIlluminaLaneMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_illumina_ExtractIlluminaBarcodes.html">ExtractIlluminaBarcodes (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_illumina_IlluminaBasecallsToFastq.html">IlluminaBasecallsToFastq (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_illumina_IlluminaBasecallsToSam.html">IlluminaBasecallsToSam (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_illumina_MarkIlluminaAdapters.html">MarkIlluminaAdapters (Picard)</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#GenotypingArraysManipulation">Genotyping Arrays Manipulation</a>
+							<div id="GenotypingArraysManipulation"
+								<?php echo ($group == 'Genotyping Arrays Manipulation')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="picard_arrays_illumina_BpmToNormalizationManifestCsv.html">BpmToNormalizationManifestCsv (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_arrays_CombineGenotypingArrayVcfs.html">CombineGenotypingArrayVcfs (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_arrays_CreateBafRegressMetricsFile.html">CreateBafRegressMetricsFile (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_arrays_CreateVerifyIDIntensityContaminationMetricsFile.html">CreateVerifyIDIntensityContaminationMetricsFile (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_arrays_GtcToVcf.html">GtcToVcf (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_arrays_MergePedIntoVcf.html">MergePedIntoVcf (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_arrays_VcfToAdpc.html">VcfToAdpc (Picard)</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#MethylationSpecificTools">Methylation-Specific Tools</a>
+							<div id="MethylationSpecificTools"
+								<?php echo ($group == 'Methylation-Specific Tools')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_MethylationTypeCaller.html">MethylationTypeCaller</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+        		<hr>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#ReadFilters">Read Filters</a>
+							<div id="ReadFilters"
+								<?php echo ($group == 'Read Filters')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_AlignmentAgreesWithHeaderReadFilter.html">AlignmentAgreesWithHeaderReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$AllowAllReadsReadFilter.html">AllowAllReadsReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_AmbiguousBaseReadFilter.html">AmbiguousBaseReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$CigarContainsNoNOperator.html">CigarContainsNoNOperator</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$FirstOfPairReadFilter.html">FirstOfPairReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_FragmentLengthReadFilter.html">FragmentLengthReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$GoodCigarReadFilter.html">GoodCigarReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$HasReadGroupReadFilter.html">HasReadGroupReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_IntervalOverlapReadFilter.html">IntervalOverlapReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_LibraryReadFilter.html">LibraryReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MappedReadFilter.html">MappedReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MappingQualityAvailableReadFilter.html">MappingQualityAvailableReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MappingQualityNotZeroReadFilter.html">MappingQualityNotZeroReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_MappingQualityReadFilter.html">MappingQualityReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MatchingBasesAndQualsReadFilter.html">MatchingBasesAndQualsReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MateDifferentStrandReadFilter.html">MateDifferentStrandReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_MateDistantReadFilter.html">MateDistantReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MateOnSameContigOrNoMappedMateReadFilter.html">MateOnSameContigOrNoMappedMateReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MateUnmappedAndUnmappedReadFilter.html">MateUnmappedAndUnmappedReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_MetricsReadFilter.html">MetricsReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NonChimericOriginalAlignmentReadFilter.html">NonChimericOriginalAlignmentReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NonZeroFragmentLengthReadFilter.html">NonZeroFragmentLengthReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NonZeroReferenceLengthAlignmentReadFilter.html">NonZeroReferenceLengthAlignmentReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NotDuplicateReadFilter.html">NotDuplicateReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NotProperlyPairedReadFilter.html">NotProperlyPairedReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NotSecondaryAlignmentReadFilter.html">NotSecondaryAlignmentReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NotSupplementaryAlignmentReadFilter.html">NotSupplementaryAlignmentReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_OverclippedReadFilter.html">OverclippedReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$PairedReadFilter.html">PairedReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$PassesVendorQualityCheckReadFilter.html">PassesVendorQualityCheckReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_PlatformReadFilter.html">PlatformReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_PlatformUnitReadFilter.html">PlatformUnitReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$PrimaryLineReadFilter.html">PrimaryLineReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$ProperlyPairedReadFilter.html">ProperlyPairedReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadGroupBlackListReadFilter.html">ReadGroupBlackListReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadGroupReadFilter.html">ReadGroupReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$ReadLengthEqualsCigarLengthReadFilter.html">ReadLengthEqualsCigarLengthReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadLengthReadFilter.html">ReadLengthReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadNameReadFilter.html">ReadNameReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadStrandFilter.html">ReadStrandFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_SampleReadFilter.html">SampleReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$SecondOfPairReadFilter.html">SecondOfPairReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$SeqIsStoredReadFilter.html">SeqIsStoredReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_SoftClippedReadFilter.html">SoftClippedReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$ValidAlignmentEndReadFilter.html">ValidAlignmentEndReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$ValidAlignmentStartReadFilter.html">ValidAlignmentStartReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_WellformedReadFilter.html">WellformedReadFilter</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#VariantAnnotations">Variant Annotations</a>
+							<div id="VariantAnnotations"
+								<?php echo ($group == 'Variant Annotations')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_BaseQualityRankSumTest.html">AS_BaseQualityRankSumTest</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_FisherStrand.html">AS_FisherStrand</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_InbreedingCoeff.html">AS_InbreedingCoeff</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_MappingQualityRankSumTest.html">AS_MappingQualityRankSumTest</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_QualByDepth.html">AS_QualByDepth</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_RMSMappingQuality.html">AS_RMSMappingQuality</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_ReadPosRankSumTest.html">AS_ReadPosRankSumTest</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_StrandOddsRatio.html">AS_StrandOddsRatio</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_AlleleFraction.html">AlleleFraction</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_AllelePseudoDepth.html">AllelePseudoDepth</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_AssemblyComplexity.html">AssemblyComplexity</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_BaseQuality.html">BaseQuality</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_BaseQualityRankSumTest.html">BaseQualityRankSumTest</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_ChromosomeCounts.html">ChromosomeCounts</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_ClippingRankSumTest.html">ClippingRankSumTest</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_CountNs.html">CountNs</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_Coverage.html">Coverage</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_DepthPerAlleleBySample.html">DepthPerAlleleBySample</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_DepthPerSampleHC.html">DepthPerSampleHC</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_ExcessHet.html">ExcessHet</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_FeaturizedReadSets.html">FeaturizedReadSets</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_FisherStrand.html">FisherStrand</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_FragmentDepthPerAlleleBySample.html">FragmentDepthPerAlleleBySample</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_FragmentLength.html">FragmentLength</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_GenotypeSummaries.html">GenotypeSummaries</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_InbreedingCoeff.html">InbreedingCoeff</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_LikelihoodRankSumTest.html">LikelihoodRankSumTest</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_MappingQuality.html">MappingQuality</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_MappingQualityRankSumTest.html">MappingQualityRankSumTest</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_MappingQualityZero.html">MappingQualityZero</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_OrientationBiasReadCounts.html">OrientationBiasReadCounts</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_OriginalAlignment.html">OriginalAlignment</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_PossibleDeNovo.html">PossibleDeNovo</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_QualByDepth.html">QualByDepth</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_RMSMappingQuality.html">RMSMappingQuality</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_ReadPosRankSumTest.html">ReadPosRankSumTest</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_ReadPosition.html">ReadPosition</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_ReferenceBases.html">ReferenceBases</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_SampleList.html">SampleList</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_StrandBiasBySample.html">StrandBiasBySample</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_StrandOddsRatio.html">StrandOddsRatio</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_TandemRepeat.html">TandemRepeat</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_UniqueAltReadCount.html">UniqueAltReadCount</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+        </ul>
+		</aside>
+
+	</section>
+
+	<div class="col-md-8">
+
+			<h1>Mutect2</h1>
+
+			<p>Call somatic SNVs and indels via local assembly of haplotypes</p>
+
+			<h3>Category
+				<small> Short Variant Discovery</small>
+			</h3>
+		<hr>
+		<h2>Overview</h2>
+		<p>Call somatic short mutations via local assembly of haplotypes.
+ Short mutations include single nucleotide (SNA) and insertion and deletion (indel) alterations.
+ The caller uses a Bayesian somatic genotyping model that differs from the original MuTect by
+ <a href='http://www.nature.com/nbt/journal/v31/n3/full/nbt.2514.html'>Cibulskis et al., 2013</a>
+ and uses the assembly-based machinery of
+ <a href="https://software.broadinstitute.org/gatk/documentation/tooldocs/current/org_broadinstitute_hellbender_tools_walkers_haplotypecaller_HaplotypeCaller.php">HaplotypeCaller</a>.
+ Of note, Mutect2 v4.1.0.0 onwards enables joint analysis of multiple samples.</p>
+
+ <p>This tool is featured in the <i>Somatic Short Mutation calling Best Practice Workflow</i>.
+ See <a href="https://software.broadinstitute.org/gatk/documentation/article?id=11136">Tutorial#11136</a> for a
+ step-by-step description of the workflow and <a href="https://software.broadinstitute.org/gatk/documentation/article?id=11127">Article#11127</a>
+ for an overview of what traditional somatic calling entails. For the latest pipeline scripts, see the
+ <a href="https://github.com/broadinstitute/gatk/tree/master/scripts/mutect2_wdl">Mutect2 WDL scripts directory</a>.
+ For pipelines with example data, see the <a href="https://github.com/gatk-workflows/gatk4-somatic-snvs-indels">gatk-workflows repository</a>.
+ Although we present the tool for somatic calling, it may apply to other contexts, such as mitochondrial variant calling and detection of somatic mosaicism.</p>
+
+ <p>Starting with v4.1.0.0 Mutect2 accomodates extreme high depths, e.g. 20,000X. See the following articles for details on this and additional applications.
+ <ul>
+   <li><a href="https://software.broadinstitute.org/gatk/blog?id=23400">Blog#23400</a> details general improvements to
+   Mutect2 v4.1.0.0.</li>
+   <li><a href="https://software.broadinstitute.org/gatk/blog?id=23598">Blog#23598</a> details Mutect2 mitochondrial
+   mode.</li>
+   <li><a href="https://software.broadinstitute.org/gatk/blog?id=XXX">Blog#XXX</a> (link to come) details use of Mutect2 in extremely
+   low allele fraction variant detection.</li>
+ </ul></p>
+
+ <h3>Usage examples</h3>
+ <p>Example commands show how to run Mutect2 for typical scenarios. The three modes are (i) tumor-normal mode where a
+ tumor sample is matched with a normal sample in analysis, (ii) tumor-only mode where a single sample's alignment
+ data undergoes analysis, and (iii) mitochondrial mode where sensitive calling at high depths is desirable.
+ <ul>
+     <li>As of v4.1, there is no longer a need to specify the tumor sample name with -tumor. You need only specify
+     the normal sample name with <nobr>-normal,</nobr> if you include a normal.</li>
+     <li>Starting with v4.0.4.0, GATK recommends the default setting of --af-of-alleles-not-in-resource, which the
+     tool dynamically adjusts for different modes. tumor-only calling sets the default to 5e-8, tumor-normal calling
+     sets it to 1e-6 and mitochondrial mode sets it to 4e-3. For previous versions, the default was 0.001, the
+     average heterozygosity of humans. For other organisms, change --af-of-alleles-not-in-resource to
+     1/(ploidy*samples in resource).</li>
+ </ul></p>
+
+ <h4>(i) Tumor with matched normal</h4>
+ <p>Given a matched normal, Mutect2 is designed to call somatic variants only. The tool includes logic to skip
+ emitting variants that are clearly present in the germline based on provided evidence, e.g. in the matched normal.
+ This is done at an early stage to avoid spending computational resources on germline events. If the variant's
+ germline status is borderline, then Mutect2 will emit the variant to the callset for subsequent filtering by
+ <a href="https://software.broadinstitute.org/gatk/documentation/tooldocs/current/org_broadinstitute_hellbender_tools_walkers_mutect_FilterMutectCalls.php">FilterMutectCalls</a>
+ and review.</p>
+
+ <pre>
+     gatk Mutect2 \
+     -R reference.fa \
+     -I tumor.bam \
+     -I normal.bam \
+     -normal normal_sample_name \
+     --germline-resource af-only-gnomad.vcf.gz \
+     --panel-of-normals pon.vcf.gz \
+     -O somatic.vcf.gz
+ </pre>
+
+ <p>
+     Mutect2 also generates a stats file names [output vcf].stats.  That is, in the above example the stats file would be named somatic.vcf.gz.stats
+     and would be in the same folder as somatic.vcf.gz.  As of GATK 4.1.1 this file is a required input to FilterMutectCalls.
+ </p>
+
+ <p> As of v4.1 Mutect2 supports joint calling of multiple tumor and normal samples from the same individual. The
+ only difference is that -I and <nobr>-normal</nobr> must be specified for the extra samples.</p>
+
+ <pre>
+     gatk Mutect2 \
+     -R reference.fa \
+     -I tumor1.bam \
+     -I tumor2.bam \
+     -I normal1.bam \
+     -I normal2.bam \
+     -normal normal1_sample_name \
+     -normal normal2_sample_name \
+     --germline-resource af-only-gnomad.vcf.gz \
+     --panel-of-normals pon.vcf.gz \
+     -O somatic.vcf.gz
+ </pre>
+
+ <h4>(ii) Tumor-only mode</h4>
+ <p>This mode runs on a single type of sample, e.g. the tumor or the normal.
+ To create a PoN, call on each normal sample in this mode, then use
+ <a href="https://software.broadinstitute.org/gatk/documentation/tooldocs/current/org_broadinstitute_hellbender_tools_walkers_mutect_CreateSomaticPanelOfNormals.php">CreateSomaticPanelOfNormals</a>
+ to generate the PoN.</p>
+
+ <pre>
+  gatk Mutect2 \
+   -R reference.fa \
+   -I sample.bam \
+   -O single_sample.vcf.gz
+ </pre>
+
+ <p>To call mutations on a tumor sample, call in this mode using a PoN and germline resource. After FilterMutectCalls
+ filtering, consider additional filtering by functional significance with
+ <a href="https://software.broadinstitute.org/gatk/documentation/tooldocs/current/org_broadinstitute_hellbender_tools_funcotator_Funcotator.php">Funcotator</a>.</p>
+
+ <pre>
+  gatk Mutect2 \
+  -R reference.fa \
+  -I sample.bam \
+  --germline-resource af-only-gnomad.vcf.gz \
+  --panel-of-normals pon.vcf.gz \
+  -O single_sample.vcf.gz
+ </pre>
+
+ <h4>(iii) Mitochondrial mode</h4>
+ <p>Mutect2 automatically sets parameters appropriately for calling on mitochondria with the <nobr>--mitochondria</nobr> flag.
+ Specifically, the mode sets <nobr>--initial-tumor-lod</nobr> to 0, <nobr>--tumor-lod-to-emit</nobr> to 0, <nobr>--af-of-alleles-not-in-resource</nobr> to
+ 4e-3, and the advanced parameter <nobr>--pruning-lod-threshold</nobr> to -4.</p>
+
+ <pre>
+  gatk Mutect2 \
+  -R reference.fa \
+  -L chrM \
+  --mitochondria-mode \
+  -I mitochondria.bam \
+  -O mitochondria.vcf.gz
+ </pre>
+
+ <p>The mode accepts only a single sample, which can be provided in multiple files.</p>
+
+ <h4>(iv) Force-calling mode</h4>
+ <p>This mode force-calls all alleles in force-call-alleles.vcf in addition to any other variants Mutect2 discovers.
+
+ <pre>
+  gatk Mutect2 \
+   -R reference.fa \
+   -I sample.bam \
+   -alleles force-call-alleles.vcf
+   -O single_sample.vcf.gz
+ </pre>
+
+ <p>
+     If the sample is suspected to exhibit orientation bias artifacts (such as in the case of FFPE tumor samples) one should also
+     collect F1R2 metrics by adding an --f1r2-tar-gz argument as shown below.  This file contains information that can then be passed
+     to LearnReadOrientationModel, which generate an artifact prior table for each tumor sample for FilterMutectCalls to use.
+
+ </p>
+
+ <pre>
+ gatk Mutect2 \
+  -R reference.fa \
+  -I sample.bam \
+  --f1r2-tar-gz f1r2.tar.gz \
+  -O single_sample.vcf.gz
+  </pre>
+
+ <h3>Notes</h3>
+ <ol>
+     <li>Mutect2 does not require a germline resource nor a panel of normals (PoN) to run, although both are recommended. The tool prefilters sites
+     for the matched normal and the PoN.
+     <li>If a variant is absent from a given germline
+     resource, then the value for --af-of-alleles-not-in-resource is used as an imputed allele frequency. Below is an excerpt of a known variants
+     resource with population allele frequencies.
+
+     <pre>
+     #CHROM  POS     ID      REF     ALT     QUAL    FILTER  INFO
+      1       10067   .       T       TAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCC      30.35   PASS    AC=3;AF=7.384E-5
+      1       10108   .       CAACCCT C       46514.32        PASS    AC=6;AF=1.525E-4
+      1       10109   .       AACCCTAACCCT    AAACCCT,*       89837.27        PASS    AC=48,5;AF=0.001223,1.273E-4
+      1       10114   .       TAACCCTAACCCTAACCCTAACCCTAACCCTAACCCCTAACCCTAACCCTAACCCTAACCCTAACCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCCTAACCCTAACCCTAAACCCTA  *,CAACCCTAACCCTAACCCTAACCCTAACCCTAACCCCTAACCCTAACCCTAACCCTAACCCTAACCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCTAACCCCTAACCCTAACCCTAAACCCTA,T      36728.97        PASS    AC=55,9,1;AF=0.001373,2.246E-4,2.496E-5
+      1       10119   .       CT      C,*     251.23  PASS    AC=5,1;AF=1.249E-4,2.498E-5
+      1       10120   .       TA      CA,*    14928.74        PASS    AC=10,6;AF=2.5E-4,1.5E-4
+      1       10128   .       ACCCTAACCCTAACCCTAAC    A,*     285.71  PASS    AC=3,1;AF=7.58E-5,2.527E-5
+      1       10131   .       CT      C,*     378.93  PASS    AC=7,5;AF=1.765E-4,1.261E-4
+      1       10132   .       TAACCC  *,T     18025.11        PASS    AC=12,2;AF=3.03E-4,5.049E-5
+     </pre>
+     </li>
+
+ <li>Additional parameters that factor towards filtering are available in
+ <a href="https://software.broadinstitute.org/gatk/documentation/tooldocs/current/org_broadinstitute_hellbender_tools_walkers_mutect_FilterMutectCalls.php">FilterMutectCalls</a>.
+ While the tool calculates normal-lod assuming a diploid genotype, it calculates
+ normal-artifact-lod with the same approach it uses for tumor-lod, i.e. with a variable ploidy assumption.
+
+ <ul>
+     <li>If the normal artifact log odds becomes large, then FilterMutectCalls applies the artifact-in-normal filter..</li>
+     <li>The tumor log odds, which is calculated independently of any matched normal, determines whether to filter a tumor
+     variant. Variants with tumor LODs exceeding the threshold pass filtering.</li>
+ </ul></p>
+</li>
+ </ol>
+
+				<hr>
+				<h2>Additional Information</h2>
+				<p></p>
+				<h3>Read filters</h3>
+					<p>These Read Filters are automatically applied to the data by the Engine before processing by Mutect2.</p>
+				<ul>
+						<li><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NonChimericOriginalAlignmentReadFilter.html">NonChimericOriginalAlignmentReadFilter</a></li>
+						<li><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NotSecondaryAlignmentReadFilter.html">NotSecondaryAlignmentReadFilter</a></li>
+						<li><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$GoodCigarReadFilter.html">GoodCigarReadFilter</a></li>
+						<li><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NonZeroReferenceLengthAlignmentReadFilter.html">NonZeroReferenceLengthAlignmentReadFilter</a></li>
+						<li><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$PassesVendorQualityCheckReadFilter.html">PassesVendorQualityCheckReadFilter</a></li>
+						<li><a href="org_broadinstitute_hellbender_engine_filters_ReadLengthReadFilter.html">ReadLengthReadFilter</a></li>
+						<li><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MappedReadFilter.html">MappedReadFilter</a></li>
+						<li><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MappingQualityAvailableReadFilter.html">MappingQualityAvailableReadFilter</a></li>
+						<li><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NotDuplicateReadFilter.html">NotDuplicateReadFilter</a></li>
+						<li><a href="org_broadinstitute_hellbender_engine_filters_MappingQualityReadFilter.html">MappingQualityReadFilter</a></li>
+						<li><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MappingQualityNotZeroReadFilter.html">MappingQualityNotZeroReadFilter</a></li>
+						<li><a href="org_broadinstitute_hellbender_engine_filters_WellformedReadFilter.html">WellformedReadFilter</a></li>
+				</ul>
+
+				<h3>Mutect2 specific arguments</h3>
+				<p>This table summarizes the command-line arguments that are specific to this tool. For more details on each argument, see the list further down below the table or click on an argument name to jump directly to that entry in the list.</p>
+				<table class="table table-striped table-bordered table-condensed cozy">
+					<thead>
+					<tr>
+						<th>Argument name(s)</th>
+						<th>Default value</th>
+						<th>Summary</th>
+					</tr>
+					</thead>
+					<tbody>
+			<tr>
+				<th colspan="4" id="row-divider">Required Arguments</th>
+			</tr>
+				<tr>
+					<td><a href="#--input">--input</a><br />
+								&nbsp;<em>-I</em>
+					</td>
+					<!--<td>List[GATKPath]</td> -->
+						<td></td>
+					<td>BAM/SAM/CRAM file containing reads</td>
+				</tr>
+				<tr>
+					<td><a href="#--output">--output</a><br />
+								&nbsp;<em>-O</em>
+					</td>
+					<!--<td>GATKPath</td> -->
+						<td></td>
+					<td>File to which variants should be written</td>
+				</tr>
+				<tr>
+					<td><a href="#--reference">--reference</a><br />
+								&nbsp;<em>-R</em>
+					</td>
+					<!--<td>GATKPath</td> -->
+						<td></td>
+					<td>Reference sequence file</td>
+				</tr>
+			<tr>
+				<th colspan="4" id="row-divider">Optional Tool Arguments</th>
+			</tr>
+				<tr>
+					<td><a href="#--af-of-alleles-not-in-resource">--af-of-alleles-not-in-resource</a><br />
+								&nbsp;<em>-default-af</em>
+					</td>
+					<!--<td>double</td> -->
+						<td>-1.0</td>
+					<td>Population allele fraction assigned to alleles not found in germline resource.  Please see docs/mutect/mutect2.pdf fora derivation of the default value.</td>
+				</tr>
+				<tr>
+					<td><a href="#--alleles">--alleles</a><br />
+					</td>
+					<!--<td>FeatureInput[VariantContext]</td> -->
+						<td></td>
+					<td>The set of alleles to force-call regardless of evidence</td>
+				</tr>
+				<tr>
+					<td><a href="#--annotation">--annotation</a><br />
+								&nbsp;<em>-A</em>
+					</td>
+					<!--<td>List[String]</td> -->
+						<td></td>
+					<td>One or more specific annotations to add to variant calls</td>
+				</tr>
+				<tr>
+					<td><a href="#--annotation-group">--annotation-group</a><br />
+								&nbsp;<em>-G</em>
+					</td>
+					<!--<td>List[String]</td> -->
+						<td></td>
+					<td>One or more groups of annotations to apply to variant calls</td>
+				</tr>
+				<tr>
+					<td><a href="#--annotations-to-exclude">--annotations-to-exclude</a><br />
+								&nbsp;<em>-AX</em>
+					</td>
+					<!--<td>List[String]</td> -->
+						<td></td>
+					<td>One or more specific annotations to exclude from variant calls</td>
+				</tr>
+				<tr>
+					<td><a href="#--arguments_file">--arguments_file</a><br />
+					</td>
+					<!--<td>List[File]</td> -->
+						<td></td>
+					<td>read one or more arguments files and add them to the command line</td>
+				</tr>
+				<tr>
+					<td><a href="#--assembly-region-out">--assembly-region-out</a><br />
+					</td>
+					<!--<td>String</td> -->
+						<td></td>
+					<td>Output the assembly region to this IGV formatted file</td>
+				</tr>
+				<tr>
+					<td><a href="#--assembly-region-padding">--assembly-region-padding</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>100</td>
+					<td>Number of additional bases of context to include around each assembly region</td>
+				</tr>
+				<tr>
+					<td><a href="#--base-quality-score-threshold">--base-quality-score-threshold</a><br />
+					</td>
+					<!--<td>byte</td> -->
+						<td>18</td>
+					<td>Base qualities below this threshold will be reduced to the minimum (6)</td>
+				</tr>
+				<tr>
+					<td><a href="#--callable-depth">--callable-depth</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>10</td>
+					<td>Minimum depth to be considered callable for Mutect stats.  Does not affect genotyping.</td>
+				</tr>
+				<tr>
+					<td><a href="#--cloud-index-prefetch-buffer">--cloud-index-prefetch-buffer</a><br />
+								&nbsp;<em>-CIPB</em>
+					</td>
+					<!--<td>int</td> -->
+						<td>-1</td>
+					<td>Size of the cloud-only prefetch buffer (in MB; 0 to disable). Defaults to cloudPrefetchBuffer if unset.</td>
+				</tr>
+				<tr>
+					<td><a href="#--cloud-prefetch-buffer">--cloud-prefetch-buffer</a><br />
+								&nbsp;<em>-CPB</em>
+					</td>
+					<!--<td>int</td> -->
+						<td>40</td>
+					<td>Size of the cloud-only prefetch buffer (in MB; 0 to disable).</td>
+				</tr>
+				<tr>
+					<td><a href="#--disable-bam-index-caching">--disable-bam-index-caching</a><br />
+								&nbsp;<em>-DBIC</em>
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>If true, don't cache bam indexes, this will reduce memory requirements but may harm performance if many intervals are specified.  Caching is automatically disabled if there are no intervals specified.</td>
+				</tr>
+				<tr>
+					<td><a href="#--disable-sequence-dictionary-validation">--disable-sequence-dictionary-validation</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>If specified, do not check the sequence dictionaries from our inputs for compatibility. Use at your own risk!</td>
+				</tr>
+				<tr>
+					<td><a href="#--dont-use-dragstr-pair-hmm-scores">--dont-use-dragstr-pair-hmm-scores</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>disable DRAGstr pair-hmm score even when dragstr-params-path was provided</td>
+				</tr>
+				<tr>
+					<td><a href="#--downsampling-stride">--downsampling-stride</a><br />
+								&nbsp;<em>-stride</em>
+					</td>
+					<!--<td>int</td> -->
+						<td>1</td>
+					<td>Downsample a pool of reads starting within a range of one or more bases.</td>
+				</tr>
+				<tr>
+					<td><a href="#--dragstr-het-hom-ratio">--dragstr-het-hom-ratio</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>2</td>
+					<td>het to hom prior ratio use with DRAGstr on</td>
+				</tr>
+				<tr>
+					<td><a href="#--dragstr-params-path">--dragstr-params-path</a><br />
+					</td>
+					<!--<td>GATKPath</td> -->
+						<td></td>
+					<td>location of the DRAGstr model parameters for STR error correction used in the Pair HMM. When provided, it overrides other PCR error correcting mechanisms</td>
+				</tr>
+				<tr>
+					<td><a href="#--enable-dynamic-read-disqualification-for-genotyping">--enable-dynamic-read-disqualification-for-genotyping</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Will enable less strict read disqualification low base quality reads</td>
+				</tr>
+				<tr>
+					<td><a href="#--f1r2-max-depth">--f1r2-max-depth</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>200</td>
+					<td>sites with depth higher than this value will be grouped</td>
+				</tr>
+				<tr>
+					<td><a href="#--f1r2-median-mq">--f1r2-median-mq</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>50</td>
+					<td>skip sites with median mapping quality below this value</td>
+				</tr>
+				<tr>
+					<td><a href="#--f1r2-min-bq">--f1r2-min-bq</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>20</td>
+					<td>exclude bases below this quality from pileup</td>
+				</tr>
+				<tr>
+					<td><a href="#--f1r2-tar-gz">--f1r2-tar-gz</a><br />
+					</td>
+					<!--<td>File</td> -->
+						<td></td>
+					<td>If specified, collect F1R2 counts and output files into this tar.gz file</td>
+				</tr>
+				<tr>
+					<td><a href="#--founder-id">--founder-id</a><br />
+					</td>
+					<!--<td>List[String]</td> -->
+						<td></td>
+					<td>Samples representing the population "founders"</td>
+				</tr>
+				<tr>
+					<td><a href="#--gcs-max-retries">--gcs-max-retries</a><br />
+								&nbsp;<em>-gcs-retries</em>
+					</td>
+					<!--<td>int</td> -->
+						<td>20</td>
+					<td>If the GCS bucket channel errors out, how many times it will attempt to re-initiate the connection</td>
+				</tr>
+				<tr>
+					<td><a href="#--gcs-project-for-requester-pays">--gcs-project-for-requester-pays</a><br />
+					</td>
+					<!--<td>String</td> -->
+						<td></td>
+					<td>Project to bill when accessing "requester pays" buckets. If unset, these buckets cannot be accessed.  User must have storage.buckets.get permission on the bucket being accessed.</td>
+				</tr>
+				<tr>
+					<td><a href="#--genotype-germline-sites">--genotype-germline-sites</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Call all apparent germline site even though they will ultimately be filtered.</td>
+				</tr>
+				<tr>
+					<td><a href="#--genotype-pon-sites">--genotype-pon-sites</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Call sites in the PoN even though they will ultimately be filtered.</td>
+				</tr>
+				<tr>
+					<td><a href="#--germline-resource">--germline-resource</a><br />
+					</td>
+					<!--<td>FeatureInput[VariantContext]</td> -->
+						<td></td>
+					<td>Population vcf of germline sequencing containing allele fractions.</td>
+				</tr>
+				<tr>
+					<td><a href="#--graph-output">--graph-output</a><br />
+								&nbsp;<em>-graph</em>
+					</td>
+					<!--<td>String</td> -->
+						<td></td>
+					<td>Write debug assembly graph information to this file</td>
+				</tr>
+				<tr>
+					<td><a href="#--help">--help</a><br />
+								&nbsp;<em>-h</em>
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>display the help message</td>
+				</tr>
+				<tr>
+					<td><a href="#--ignore-itr-artifacts">--ignore-itr-artifacts</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Turn off read transformer that clips artifacts associated with end repair insertions near inverted tandem repeats.</td>
+				</tr>
+				<tr>
+					<td><a href="#--initial-tumor-lod">--initial-tumor-lod</a><br />
+								&nbsp;<em>-init-lod</em>
+					</td>
+					<!--<td>double</td> -->
+						<td>2.0</td>
+					<td>Log 10 odds threshold to consider pileup active.</td>
+				</tr>
+				<tr>
+					<td><a href="#--interval-merging-rule">--interval-merging-rule</a><br />
+								&nbsp;<em>-imr</em>
+					</td>
+					<!--<td>IntervalMergingRule</td> -->
+						<td>ALL</td>
+					<td>Interval merging rule for abutting intervals</td>
+				</tr>
+				<tr>
+					<td><a href="#--intervals">--intervals</a><br />
+								&nbsp;<em>-L</em>
+					</td>
+					<!--<td>List[String]</td> -->
+						<td></td>
+					<td>One or more genomic intervals over which to operate</td>
+				</tr>
+				<tr>
+					<td><a href="#--max-assembly-region-size">--max-assembly-region-size</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>300</td>
+					<td>Maximum size of an assembly region</td>
+				</tr>
+				<tr>
+					<td><a href="#--max-population-af">--max-population-af</a><br />
+								&nbsp;<em>-max-af</em>
+					</td>
+					<!--<td>double</td> -->
+						<td>0.01</td>
+					<td>Maximum population allele frequency in tumor-only mode.</td>
+				</tr>
+				<tr>
+					<td><a href="#--max-reads-per-alignment-start">--max-reads-per-alignment-start</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>50</td>
+					<td>Maximum number of reads to retain per alignment start position. Reads above this threshold will be downsampled. Set to 0 to disable.</td>
+				</tr>
+				<tr>
+					<td><a href="#--min-assembly-region-size">--min-assembly-region-size</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>50</td>
+					<td>Minimum size of an assembly region</td>
+				</tr>
+				<tr>
+					<td><a href="#--min-base-quality-score">--min-base-quality-score</a><br />
+								&nbsp;<em>-mbq</em>
+					</td>
+					<!--<td>byte</td> -->
+						<td>10</td>
+					<td>Minimum base quality required to consider a base for calling</td>
+				</tr>
+				<tr>
+					<td><a href="#--mitochondria-mode">--mitochondria-mode</a><br />
+					</td>
+					<!--<td>Boolean</td> -->
+						<td>false</td>
+					<td>Mitochondria mode sets emission and initial LODs to 0.</td>
+				</tr>
+				<tr>
+					<td><a href="#--native-pair-hmm-threads">--native-pair-hmm-threads</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>4</td>
+					<td>How many threads should a native pairHMM implementation use</td>
+				</tr>
+				<tr>
+					<td><a href="#--native-pair-hmm-use-double-precision">--native-pair-hmm-use-double-precision</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>use double precision in the native pairHmm. This is slower but matches the java implementation better</td>
+				</tr>
+				<tr>
+					<td><a href="#--normal-lod">--normal-lod</a><br />
+					</td>
+					<!--<td>double</td> -->
+						<td>2.2</td>
+					<td>Log 10 odds threshold for calling normal variant non-germline.</td>
+				</tr>
+				<tr>
+					<td><a href="#--normal-sample">--normal-sample</a><br />
+								&nbsp;<em>-normal</em>
+					</td>
+					<!--<td>List[String]</td> -->
+						<td></td>
+					<td>BAM sample name of normal(s), if any.  May be URL-encoded as output by GetSampleName with -encode argument.</td>
+				</tr>
+				<tr>
+					<td><a href="#--panel-of-normals">--panel-of-normals</a><br />
+								&nbsp;<em>-pon</em>
+					</td>
+					<!--<td>FeatureInput[VariantContext]</td> -->
+						<td></td>
+					<td>VCF file of sites observed in normal.</td>
+				</tr>
+				<tr>
+					<td><a href="#--pcr-indel-qual">--pcr-indel-qual</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>40</td>
+					<td>Phred-scaled PCR indel qual for overlapping fragments</td>
+				</tr>
+				<tr>
+					<td><a href="#--pcr-snv-qual">--pcr-snv-qual</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>40</td>
+					<td>Phred-scaled PCR SNV qual for overlapping fragments</td>
+				</tr>
+				<tr>
+					<td><a href="#--pedigree">--pedigree</a><br />
+								&nbsp;<em>-ped</em>
+					</td>
+					<!--<td>GATKPath</td> -->
+						<td></td>
+					<td>Pedigree file for determining the population "founders"</td>
+				</tr>
+				<tr>
+					<td><a href="#--sites-only-vcf-output">--sites-only-vcf-output</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>If true, don't emit genotype fields when writing vcf file output.</td>
+				</tr>
+				<tr>
+					<td><a href="#--training-data-mode">--training-data-mode</a><br />
+					</td>
+					<!--<td>Boolean</td> -->
+						<td>false</td>
+					<td>Output VCF contains featurized sets of reads for training a deep variant filter.</td>
+				</tr>
+				<tr>
+					<td><a href="#--training-data-mode-ref-downsample">--training-data-mode-ref-downsample</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>2147483647</td>
+					<td>Downsample ref reads to this count in training data mode.</td>
+				</tr>
+				<tr>
+					<td><a href="#--tumor-lod-to-emit">--tumor-lod-to-emit</a><br />
+								&nbsp;<em>-emit-lod</em>
+					</td>
+					<!--<td>double</td> -->
+						<td>3.0</td>
+					<td>Log 10 odds threshold to emit variant to VCF.</td>
+				</tr>
+				<tr>
+					<td><a href="#--version">--version</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>display the version number for this tool</td>
+				</tr>
+			<tr>
+				<th colspan="4" id="row-divider">Optional Common Arguments</th>
+			</tr>
+				<tr>
+					<td><a href="#--add-output-sam-program-record">--add-output-sam-program-record</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>true</td>
+					<td>If true, adds a PG tag to created SAM/BAM/CRAM files.</td>
+				</tr>
+				<tr>
+					<td><a href="#--add-output-vcf-command-line">--add-output-vcf-command-line</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>true</td>
+					<td>If true, adds a command line header line to created VCF files.</td>
+				</tr>
+				<tr>
+					<td><a href="#--create-output-bam-index">--create-output-bam-index</a><br />
+								&nbsp;<em>-OBI</em>
+					</td>
+					<!--<td>boolean</td> -->
+						<td>true</td>
+					<td>If true, create a BAM/CRAM index when writing a coordinate-sorted BAM/CRAM file.</td>
+				</tr>
+				<tr>
+					<td><a href="#--create-output-bam-md5">--create-output-bam-md5</a><br />
+								&nbsp;<em>-OBM</em>
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>If true, create a MD5 digest for any BAM/SAM/CRAM file created</td>
+				</tr>
+				<tr>
+					<td><a href="#--create-output-variant-index">--create-output-variant-index</a><br />
+								&nbsp;<em>-OVI</em>
+					</td>
+					<!--<td>boolean</td> -->
+						<td>true</td>
+					<td>If true, create a VCF index when writing a coordinate-sorted VCF file.</td>
+				</tr>
+				<tr>
+					<td><a href="#--create-output-variant-md5">--create-output-variant-md5</a><br />
+								&nbsp;<em>-OVM</em>
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>If true, create a a MD5 digest any VCF file created.</td>
+				</tr>
+				<tr>
+					<td><a href="#--disable-read-filter">--disable-read-filter</a><br />
+								&nbsp;<em>-DF</em>
+					</td>
+					<!--<td>List[String]</td> -->
+						<td></td>
+					<td>Read filters to be disabled before analysis</td>
+				</tr>
+				<tr>
+					<td><a href="#--disable-tool-default-read-filters">--disable-tool-default-read-filters</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Disable all tool default read filters (WARNING: many tools will not function correctly without their default read filters on)</td>
+				</tr>
+				<tr>
+					<td><a href="#--exclude-intervals">--exclude-intervals</a><br />
+								&nbsp;<em>-XL</em>
+					</td>
+					<!--<td>List[String]</td> -->
+						<td></td>
+					<td>One or more genomic intervals to exclude from processing</td>
+				</tr>
+				<tr>
+					<td><a href="#--gatk-config-file">--gatk-config-file</a><br />
+					</td>
+					<!--<td>String</td> -->
+						<td></td>
+					<td>A configuration file to use with the GATK.</td>
+				</tr>
+				<tr>
+					<td><a href="#--interval-exclusion-padding">--interval-exclusion-padding</a><br />
+								&nbsp;<em>-ixp</em>
+					</td>
+					<!--<td>int</td> -->
+						<td>0</td>
+					<td>Amount of padding (in bp) to add to each interval you are excluding.</td>
+				</tr>
+				<tr>
+					<td><a href="#--interval-padding">--interval-padding</a><br />
+								&nbsp;<em>-ip</em>
+					</td>
+					<!--<td>int</td> -->
+						<td>0</td>
+					<td>Amount of padding (in bp) to add to each interval you are including.</td>
+				</tr>
+				<tr>
+					<td><a href="#--interval-set-rule">--interval-set-rule</a><br />
+								&nbsp;<em>-isr</em>
+					</td>
+					<!--<td>IntervalSetRule</td> -->
+						<td>UNION</td>
+					<td>Set merging approach to use for combining interval inputs</td>
+				</tr>
+				<tr>
+					<td><a href="#--lenient">--lenient</a><br />
+								&nbsp;<em>-LE</em>
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Lenient processing of VCF files</td>
+				</tr>
+				<tr>
+					<td><a href="#--max-variants-per-shard">--max-variants-per-shard</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>0</td>
+					<td>If non-zero, partitions VCF output into shards, each containing up to the given number of records.</td>
+				</tr>
+				<tr>
+					<td><a href="#--QUIET">--QUIET</a><br />
+					</td>
+					<!--<td>Boolean</td> -->
+						<td>false</td>
+					<td>Whether to suppress job-summary info on System.err.</td>
+				</tr>
+				<tr>
+					<td><a href="#--read-filter">--read-filter</a><br />
+								&nbsp;<em>-RF</em>
+					</td>
+					<!--<td>List[String]</td> -->
+						<td></td>
+					<td>Read filters to be applied before analysis</td>
+				</tr>
+				<tr>
+					<td><a href="#--read-index">--read-index</a><br />
+					</td>
+					<!--<td>List[GATKPath]</td> -->
+						<td></td>
+					<td>Indices to use for the read inputs. If specified, an index must be provided for every read input and in the same order as the read inputs. If this argument is not specified, the path to the index for each input will be inferred automatically.</td>
+				</tr>
+				<tr>
+					<td><a href="#--read-validation-stringency">--read-validation-stringency</a><br />
+								&nbsp;<em>-VS</em>
+					</td>
+					<!--<td>ValidationStringency</td> -->
+						<td>SILENT</td>
+					<td>Validation stringency for all SAM/BAM/CRAM/SRA files read by this program.  The default stringency value SILENT can improve performance when processing a BAM file in which variable-length data (read, qualities, tags) do not otherwise need to be decoded.</td>
+				</tr>
+				<tr>
+					<td><a href="#--seconds-between-progress-updates">--seconds-between-progress-updates</a><br />
+					</td>
+					<!--<td>double</td> -->
+						<td>10.0</td>
+					<td>Output traversal statistics every time this many seconds elapse</td>
+				</tr>
+				<tr>
+					<td><a href="#--sequence-dictionary">--sequence-dictionary</a><br />
+					</td>
+					<!--<td>GATKPath</td> -->
+						<td></td>
+					<td>Use the given sequence dictionary as the master/canonical sequence dictionary.  Must be a .dict file.</td>
+				</tr>
+				<tr>
+					<td><a href="#--tmp-dir">--tmp-dir</a><br />
+					</td>
+					<!--<td>GATKPath</td> -->
+						<td></td>
+					<td>Temp directory to use.</td>
+				</tr>
+				<tr>
+					<td><a href="#--use-jdk-deflater">--use-jdk-deflater</a><br />
+								&nbsp;<em>-jdk-deflater</em>
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Whether to use the JdkDeflater (as opposed to IntelDeflater)</td>
+				</tr>
+				<tr>
+					<td><a href="#--use-jdk-inflater">--use-jdk-inflater</a><br />
+								&nbsp;<em>-jdk-inflater</em>
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Whether to use the JdkInflater (as opposed to IntelInflater)</td>
+				</tr>
+				<tr>
+					<td><a href="#--verbosity">--verbosity</a><br />
+					</td>
+					<!--<td>LogLevel</td> -->
+						<td>INFO</td>
+					<td>Control verbosity of logging.</td>
+				</tr>
+			<tr>
+				<th colspan="4" id="row-divider">Advanced Arguments</th>
+			</tr>
+				<tr>
+					<td><a href="#--active-probability-threshold">--active-probability-threshold</a><br />
+					</td>
+					<!--<td>double</td> -->
+						<td>0.002</td>
+					<td>Minimum probability for a locus to be considered active.</td>
+				</tr>
+				<tr>
+					<td><a href="#--adaptive-pruning-initial-error-rate">--adaptive-pruning-initial-error-rate</a><br />
+					</td>
+					<!--<td>double</td> -->
+						<td>0.001</td>
+					<td>Initial base error rate estimate for adaptive pruning</td>
+				</tr>
+				<tr>
+					<td><a href="#--allele-informative-reads-overlap-margin">--allele-informative-reads-overlap-margin</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>2</td>
+					<td>Likelihood and read-based annotations will only take into consideration reads that overlap the variant or any base no further than this distance expressed in base pairs</td>
+				</tr>
+				<tr>
+					<td><a href="#--allow-non-unique-kmers-in-ref">--allow-non-unique-kmers-in-ref</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Allow graphs that have non-unique kmers in the reference</td>
+				</tr>
+				<tr>
+					<td><a href="#--bam-output">--bam-output</a><br />
+								&nbsp;<em>-bamout</em>
+					</td>
+					<!--<td>String</td> -->
+						<td></td>
+					<td>File to which assembled haplotypes should be written</td>
+				</tr>
+				<tr>
+					<td><a href="#--bam-writer-type">--bam-writer-type</a><br />
+					</td>
+					<!--<td>WriterType</td> -->
+						<td>CALLED_HAPLOTYPES</td>
+					<td>Which haplotypes should be written to the BAM</td>
+				</tr>
+				<tr>
+					<td><a href="#--debug-assembly">--debug-assembly</a><br />
+								&nbsp;<em>-debug</em>
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Print out verbose debug information about each assembly region</td>
+				</tr>
+				<tr>
+					<td><a href="#--disable-adaptive-pruning">--disable-adaptive-pruning</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Disable the adaptive algorithm for pruning paths in the graph</td>
+				</tr>
+				<tr>
+					<td><a href="#--disable-cap-base-qualities-to-map-quality">--disable-cap-base-qualities-to-map-quality</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>If false this disables capping of base qualities in the HMM to the mapping quality of the read</td>
+				</tr>
+				<tr>
+					<td><a href="#--disable-symmetric-hmm-normalizing">--disable-symmetric-hmm-normalizing</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Toggle to revive legacy behavior of asymmetrically normalizing the arguments to the reference haplotype</td>
+				</tr>
+				<tr>
+					<td><a href="#--disable-tool-default-annotations">--disable-tool-default-annotations</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Disable all tool default annotations</td>
+				</tr>
+				<tr>
+					<td><a href="#--dont-increase-kmer-sizes-for-cycles">--dont-increase-kmer-sizes-for-cycles</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Disable iterating over kmer sizes when graph cycles are detected</td>
+				</tr>
+				<tr>
+					<td><a href="#--dont-use-soft-clipped-bases">--dont-use-soft-clipped-bases</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Do not analyze soft clipped bases in the reads</td>
+				</tr>
+				<tr>
+					<td><a href="#--emit-ref-confidence">--emit-ref-confidence</a><br />
+								&nbsp;<em>-ERC</em>
+					</td>
+					<!--<td>ReferenceConfidenceMode</td> -->
+						<td>NONE</td>
+					<td>Mode for emitting reference confidence scores (For Mutect2, this is a BETA feature)</td>
+				</tr>
+				<tr>
+					<td><a href="#--enable-all-annotations">--enable-all-annotations</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Use all possible annotations (not for the faint of heart)</td>
+				</tr>
+				<tr>
+					<td><a href="#--expected-mismatch-rate-for-read-disqualification">--expected-mismatch-rate-for-read-disqualification</a><br />
+					</td>
+					<!--<td>double</td> -->
+						<td>0.02</td>
+					<td>Error rate used to set expectation for post HMM read disqualification based on mismatches</td>
+				</tr>
+				<tr>
+					<td><a href="#--force-active">--force-active</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>If provided, all regions will be marked as active</td>
+				</tr>
+				<tr>
+					<td><a href="#--force-call-filtered-alleles">--force-call-filtered-alleles</a><br />
+								&nbsp;<em>-genotype-filtered-alleles</em>
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Force-call filtered alleles included in the resource specified by --alleles</td>
+				</tr>
+				<tr>
+					<td><a href="#--gvcf-lod-band">--gvcf-lod-band</a><br />
+								&nbsp;<em>-LODB</em>
+					</td>
+					<!--<td>List[Double]</td> -->
+						<td>[-2.5, -2.0, -1.5, -1.0, -0.5, 0.0, 0.5, 1.0]</td>
+					<td>Exclusive upper bounds for reference confidence LOD bands (must be specified in increasing order)</td>
+				</tr>
+				<tr>
+					<td><a href="#--independent-mates">--independent-mates</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Allow paired reads to independently support different haplotypes.  Useful for validations with ill-designed synthetic data.</td>
+				</tr>
+				<tr>
+					<td><a href="#--kmer-size">--kmer-size</a><br />
+					</td>
+					<!--<td>List[Integer]</td> -->
+						<td>[10, 25]</td>
+					<td>Kmer size to use in the read threading assembler</td>
+				</tr>
+				<tr>
+					<td><a href="#--linked-de-bruijn-graph">--linked-de-bruijn-graph</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>If enabled, the Assembly Engine will construct a Linked De Bruijn graph to recover better haplotypes</td>
+				</tr>
+				<tr>
+					<td><a href="#--max-mnp-distance">--max-mnp-distance</a><br />
+								&nbsp;<em>-mnp-dist</em>
+					</td>
+					<!--<td>int</td> -->
+						<td>1</td>
+					<td>Two or more phased substitutions separated by this distance or less are merged into MNPs.</td>
+				</tr>
+				<tr>
+					<td><a href="#--max-num-haplotypes-in-population">--max-num-haplotypes-in-population</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>128</td>
+					<td>Maximum number of haplotypes to consider for your population</td>
+				</tr>
+				<tr>
+					<td><a href="#--max-prob-propagation-distance">--max-prob-propagation-distance</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>50</td>
+					<td>Upper limit on how many bases away probability mass can be moved around when calculating the boundaries between active and inactive assembly regions</td>
+				</tr>
+				<tr>
+					<td><a href="#--max-suspicious-reads-per-alignment-start">--max-suspicious-reads-per-alignment-start</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>0</td>
+					<td>Maximum number of suspicious reads (mediocre mapping quality or too many substitutions) allowed in a downsampling stride.  Set to 0 to disable.</td>
+				</tr>
+				<tr>
+					<td><a href="#--max-unpruned-variants">--max-unpruned-variants</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>100</td>
+					<td>Maximum number of variants in graph the adaptive pruner will allow</td>
+				</tr>
+				<tr>
+					<td><a href="#--min-dangling-branch-length">--min-dangling-branch-length</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>4</td>
+					<td>Minimum length of a dangling branch to attempt recovery</td>
+				</tr>
+				<tr>
+					<td><a href="#--min-pruning">--min-pruning</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>2</td>
+					<td>Minimum support to not prune paths in the graph</td>
+				</tr>
+				<tr>
+					<td><a href="#--minimum-allele-fraction">--minimum-allele-fraction</a><br />
+								&nbsp;<em>-min-AF</em>
+					</td>
+					<!--<td>double</td> -->
+						<td>0.0</td>
+					<td>Lower bound of variant allele fractions to consider when calculating variant LOD</td>
+				</tr>
+				<tr>
+					<td><a href="#--num-pruning-samples">--num-pruning-samples</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>1</td>
+					<td>Number of samples that must pass the minPruning threshold</td>
+				</tr>
+				<tr>
+					<td><a href="#--pair-hmm-gap-continuation-penalty">--pair-hmm-gap-continuation-penalty</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>10</td>
+					<td>Flat gap continuation penalty for use in the Pair HMM</td>
+				</tr>
+				<tr>
+					<td><a href="#--pair-hmm-implementation">--pair-hmm-implementation</a><br />
+								&nbsp;<em>-pairHMM</em>
+					</td>
+					<!--<td>Implementation</td> -->
+						<td>FASTEST_AVAILABLE</td>
+					<td>The PairHMM implementation to use for genotype likelihood calculations</td>
+				</tr>
+				<tr>
+					<td><a href="#--pcr-indel-model">--pcr-indel-model</a><br />
+					</td>
+					<!--<td>PCRErrorModel</td> -->
+						<td>CONSERVATIVE</td>
+					<td>The PCR indel model to use</td>
+				</tr>
+				<tr>
+					<td><a href="#--phred-scaled-global-read-mismapping-rate">--phred-scaled-global-read-mismapping-rate</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>45</td>
+					<td>The global assumed mismapping rate for reads</td>
+				</tr>
+				<tr>
+					<td><a href="#--pruning-lod-threshold">--pruning-lod-threshold</a><br />
+					</td>
+					<!--<td>double</td> -->
+						<td>2.302585092994046</td>
+					<td>Ln likelihood ratio threshold for adaptive pruning algorithm</td>
+				</tr>
+				<tr>
+					<td><a href="#--pruning-seeding-lod-threshold">--pruning-seeding-lod-threshold</a><br />
+					</td>
+					<!--<td>double</td> -->
+						<td>9.210340371976184</td>
+					<td>Ln likelihood ratio threshold for seeding subgraph of good variation in adaptive pruning algorithm</td>
+				</tr>
+				<tr>
+					<td><a href="#--recover-all-dangling-branches">--recover-all-dangling-branches</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>Recover all dangling branches</td>
+				</tr>
+				<tr>
+					<td><a href="#--showHidden">--showHidden</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>display hidden arguments</td>
+				</tr>
+				<tr>
+					<td><a href="#--smith-waterman">--smith-waterman</a><br />
+					</td>
+					<!--<td>Implementation</td> -->
+						<td>JAVA</td>
+					<td>Which Smith-Waterman implementation to use, generally FASTEST_AVAILABLE is the right choice</td>
+				</tr>
+				<tr>
+					<td><a href="#--smith-waterman-dangling-end-gap-extend-penalty">--smith-waterman-dangling-end-gap-extend-penalty</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>-6</td>
+					<td>Smith-Waterman gap-extend penalty for dangling-end recovery.</td>
+				</tr>
+				<tr>
+					<td><a href="#--smith-waterman-dangling-end-gap-open-penalty">--smith-waterman-dangling-end-gap-open-penalty</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>-110</td>
+					<td>Smith-Waterman gap-open penalty for dangling-end recovery.</td>
+				</tr>
+				<tr>
+					<td><a href="#--smith-waterman-dangling-end-match-value">--smith-waterman-dangling-end-match-value</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>25</td>
+					<td>Smith-Waterman match value for dangling-end recovery.</td>
+				</tr>
+				<tr>
+					<td><a href="#--smith-waterman-dangling-end-mismatch-penalty">--smith-waterman-dangling-end-mismatch-penalty</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>-50</td>
+					<td>Smith-Waterman mismatch penalty for dangling-end recovery.</td>
+				</tr>
+				<tr>
+					<td><a href="#--smith-waterman-haplotype-to-reference-gap-extend-penalty">--smith-waterman-haplotype-to-reference-gap-extend-penalty</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>-11</td>
+					<td>Smith-Waterman gap-extend penalty for haplotype-to-reference alignment.</td>
+				</tr>
+				<tr>
+					<td><a href="#--smith-waterman-haplotype-to-reference-gap-open-penalty">--smith-waterman-haplotype-to-reference-gap-open-penalty</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>-260</td>
+					<td>Smith-Waterman gap-open penalty for haplotype-to-reference alignment.</td>
+				</tr>
+				<tr>
+					<td><a href="#--smith-waterman-haplotype-to-reference-match-value">--smith-waterman-haplotype-to-reference-match-value</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>200</td>
+					<td>Smith-Waterman match value for haplotype-to-reference alignment.</td>
+				</tr>
+				<tr>
+					<td><a href="#--smith-waterman-haplotype-to-reference-mismatch-penalty">--smith-waterman-haplotype-to-reference-mismatch-penalty</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>-150</td>
+					<td>Smith-Waterman mismatch penalty for haplotype-to-reference alignment.</td>
+				</tr>
+				<tr>
+					<td><a href="#--smith-waterman-read-to-haplotype-gap-extend-penalty">--smith-waterman-read-to-haplotype-gap-extend-penalty</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>-5</td>
+					<td>Smith-Waterman gap-extend penalty for read-to-haplotype alignment.</td>
+				</tr>
+				<tr>
+					<td><a href="#--smith-waterman-read-to-haplotype-gap-open-penalty">--smith-waterman-read-to-haplotype-gap-open-penalty</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>-30</td>
+					<td>Smith-Waterman gap-open penalty for read-to-haplotype alignment.</td>
+				</tr>
+				<tr>
+					<td><a href="#--smith-waterman-read-to-haplotype-match-value">--smith-waterman-read-to-haplotype-match-value</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>10</td>
+					<td>Smith-Waterman match value for read-to-haplotype alignment.</td>
+				</tr>
+				<tr>
+					<td><a href="#--smith-waterman-read-to-haplotype-mismatch-penalty">--smith-waterman-read-to-haplotype-mismatch-penalty</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>-15</td>
+					<td>Smith-Waterman mismatch penalty for read-to-haplotype alignment.</td>
+				</tr>
+				<tr>
+					<td><a href="#--soft-clip-low-quality-ends">--soft-clip-low-quality-ends</a><br />
+					</td>
+					<!--<td>boolean</td> -->
+						<td>false</td>
+					<td>If enabled will preserve low-quality read ends as softclips (used for DRAGEN-GATK BQD genotyper model)</td>
+				</tr>
+			<tr>
+				<th colspan="4" id="row-divider">Deprecated Arguments</th>
+			</tr>
+				<tr>
+					<td><a href="#--tumor-sample">--tumor-sample</a><br />
+								&nbsp;<em>-tumor</em>
+					</td>
+					<!--<td>String</td> -->
+						<td></td>
+					<td>BAM sample name of tumor.  May be URL-encoded as output by GetSampleName with -encode argument.</td>
+				</tr>
+					</tbody>
+				</table>
+
+					<h3>Argument details</h3>
+					<p>Arguments in this list are specific to this tool. Keep in mind that other arguments are available that are shared with other tools (e.g. command-line GATK arguments); see Inherited arguments above.</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--active-probability-threshold">--active-probability-threshold </a>
+			
+		</h3>
+		<p class="args">
+			<b>Minimum probability for a locus to be considered active.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">double</span>
+			&nbsp;<span class="label">0.002</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--adaptive-pruning-initial-error-rate">--adaptive-pruning-initial-error-rate </a>
+			
+		</h3>
+		<p class="args">
+			<b>Initial base error rate estimate for adaptive pruning</b><br />
+			Initial base error rate guess for the probabilistic adaptive pruning model.  Results are not very sensitive to this
+ parameter because it is only a starting point from which the algorithm discovers the true error rate.
+		</p>
+		<p>
+		<span class="label label-info ">double</span>
+			&nbsp;<span class="label">0.001</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--add-output-sam-program-record">--add-output-sam-program-record </a>
+			 / <small>-add-output-sam-program-record</small>
+		</h3>
+		<p class="args">
+			<b>If true, adds a PG tag to created SAM/BAM/CRAM files.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">true</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--add-output-vcf-command-line">--add-output-vcf-command-line </a>
+			 / <small>-add-output-vcf-command-line</small>
+		</h3>
+		<p class="args">
+			<b>If true, adds a command line header line to created VCF files.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">true</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--af-of-alleles-not-in-resource">--af-of-alleles-not-in-resource </a>
+			 / <small>-default-af</small>
+		</h3>
+		<p class="args">
+			<b>Population allele fraction assigned to alleles not found in germline resource.  Please see docs/mutect/mutect2.pdf fora derivation of the default value.</b><br />
+			Population allele fraction assigned to alleles not found in germline resource.
+		</p>
+		<p>
+		<span class="label label-info ">double</span>
+			&nbsp;<span class="label">-1.0</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--allele-informative-reads-overlap-margin">--allele-informative-reads-overlap-margin </a>
+			
+		</h3>
+		<p class="args">
+			<b>Likelihood and read-based annotations will only take into consideration reads that overlap the variant or any base no further than this distance expressed in base pairs</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">2</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--alleles">--alleles </a>
+			
+		</h3>
+		<p class="args">
+			<b>The set of alleles to force-call regardless of evidence</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">FeatureInput[VariantContext]</span>
+			&nbsp;<span class="label">null</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--allow-non-unique-kmers-in-ref">--allow-non-unique-kmers-in-ref </a>
+			
+		</h3>
+		<p class="args">
+			<b>Allow graphs that have non-unique kmers in the reference</b><br />
+			By default, the program does not allow processing of reference sections that contain non-unique kmers. Disabling
+ this check may cause problems in the assembly graph.
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--annotation">--annotation </a>
+			 / <small>-A</small>
+		</h3>
+		<p class="args">
+			<b>One or more specific annotations to add to variant calls</b><br />
+			Which annotations to include in variant calls in the output. These supplement annotations provided by annotation groups.
+		</p>
+		<p>
+		<span class="label label-info ">List[String]</span>
+			&nbsp;<span class="label">[]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--annotation-group">--annotation-group </a>
+			 / <small>-G</small>
+		</h3>
+		<p class="args">
+			<b>One or more groups of annotations to apply to variant calls</b><br />
+			Which groups of annotations to add to the output variant calls.
+ Any requirements that are not met (e.g. failing to provide a pedigree file for a pedigree-based annotation) may cause the run to fail.
+		</p>
+		<p>
+		<span class="label label-info ">List[String]</span>
+			&nbsp;<span class="label">[]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--annotations-to-exclude">--annotations-to-exclude </a>
+			 / <small>-AX</small>
+		</h3>
+		<p class="args">
+			<b>One or more specific annotations to exclude from variant calls</b><br />
+			Which annotations to exclude from output in the variant calls.  Note that this argument has higher priority than the
+ -A or -G arguments, so these annotations will be excluded even if they are explicitly included with the other
+ options.
+		</p>
+		<p>
+		<span class="label label-info ">List[String]</span>
+			&nbsp;<span class="label">[]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--arguments_file">--arguments_file </a>
+			
+		</h3>
+		<p class="args">
+			<b>read one or more arguments files and add them to the command line</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">List[File]</span>
+			&nbsp;<span class="label">[]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--assembly-region-out">--assembly-region-out </a>
+			
+		</h3>
+		<p class="args">
+			<b>Output the assembly region to this IGV formatted file</b><br />
+			If provided, this walker will write out its assembly regions
+ to this file in the IGV formatted TAB-delimited output:
+
+ http://www.broadinstitute.org/software/igv/IGV
+
+ Intended to make debugging the active region calculations easier
+		</p>
+		<p>
+		<span class="label label-info ">String</span>
+			&nbsp;<span class="label">null</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--assembly-region-padding">--assembly-region-padding </a>
+			
+		</h3>
+		<p class="args">
+			<b>Number of additional bases of context to include around each assembly region</b><br />
+			Parameters that control assembly regions
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">100</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--bam-output">--bam-output </a>
+			 / <small>-bamout</small>
+		</h3>
+		<p class="args">
+			<b>File to which assembled haplotypes should be written</b><br />
+			The assembled haplotypes and locally realigned reads will be written as BAM to this file if requested.  Really
+ for debugging purposes only. Note that the output here does not include uninformative reads so that not every
+ input read is emitted to the bam.
+
+ Turning on this mode may result in serious performance cost for the caller.  It's really only appropriate to
+ use in specific areas where you want to better understand why the caller is making specific calls.
+
+ The reads are written out containing an "HC" tag (integer) that encodes which haplotype each read best matches
+ according to the haplotype caller's likelihood calculation.  The use of this tag is primarily intended
+ to allow good coloring of reads in IGV.  Simply go to "Color Alignments By > Tag" and enter "HC" to more
+ easily see which reads go with these haplotype.
+
+ Note that the haplotypes (called or all, depending on mode) are emitted as single reads covering the entire
+ active region, coming from sample "HC" and a special read group called "ArtificialHaplotype". This will increase the
+ pileup depth compared to what would be expected from the reads only, especially in complex regions.
+
+ Note also that only reads that are actually informative about the haplotypes are emitted.  By informative we mean
+ that there's a meaningful difference in the likelihood of the read coming from one haplotype compared to
+ its next best haplotype.
+
+ If multiple BAMs are passed as input to the tool (as is common for M2), then they will be combined in the bamout
+ output and tagged with the appropriate sample names.
+
+ The best way to visualize the output of this mode is with IGV.  Tell IGV to color the alignments by tag,
+ and give it the "HC" tag, so you can see which reads support each haplotype.  Finally, you can tell IGV
+ to group by sample, which will separate the potential haplotypes from the reads.  All of this can be seen in
+ <a href="https://www.dropbox.com/s/xvy7sbxpf13x5bp/haplotypecaller%20bamout%20for%20docs.png">this screenshot</a>
+		</p>
+		<p>
+		<span class="label label-info ">String</span>
+			&nbsp;<span class="label">null</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--bam-writer-type">--bam-writer-type </a>
+			
+		</h3>
+		<p class="args">
+			<b>Which haplotypes should be written to the BAM</b><br />
+			The type of BAM output we want to see. This determines whether HC will write out all of the haplotypes it
+ considered (top 128 max) or just the ones that were selected as alleles and assigned to samples.
+		</p>
+			<p>
+				The --bam-writer-type argument is an enumerated type (WriterType), which can have one of the following values:
+			<dl class="enum">
+					<dt class="enum">ALL_POSSIBLE_HAPLOTYPES</dt>
+					<dd class="enum">A mode that's for method developers.  Writes out all of the possible
+ haplotypes considered, as well as reads aligned to each</dd>
+					<dt class="enum">CALLED_HAPLOTYPES</dt>
+					<dd class="enum">A mode for users.  Writes out the reads aligned only to the called
+ haplotypes.  Useful to understand why the caller is calling what it is</dd>
+					<dt class="enum">NO_HAPLOTYPES</dt>
+					<dd class="enum">With this option, haplotypes will not be included in the output bam.</dd>
+			</dl>
+			</p>
+		<p>
+		<span class="label label-info ">WriterType</span>
+			&nbsp;<span class="label">CALLED_HAPLOTYPES</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--base-quality-score-threshold">--base-quality-score-threshold </a>
+			
+		</h3>
+		<p class="args">
+			<b>Base qualities below this threshold will be reduced to the minimum (6)</b><br />
+			Bases with a quality below this threshold will reduced to the minimum usable qualiy score (6).
+		</p>
+		<p>
+		<span class="label label-info ">byte</span>
+			&nbsp;<span class="label">18</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--callable-depth">--callable-depth </a>
+			
+		</h3>
+		<p class="args">
+			<b>Minimum depth to be considered callable for Mutect stats.  Does not affect genotyping.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">10</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--cloud-index-prefetch-buffer">--cloud-index-prefetch-buffer </a>
+			 / <small>-CIPB</small>
+		</h3>
+		<p class="args">
+			<b>Size of the cloud-only prefetch buffer (in MB; 0 to disable). Defaults to cloudPrefetchBuffer if unset.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">-1</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--cloud-prefetch-buffer">--cloud-prefetch-buffer </a>
+			 / <small>-CPB</small>
+		</h3>
+		<p class="args">
+			<b>Size of the cloud-only prefetch buffer (in MB; 0 to disable).</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">40</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--create-output-bam-index">--create-output-bam-index </a>
+			 / <small>-OBI</small>
+		</h3>
+		<p class="args">
+			<b>If true, create a BAM/CRAM index when writing a coordinate-sorted BAM/CRAM file.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">true</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--create-output-bam-md5">--create-output-bam-md5 </a>
+			 / <small>-OBM</small>
+		</h3>
+		<p class="args">
+			<b>If true, create a MD5 digest for any BAM/SAM/CRAM file created</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--create-output-variant-index">--create-output-variant-index </a>
+			 / <small>-OVI</small>
+		</h3>
+		<p class="args">
+			<b>If true, create a VCF index when writing a coordinate-sorted VCF file.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">true</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--create-output-variant-md5">--create-output-variant-md5 </a>
+			 / <small>-OVM</small>
+		</h3>
+		<p class="args">
+			<b>If true, create a a MD5 digest any VCF file created.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--debug-assembly">--debug-assembly </a>
+			 / <small>-debug</small>
+		</h3>
+		<p class="args">
+			<b>Print out verbose debug information about each assembly region</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--disable-adaptive-pruning">--disable-adaptive-pruning </a>
+			
+		</h3>
+		<p class="args">
+			<b>Disable the adaptive algorithm for pruning paths in the graph</b><br />
+			A single edge multiplicity cutoff for pruning doesn't work in samples with variable depths, for example exomes
+ and RNA.  This parameter disables the probabilistic algorithm for pruning the assembly graph that considers the
+ likelihood that each chain in the graph comes from real variation, and instead uses a simple multiplicity cutoff.
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--disable-bam-index-caching">--disable-bam-index-caching </a>
+			 / <small>-DBIC</small>
+		</h3>
+		<p class="args">
+			<b>If true, don't cache bam indexes, this will reduce memory requirements but may harm performance if many intervals are specified.  Caching is automatically disabled if there are no intervals specified.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--disable-cap-base-qualities-to-map-quality">--disable-cap-base-qualities-to-map-quality </a>
+			
+		</h3>
+		<p class="args">
+			<b>If false this disables capping of base qualities in the HMM to the mapping quality of the read</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--disable-read-filter">--disable-read-filter </a>
+			 / <small>-DF</small>
+		</h3>
+		<p class="args">
+			<b>Read filters to be disabled before analysis</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">List[String]</span>
+			&nbsp;<span class="label">[]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--disable-sequence-dictionary-validation">--disable-sequence-dictionary-validation </a>
+			 / <small>-disable-sequence-dictionary-validation</small>
+		</h3>
+		<p class="args">
+			<b>If specified, do not check the sequence dictionaries from our inputs for compatibility. Use at your own risk!</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--disable-symmetric-hmm-normalizing">--disable-symmetric-hmm-normalizing </a>
+			
+		</h3>
+		<p class="args">
+			<b>Toggle to revive legacy behavior of asymmetrically normalizing the arguments to the reference haplotype</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--disable-tool-default-annotations">--disable-tool-default-annotations </a>
+			 / <small>-disable-tool-default-annotations</small>
+		</h3>
+		<p class="args">
+			<b>Disable all tool default annotations</b><br />
+			Hook allowing for the user to remove default annotations from the tool
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--disable-tool-default-read-filters">--disable-tool-default-read-filters </a>
+			 / <small>-disable-tool-default-read-filters</small>
+		</h3>
+		<p class="args">
+			<b>Disable all tool default read filters (WARNING: many tools will not function correctly without their default read filters on)</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--dont-increase-kmer-sizes-for-cycles">--dont-increase-kmer-sizes-for-cycles </a>
+			
+		</h3>
+		<p class="args">
+			<b>Disable iterating over kmer sizes when graph cycles are detected</b><br />
+			When graph cycles are detected, the normal behavior is to increase kmer sizes iteratively until the cycles are
+ resolved. Disabling this behavior may cause the program to give up on assembling the ActiveRegion.
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--dont-use-dragstr-pair-hmm-scores">--dont-use-dragstr-pair-hmm-scores </a>
+			
+		</h3>
+		<p class="args">
+			<b>disable DRAGstr pair-hmm score even when dragstr-params-path was provided</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--dont-use-soft-clipped-bases">--dont-use-soft-clipped-bases </a>
+			
+		</h3>
+		<p class="args">
+			<b>Do not analyze soft clipped bases in the reads</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--downsampling-stride">--downsampling-stride </a>
+			 / <small>-stride</small>
+		</h3>
+		<p class="args">
+			<b>Downsample a pool of reads starting within a range of one or more bases.</b><br />
+			Downsample a pool of reads starting within a range of one or more bases.
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">1</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--dragstr-het-hom-ratio">--dragstr-het-hom-ratio </a>
+			
+		</h3>
+		<p class="args">
+			<b>het to hom prior ratio use with DRAGstr on</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">2</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--dragstr-params-path">--dragstr-params-path </a>
+			
+		</h3>
+		<p class="args">
+			<b>location of the DRAGstr model parameters for STR error correction used in the Pair HMM. When provided, it overrides other PCR error correcting mechanisms</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">GATKPath</span>
+			&nbsp;<span class="label">null</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--emit-ref-confidence">--emit-ref-confidence </a>
+			 / <small>-ERC</small>
+		</h3>
+		<p class="args">
+			<b>Mode for emitting reference confidence scores (For Mutect2, this is a BETA feature)</b><br />
+			The reference confidence mode makes it possible to emit a per-bp or summarized confidence estimate for a site being strictly homozygous-reference.
+ See https://software.broadinstitute.org/gatk/documentation/article.php?id=4017 for information about GVCFs.
+ For Mutect2, this is a BETA feature that functions similarly to the HaplotypeCaller reference confidence/GVCF mode.
+		</p>
+			<p>
+				The --emit-ref-confidence argument is an enumerated type (ReferenceConfidenceMode), which can have one of the following values:
+			<dl class="enum">
+					<dt class="enum">NONE</dt>
+					<dd class="enum">Regular calling without emitting reference confidence calls.</dd>
+					<dt class="enum">BP_RESOLUTION</dt>
+					<dd class="enum">Reference model emitted site by site.</dd>
+					<dt class="enum">GVCF</dt>
+					<dd class="enum">Reference model emitted with condensed non-variant blocks, i.e. the GVCF format.</dd>
+			</dl>
+			</p>
+		<p>
+		<span class="label label-info ">ReferenceConfidenceMode</span>
+			&nbsp;<span class="label">NONE</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--enable-all-annotations">--enable-all-annotations </a>
+			
+		</h3>
+		<p class="args">
+			<b>Use all possible annotations (not for the faint of heart)</b><br />
+			You can use the -AX argument in combination with this one to exclude specific annotations. Note that some
+ annotations may not be actually applied if they are not applicable to the data provided or if they are
+ unavailable to the tool (e.g. there are several annotations that are currently not hooked up to
+ HaplotypeCaller). At present no error or warning message will be provided, the annotation will simply be
+ skipped silently. You can check the output VCF header to see which annotations were activated and thus might be applied (although
+ this does not guarantee that the annotation was applied to all records in the VCF, since some annotations have
+ additional requirements, e.g. minimum number of samples or heterozygous sites only -- see the documentation
+ for individual annotations' requirements).
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--enable-dynamic-read-disqualification-for-genotyping">--enable-dynamic-read-disqualification-for-genotyping </a>
+			
+		</h3>
+		<p class="args">
+			<b>Will enable less strict read disqualification low base quality reads</b><br />
+			If enabled, rather than disqualifying all reads over a threshold of minimum hmm scores we will instead choose a less strict
+ and less aggressive cap for disqualification based on the read length and base qualities.
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--exclude-intervals">--exclude-intervals </a>
+			 / <small>-XL</small>
+		</h3>
+		<p class="args">
+			<b>One or more genomic intervals to exclude from processing</b><br />
+			Use this argument to exclude certain parts of the genome from the analysis (like -L, but the opposite).
+ This argument can be specified multiple times. You can use samtools-style intervals either explicitly on the
+ command line (e.g. -XL 1 or -XL 1:100-200) or by loading in a file containing a list of intervals
+ (e.g. -XL myFile.intervals).
+		</p>
+		<p>
+		<span class="label label-info ">List[String]</span>
+			&nbsp;<span class="label">[]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--expected-mismatch-rate-for-read-disqualification">--expected-mismatch-rate-for-read-disqualification </a>
+			
+		</h3>
+		<p class="args">
+			<b>Error rate used to set expectation for post HMM read disqualification based on mismatches</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">double</span>
+			&nbsp;<span class="label">0.02</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--f1r2-max-depth">--f1r2-max-depth </a>
+			
+		</h3>
+		<p class="args">
+			<b>sites with depth higher than this value will be grouped</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">200</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--f1r2-median-mq">--f1r2-median-mq </a>
+			
+		</h3>
+		<p class="args">
+			<b>skip sites with median mapping quality below this value</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">50</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--f1r2-min-bq">--f1r2-min-bq </a>
+			
+		</h3>
+		<p class="args">
+			<b>exclude bases below this quality from pileup</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">20</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--f1r2-tar-gz">--f1r2-tar-gz </a>
+			
+		</h3>
+		<p class="args">
+			<b>If specified, collect F1R2 counts and output files into this tar.gz file</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">File</span>
+			&nbsp;<span class="label">null</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--force-active">--force-active </a>
+			
+		</h3>
+		<p class="args">
+			<b>If provided, all regions will be marked as active</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--force-call-filtered-alleles">--force-call-filtered-alleles </a>
+			 / <small>-genotype-filtered-alleles</small>
+		</h3>
+		<p class="args">
+			<b>Force-call filtered alleles included in the resource specified by --alleles</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--founder-id">--founder-id </a>
+			 / <small>-founder-id</small>
+		</h3>
+		<p class="args">
+			<b>Samples representing the population "founders"</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">List[String]</span>
+			&nbsp;<span class="label">[]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--gatk-config-file">--gatk-config-file </a>
+			
+		</h3>
+		<p class="args">
+			<b>A configuration file to use with the GATK.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">String</span>
+			&nbsp;<span class="label">null</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--gcs-max-retries">--gcs-max-retries </a>
+			 / <small>-gcs-retries</small>
+		</h3>
+		<p class="args">
+			<b>If the GCS bucket channel errors out, how many times it will attempt to re-initiate the connection</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">20</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--gcs-project-for-requester-pays">--gcs-project-for-requester-pays </a>
+			
+		</h3>
+		<p class="args">
+			<b>Project to bill when accessing "requester pays" buckets. If unset, these buckets cannot be accessed.  User must have storage.buckets.get permission on the bucket being accessed.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">String</span>
+			&nbsp;<span class="label">""</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--genotype-germline-sites">--genotype-germline-sites </a>
+			
+		</h3>
+		<p class="args">
+			<b>Call all apparent germline site even though they will ultimately be filtered.</b><br />
+			Usually we exclude germline sites from active region determination to save runtime.  Setting this to true
+ causes Mutect to produce a variant call at these sites.  This call will still be filtered, but it shows up in the vcf.
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--genotype-pon-sites">--genotype-pon-sites </a>
+			
+		</h3>
+		<p class="args">
+			<b>Call sites in the PoN even though they will ultimately be filtered.</b><br />
+			Usually we exclude sites in the panel of normals from active region determination, which saves time.  Setting this to true
+ causes Mutect to produce a variant call at these sites.  This call will still be filtered, but it shows up in the vcf.
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--germline-resource">--germline-resource </a>
+			
+		</h3>
+		<p class="args">
+			<b>Population vcf of germline sequencing containing allele fractions.</b><br />
+			A resource, such as gnomAD, containing population allele frequencies of common and rare variants.
+		</p>
+		<p>
+		<span class="label label-info ">FeatureInput[VariantContext]</span>
+			&nbsp;<span class="label">null</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--graph-output">--graph-output </a>
+			 / <small>-graph</small>
+		</h3>
+		<p class="args">
+			<b>Write debug assembly graph information to this file</b><br />
+			This argument is meant for debugging and is not immediately useful for normal analysis use.
+		</p>
+		<p>
+		<span class="label label-info ">String</span>
+			&nbsp;<span class="label">null</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--gvcf-lod-band">--gvcf-lod-band </a>
+			 / <small>-LODB</small>
+		</h3>
+		<p class="args">
+			<b>Exclusive upper bounds for reference confidence LOD bands (must be specified in increasing order)</b><br />
+			When Mutect2 is run in reference confidence mode with banding compression enabled (-ERC GVCF), homozygous-reference
+ sites are compressed into bands of similar tumor LOD (TLOD) that are emitted as a single VCF record. See
+ the FAQ documentation for more details about the GVCF format.
+ <p>
+ This argument allows you to set the TLOD bands. Mutect2 expects a list of strictly increasing TLOD values
+ that will act as exclusive upper bounds for the TLOD bands. To pass multiple values,
+ you provide them one by one with the argument, as in `-LODB -3.0 -LODB -2.0 -LODB -1.0`
+ (this would set the TLOD bands to be `[-Inf, -3.0), [-3.0, -2.0), [-2.0, -1.0), [-1.0, Inf]`, for example).
+ <p>
+ Note that, unlike the GQ used by HaplotypeCaller GVCFs, here the reference calls with the highest confidence are the most negative.
+		</p>
+		<p>
+		<span class="label label-info ">List[Double]</span>
+			&nbsp;<span class="label">[-2.5, -2.0, -1.5, -1.0, -0.5, 0.0, 0.5, 1.0]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--help">--help </a>
+			 / <small>-h</small>
+		</h3>
+		<p class="args">
+			<b>display the help message</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--ignore-itr-artifacts">--ignore-itr-artifacts </a>
+			
+		</h3>
+		<p class="args">
+			<b>Turn off read transformer that clips artifacts associated with end repair insertions near inverted tandem repeats.</b><br />
+			When opposite ends of a fragment are inverted tandem repeats of each other, the sequence past one end may be copied onto the other
+ during library prep.  By default, Mutect2 identifies and clips these artifacts, which are especially prevalent when
+ DNA is damaged as in the case of FFPE samples and ancient DNA.
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--independent-mates">--independent-mates </a>
+			
+		</h3>
+		<p class="args">
+			<b>Allow paired reads to independently support different haplotypes.  Useful for validations with ill-designed synthetic data.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--initial-tumor-lod">--initial-tumor-lod </a>
+			 / <small>-init-lod</small>
+		</h3>
+		<p class="args">
+			<b>Log 10 odds threshold to consider pileup active.</b><br />
+			Only variants with estimated tumor LODs exceeding this threshold will be considered active.
+		</p>
+		<p>
+		<span class="label label-info ">double</span>
+			&nbsp;<span class="label">2.0</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--input">--input </a>
+			 / <small>-I</small>
+		</h3>
+		<p class="args">
+			<b>BAM/SAM/CRAM file containing reads</b><br />
+			
+		</p>
+		<p>
+				<span class="badge badge-important">R</span>
+		<span class="label label-info ">List[GATKPath]</span>
+			&nbsp;<span class="label">[]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--interval-exclusion-padding">--interval-exclusion-padding </a>
+			 / <small>-ixp</small>
+		</h3>
+		<p class="args">
+			<b>Amount of padding (in bp) to add to each interval you are excluding.</b><br />
+			Use this to add padding to the intervals specified using -XL. For example, '-XL 1:100' with a
+ padding value of 20 would turn into '-XL 1:80-120'. This is typically used to add padding around targets when
+ analyzing exomes.
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">0</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--interval-merging-rule">--interval-merging-rule </a>
+			 / <small>-imr</small>
+		</h3>
+		<p class="args">
+			<b>Interval merging rule for abutting intervals</b><br />
+			By default, the program merges abutting intervals (i.e. intervals that are directly side-by-side but do not
+ actually overlap) into a single continuous interval. However you can change this behavior if you want them to be
+ treated as separate intervals instead.
+		</p>
+			<p>
+				The --interval-merging-rule argument is an enumerated type (IntervalMergingRule), which can have one of the following values:
+			<dl class="enum">
+					<dt class="enum">ALL</dt>
+					<dd class="enum"></dd>
+					<dt class="enum">OVERLAPPING_ONLY</dt>
+					<dd class="enum"></dd>
+			</dl>
+			</p>
+		<p>
+		<span class="label label-info ">IntervalMergingRule</span>
+			&nbsp;<span class="label">ALL</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--interval-padding">--interval-padding </a>
+			 / <small>-ip</small>
+		</h3>
+		<p class="args">
+			<b>Amount of padding (in bp) to add to each interval you are including.</b><br />
+			Use this to add padding to the intervals specified using -L. For example, '-L 1:100' with a
+ padding value of 20 would turn into '-L 1:80-120'. This is typically used to add padding around targets when
+ analyzing exomes.
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">0</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--interval-set-rule">--interval-set-rule </a>
+			 / <small>-isr</small>
+		</h3>
+		<p class="args">
+			<b>Set merging approach to use for combining interval inputs</b><br />
+			By default, the program will take the UNION of all intervals specified using -L and/or -XL. However, you can
+ change this setting for -L, for example if you want to take the INTERSECTION of the sets instead. E.g. to
+ perform the analysis only on chromosome 1 exomes, you could specify -L exomes.intervals -L 1 --interval-set-rule
+ INTERSECTION. However, it is not possible to modify the merging approach for intervals passed using -XL (they will
+ always be merged using UNION).
+
+ Note that if you specify both -L and -XL, the -XL interval set will be subtracted from the -L interval set.
+		</p>
+			<p>
+				The --interval-set-rule argument is an enumerated type (IntervalSetRule), which can have one of the following values:
+			<dl class="enum">
+					<dt class="enum">UNION</dt>
+					<dd class="enum">Take the union of all intervals</dd>
+					<dt class="enum">INTERSECTION</dt>
+					<dd class="enum">Take the intersection of intervals (the subset that overlaps all intervals specified)</dd>
+			</dl>
+			</p>
+		<p>
+		<span class="label label-info ">IntervalSetRule</span>
+			&nbsp;<span class="label">UNION</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--intervals">--intervals </a>
+			 / <small>-L</small>
+		</h3>
+		<p class="args">
+			<b>One or more genomic intervals over which to operate</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">List[String]</span>
+			&nbsp;<span class="label">[]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--kmer-size">--kmer-size </a>
+			
+		</h3>
+		<p class="args">
+			<b>Kmer size to use in the read threading assembler</b><br />
+			Multiple kmer sizes can be specified, using e.g. `--kmer-size 10 --kmer-size 25`.
+		</p>
+		<p>
+		<span class="label label-info ">List[Integer]</span>
+			&nbsp;<span class="label">[10, 25]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--lenient">--lenient </a>
+			 / <small>-LE</small>
+		</h3>
+		<p class="args">
+			<b>Lenient processing of VCF files</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--linked-de-bruijn-graph">--linked-de-bruijn-graph </a>
+			
+		</h3>
+		<p class="args">
+			<b>If enabled, the Assembly Engine will construct a Linked De Bruijn graph to recover better haplotypes</b><br />
+			Disables graph simplification into a seq graph, opts to construct a proper De Bruijn graph with potential loops
+
+ NOTE: --linked-de-bruijn-graph is currently an experimental feature that does not directly match with
+        the regular HaplotypeCaller. Specifically the haplotype finding code does not perform correctly at complicated
+        sites. Use this mode at your own risk.
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--max-assembly-region-size">--max-assembly-region-size </a>
+			
+		</h3>
+		<p class="args">
+			<b>Maximum size of an assembly region</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">300</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--max-mnp-distance">--max-mnp-distance </a>
+			 / <small>-mnp-dist</small>
+		</h3>
+		<p class="args">
+			<b>Two or more phased substitutions separated by this distance or less are merged into MNPs.</b><br />
+			Two or more phased substitutions separated by this distance or less are merged into MNPs.
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">1</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--max-num-haplotypes-in-population">--max-num-haplotypes-in-population </a>
+			
+		</h3>
+		<p class="args">
+			<b>Maximum number of haplotypes to consider for your population</b><br />
+			The assembly graph can be quite complex, and could imply a very large number of possible haplotypes.  Each haplotype
+ considered requires N PairHMM evaluations if there are N reads across all samples.  In order to control the
+ run of the haplotype caller we only take maxNumHaplotypesInPopulation paths from the graph, in order of their
+ weights, no matter how many paths are possible to generate from the graph.  Putting this number too low
+ will result in dropping true variation because paths that include the real variant are not even considered.
+ You can consider increasing this number when calling organisms with high heterozygosity.
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">128</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--max-population-af">--max-population-af </a>
+			 / <small>-max-af</small>
+		</h3>
+		<p class="args">
+			<b>Maximum population allele frequency in tumor-only mode.</b><br />
+			In tumor-only mode, we discard variants with population allele frequencies greater than this threshold.
+		</p>
+		<p>
+		<span class="label label-info ">double</span>
+			&nbsp;<span class="label">0.01</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--max-prob-propagation-distance">--max-prob-propagation-distance </a>
+			
+		</h3>
+		<p class="args">
+			<b>Upper limit on how many bases away probability mass can be moved around when calculating the boundaries between active and inactive assembly regions</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">50</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--max-reads-per-alignment-start">--max-reads-per-alignment-start </a>
+			
+		</h3>
+		<p class="args">
+			<b>Maximum number of reads to retain per alignment start position. Reads above this threshold will be downsampled. Set to 0 to disable.</b><br />
+			Other parameters
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">50</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--max-suspicious-reads-per-alignment-start">--max-suspicious-reads-per-alignment-start </a>
+			
+		</h3>
+		<p class="args">
+			<b>Maximum number of suspicious reads (mediocre mapping quality or too many substitutions) allowed in a downsampling stride.  Set to 0 to disable.</b><br />
+			Maximum number of suspicious reads (mediocre mapping quality or too many substitutions) allowed in a downsampling stride.
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">0</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--max-unpruned-variants">--max-unpruned-variants </a>
+			
+		</h3>
+		<p class="args">
+			<b>Maximum number of variants in graph the adaptive pruner will allow</b><br />
+			The maximum number of variants in graph the adaptive pruner will allow
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">100</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--max-variants-per-shard">--max-variants-per-shard </a>
+			
+		</h3>
+		<p class="args">
+			<b>If non-zero, partitions VCF output into shards, each containing up to the given number of records.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">0</span>
+			&nbsp;<span class="label label-warning">[ [ 0</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--min-assembly-region-size">--min-assembly-region-size </a>
+			
+		</h3>
+		<p class="args">
+			<b>Minimum size of an assembly region</b><br />
+			Parameters that control active regions
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">50</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--min-base-quality-score">--min-base-quality-score </a>
+			 / <small>-mbq</small>
+		</h3>
+		<p class="args">
+			<b>Minimum base quality required to consider a base for calling</b><br />
+			Bases with a quality below this threshold will not be used for calling.
+		</p>
+		<p>
+		<span class="label label-info ">byte</span>
+			&nbsp;<span class="label">10</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--min-dangling-branch-length">--min-dangling-branch-length </a>
+			
+		</h3>
+		<p class="args">
+			<b>Minimum length of a dangling branch to attempt recovery</b><br />
+			When constructing the assembly graph we are often left with "dangling" branches.  The assembly engine attempts to rescue these branches
+ by merging them back into the main graph.  This argument describes the minimum length of a dangling branch needed for the engine to
+ try to rescue it.  A smaller number here will lead to higher sensitivity to real variation but also to a higher number of false positives.
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">4</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--min-pruning">--min-pruning </a>
+			
+		</h3>
+		<p class="args">
+			<b>Minimum support to not prune paths in the graph</b><br />
+			Paths with fewer supporting kmers than the specified threshold will be pruned from the graph.
+
+ Be aware that this argument can dramatically affect the results of variant calling and should only be used with great caution.
+ Using a prune factor of 1 (or below) will prevent any pruning from the graph, which is generally not ideal; it can make the
+ calling much slower and even less accurate (because it can prevent effective merging of "tails" in the graph).  Higher values
+ tend to make the calling much faster, but also lowers the sensitivity of the results (because it ultimately requires higher
+ depth to produce calls).
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">2</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--minimum-allele-fraction">--minimum-allele-fraction </a>
+			 / <small>-min-AF</small>
+		</h3>
+		<p class="args">
+			<b>Lower bound of variant allele fractions to consider when calculating variant LOD</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">double</span>
+			&nbsp;<span class="label">0.0</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--mitochondria-mode">--mitochondria-mode </a>
+			
+		</h3>
+		<p class="args">
+			<b>Mitochondria mode sets emission and initial LODs to 0.</b><br />
+			Mitochondria mode changes default values for --tumor-lod-to-emit and --initial-tumor-lod to 0 to increase sensitivity.
+ --tumor-sample is also not explicitly required in mitochondria mode since a single sample bam is expected as input.
+ Mitochondria mode is also required in FilterMutectCalls if used here.
+		</p>
+		<p>
+		<span class="label label-info ">Boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--native-pair-hmm-threads">--native-pair-hmm-threads </a>
+			
+		</h3>
+		<p class="args">
+			<b>How many threads should a native pairHMM implementation use</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">4</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--native-pair-hmm-use-double-precision">--native-pair-hmm-use-double-precision </a>
+			
+		</h3>
+		<p class="args">
+			<b>use double precision in the native pairHmm. This is slower but matches the java implementation better</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--normal-lod">--normal-lod </a>
+			
+		</h3>
+		<p class="args">
+			<b>Log 10 odds threshold for calling normal variant non-germline.</b><br />
+			This is a measure of the minimum evidence to support that a variant observed in the tumor is not also present in the normal.
+ Applies to normal data in a tumor with matched normal analysis. The default has been tuned for diploid somatic analyses.
+ It is unlikely such analyses will require changing the default value. Increasing the parameter may increase the sensitivity of somatic calling,
+ but may also increase calling false positive, i.e. germline, variants.
+		</p>
+		<p>
+		<span class="label label-info ">double</span>
+			&nbsp;<span class="label">2.2</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--normal-sample">--normal-sample </a>
+			 / <small>-normal</small>
+		</h3>
+		<p class="args">
+			<b>BAM sample name of normal(s), if any.  May be URL-encoded as output by GetSampleName with -encode argument.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">List[String]</span>
+			&nbsp;<span class="label">[]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--num-pruning-samples">--num-pruning-samples </a>
+			
+		</h3>
+		<p class="args">
+			<b>Number of samples that must pass the minPruning threshold</b><br />
+			If fewer samples than the specified number pass the minPruning threshold for a given path, that path will be eliminated from the graph.
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">1</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--output">--output </a>
+			 / <small>-O</small>
+		</h3>
+		<p class="args">
+			<b>File to which variants should be written</b><br />
+			
+		</p>
+		<p>
+				<span class="badge badge-important">R</span>
+		<span class="label label-info ">GATKPath</span>
+			&nbsp;<span class="label">null</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--pair-hmm-gap-continuation-penalty">--pair-hmm-gap-continuation-penalty </a>
+			
+		</h3>
+		<p class="args">
+			<b>Flat gap continuation penalty for use in the Pair HMM</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">10</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--pair-hmm-implementation">--pair-hmm-implementation </a>
+			 / <small>-pairHMM</small>
+		</h3>
+		<p class="args">
+			<b>The PairHMM implementation to use for genotype likelihood calculations</b><br />
+			The PairHMM implementation to use for genotype likelihood calculations. The various implementations balance a tradeoff of accuracy and runtime.
+		</p>
+			<p>
+				The --pair-hmm-implementation argument is an enumerated type (Implementation), which can have one of the following values:
+			<dl class="enum">
+					<dt class="enum">EXACT</dt>
+					<dd class="enum"></dd>
+					<dt class="enum">ORIGINAL</dt>
+					<dd class="enum"></dd>
+					<dt class="enum">LOGLESS_CACHING</dt>
+					<dd class="enum"></dd>
+					<dt class="enum">AVX_LOGLESS_CACHING</dt>
+					<dd class="enum"></dd>
+					<dt class="enum">AVX_LOGLESS_CACHING_OMP</dt>
+					<dd class="enum"></dd>
+					<dt class="enum">FASTEST_AVAILABLE</dt>
+					<dd class="enum"></dd>
+			</dl>
+			</p>
+		<p>
+		<span class="label label-info ">Implementation</span>
+			&nbsp;<span class="label">FASTEST_AVAILABLE</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--panel-of-normals">--panel-of-normals </a>
+			 / <small>-pon</small>
+		</h3>
+		<p class="args">
+			<b>VCF file of sites observed in normal.</b><br />
+			A panel of normals can be a useful (optional) input to help filter out commonly seen sequencing noise that may appear as low allele-fraction somatic variants.
+		</p>
+		<p>
+		<span class="label label-info ">FeatureInput[VariantContext]</span>
+			&nbsp;<span class="label">null</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--pcr-indel-model">--pcr-indel-model </a>
+			
+		</h3>
+		<p class="args">
+			<b>The PCR indel model to use</b><br />
+			When calculating the likelihood of variants, we can try to correct for PCR errors that cause indel artifacts.
+ The correction is based on the reference context, and acts specifically around repetitive sequences that tend
+ to cause PCR errors). The variant likelihoods are penalized in increasing scale as the context around a
+ putative indel is more repetitive (e.g. long homopolymer). The correction can be disabling by specifying
+ '-pcrModel NONE'; in that case the default base insertion/deletion qualities will be used (or taken from the
+ read if generated through the BaseRecalibrator). <b>VERY IMPORTANT: when using PCR-free sequencing data we
+ definitely recommend setting this argument to NONE</b>.
+		</p>
+			<p>
+				The --pcr-indel-model argument is an enumerated type (PCRErrorModel), which can have one of the following values:
+			<dl class="enum">
+					<dt class="enum">NONE</dt>
+					<dd class="enum">no specialized PCR error model will be applied; if base insertion/deletion qualities are present they will be used</dd>
+					<dt class="enum">HOSTILE</dt>
+					<dd class="enum">a most aggressive model will be applied that sacrifices true positives in order to remove more false positives</dd>
+					<dt class="enum">AGGRESSIVE</dt>
+					<dd class="enum">a more aggressive model will be applied that sacrifices true positives in order to remove more false positives</dd>
+					<dt class="enum">CONSERVATIVE</dt>
+					<dd class="enum">a less aggressive model will be applied that tries to maintain a high true positive rate at the expense of allowing more false positives</dd>
+			</dl>
+			</p>
+		<p>
+		<span class="label label-info ">PCRErrorModel</span>
+			&nbsp;<span class="label">CONSERVATIVE</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--pcr-indel-qual">--pcr-indel-qual </a>
+			
+		</h3>
+		<p class="args">
+			<b>Phred-scaled PCR indel qual for overlapping fragments</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">40</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--pcr-snv-qual">--pcr-snv-qual </a>
+			
+		</h3>
+		<p class="args">
+			<b>Phred-scaled PCR SNV qual for overlapping fragments</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">40</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--pedigree">--pedigree </a>
+			 / <small>-ped</small>
+		</h3>
+		<p class="args">
+			<b>Pedigree file for determining the population "founders"</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">GATKPath</span>
+			&nbsp;<span class="label">null</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--phred-scaled-global-read-mismapping-rate">--phred-scaled-global-read-mismapping-rate </a>
+			
+		</h3>
+		<p class="args">
+			<b>The global assumed mismapping rate for reads</b><br />
+			The phredScaledGlobalReadMismappingRate reflects the average global mismapping rate of all reads, regardless of their
+ mapping quality.  This term effects the probability that a read originated from the reference haplotype, regardless of
+ its edit distance from the reference, in that the read could have originated from the reference haplotype but
+ from another location in the genome.  Suppose a read has many mismatches from the reference, say like 5, but
+ has a very high mapping quality of 60.  Without this parameter, the read would contribute 5 * Q30 evidence
+ in favor of its 5 mismatch haplotype compared to reference, potentially enough to make a call off that single
+ read for all of these events.  With this parameter set to Q30, though, the maximum evidence against any haplotype
+ that this (and any) read could contribute is Q30.
+
+ Set this term to any negative number to turn off the global mapping rate.
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">45</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--pruning-lod-threshold">--pruning-lod-threshold </a>
+			
+		</h3>
+		<p class="args">
+			<b>Ln likelihood ratio threshold for adaptive pruning algorithm</b><br />
+			Log-10 likelihood ratio threshold for adaptive pruning algorithm.
+		</p>
+		<p>
+		<span class="label label-info ">double</span>
+			&nbsp;<span class="label">2.302585092994046</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--pruning-seeding-lod-threshold">--pruning-seeding-lod-threshold </a>
+			
+		</h3>
+		<p class="args">
+			<b>Ln likelihood ratio threshold for seeding subgraph of good variation in adaptive pruning algorithm</b><br />
+			Log-10 likelihood ratio threshold for adaptive pruning algorithm.
+		</p>
+		<p>
+		<span class="label label-info ">double</span>
+			&nbsp;<span class="label">9.210340371976184</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--QUIET">--QUIET </a>
+			
+		</h3>
+		<p class="args">
+			<b>Whether to suppress job-summary info on System.err.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">Boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--read-filter">--read-filter </a>
+			 / <small>-RF</small>
+		</h3>
+		<p class="args">
+			<b>Read filters to be applied before analysis</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">List[String]</span>
+			&nbsp;<span class="label">[]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--read-index">--read-index </a>
+			 / <small>-read-index</small>
+		</h3>
+		<p class="args">
+			<b>Indices to use for the read inputs. If specified, an index must be provided for every read input and in the same order as the read inputs. If this argument is not specified, the path to the index for each input will be inferred automatically.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">List[GATKPath]</span>
+			&nbsp;<span class="label">[]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--read-validation-stringency">--read-validation-stringency </a>
+			 / <small>-VS</small>
+		</h3>
+		<p class="args">
+			<b>Validation stringency for all SAM/BAM/CRAM/SRA files read by this program.  The default stringency value SILENT can improve performance when processing a BAM file in which variable-length data (read, qualities, tags) do not otherwise need to be decoded.</b><br />
+			
+		</p>
+			<p>
+				The --read-validation-stringency argument is an enumerated type (ValidationStringency), which can have one of the following values:
+			<dl class="enum">
+					<dt class="enum">STRICT</dt>
+					<dd class="enum"></dd>
+					<dt class="enum">LENIENT</dt>
+					<dd class="enum"></dd>
+					<dt class="enum">SILENT</dt>
+					<dd class="enum"></dd>
+			</dl>
+			</p>
+		<p>
+		<span class="label label-info ">ValidationStringency</span>
+			&nbsp;<span class="label">SILENT</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--recover-all-dangling-branches">--recover-all-dangling-branches </a>
+			
+		</h3>
+		<p class="args">
+			<b>Recover all dangling branches</b><br />
+			By default, the read threading assembler does not recover dangling branches that fork after splitting from the reference.  This argument
+ tells the assembly engine to recover all dangling branches.
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--reference">--reference </a>
+			 / <small>-R</small>
+		</h3>
+		<p class="args">
+			<b>Reference sequence file</b><br />
+			
+		</p>
+		<p>
+				<span class="badge badge-important">R</span>
+		<span class="label label-info ">GATKPath</span>
+			&nbsp;<span class="label">null</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--seconds-between-progress-updates">--seconds-between-progress-updates </a>
+			 / <small>-seconds-between-progress-updates</small>
+		</h3>
+		<p class="args">
+			<b>Output traversal statistics every time this many seconds elapse</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">double</span>
+			&nbsp;<span class="label">10.0</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--sequence-dictionary">--sequence-dictionary </a>
+			 / <small>-sequence-dictionary</small>
+		</h3>
+		<p class="args">
+			<b>Use the given sequence dictionary as the master/canonical sequence dictionary.  Must be a .dict file.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">GATKPath</span>
+			&nbsp;<span class="label">null</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--showHidden">--showHidden </a>
+			 / <small>-showHidden</small>
+		</h3>
+		<p class="args">
+			<b>display hidden arguments</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--sites-only-vcf-output">--sites-only-vcf-output </a>
+			
+		</h3>
+		<p class="args">
+			<b>If true, don't emit genotype fields when writing vcf file output.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--smith-waterman">--smith-waterman </a>
+			
+		</h3>
+		<p class="args">
+			<b>Which Smith-Waterman implementation to use, generally FASTEST_AVAILABLE is the right choice</b><br />
+			
+		</p>
+			<p>
+				The --smith-waterman argument is an enumerated type (Implementation), which can have one of the following values:
+			<dl class="enum">
+					<dt class="enum">FASTEST_AVAILABLE</dt>
+					<dd class="enum">use the fastest available Smith-Waterman aligner that runs on your hardware</dd>
+					<dt class="enum">AVX_ENABLED</dt>
+					<dd class="enum">use the AVX enabled Smith-Waterman aligner</dd>
+					<dt class="enum">JAVA</dt>
+					<dd class="enum">use the pure java implementation of Smith-Waterman, works on all hardware</dd>
+			</dl>
+			</p>
+		<p>
+		<span class="label label-info ">Implementation</span>
+			&nbsp;<span class="label">JAVA</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--smith-waterman-dangling-end-gap-extend-penalty">--smith-waterman-dangling-end-gap-extend-penalty </a>
+			
+		</h3>
+		<p class="args">
+			<b>Smith-Waterman gap-extend penalty for dangling-end recovery.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">-6</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">0 ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--smith-waterman-dangling-end-gap-open-penalty">--smith-waterman-dangling-end-gap-open-penalty </a>
+			
+		</h3>
+		<p class="args">
+			<b>Smith-Waterman gap-open penalty for dangling-end recovery.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">-110</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">0 ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--smith-waterman-dangling-end-match-value">--smith-waterman-dangling-end-match-value </a>
+			
+		</h3>
+		<p class="args">
+			<b>Smith-Waterman match value for dangling-end recovery.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">25</span>
+			&nbsp;<span class="label label-warning">[ [ 0</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--smith-waterman-dangling-end-mismatch-penalty">--smith-waterman-dangling-end-mismatch-penalty </a>
+			
+		</h3>
+		<p class="args">
+			<b>Smith-Waterman mismatch penalty for dangling-end recovery.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">-50</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">0 ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--smith-waterman-haplotype-to-reference-gap-extend-penalty">--smith-waterman-haplotype-to-reference-gap-extend-penalty </a>
+			
+		</h3>
+		<p class="args">
+			<b>Smith-Waterman gap-extend penalty for haplotype-to-reference alignment.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">-11</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">0 ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--smith-waterman-haplotype-to-reference-gap-open-penalty">--smith-waterman-haplotype-to-reference-gap-open-penalty </a>
+			
+		</h3>
+		<p class="args">
+			<b>Smith-Waterman gap-open penalty for haplotype-to-reference alignment.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">-260</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">0 ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--smith-waterman-haplotype-to-reference-match-value">--smith-waterman-haplotype-to-reference-match-value </a>
+			
+		</h3>
+		<p class="args">
+			<b>Smith-Waterman match value for haplotype-to-reference alignment.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">200</span>
+			&nbsp;<span class="label label-warning">[ [ 0</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--smith-waterman-haplotype-to-reference-mismatch-penalty">--smith-waterman-haplotype-to-reference-mismatch-penalty </a>
+			
+		</h3>
+		<p class="args">
+			<b>Smith-Waterman mismatch penalty for haplotype-to-reference alignment.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">-150</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">0 ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--smith-waterman-read-to-haplotype-gap-extend-penalty">--smith-waterman-read-to-haplotype-gap-extend-penalty </a>
+			
+		</h3>
+		<p class="args">
+			<b>Smith-Waterman gap-extend penalty for read-to-haplotype alignment.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">-5</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">0 ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--smith-waterman-read-to-haplotype-gap-open-penalty">--smith-waterman-read-to-haplotype-gap-open-penalty </a>
+			
+		</h3>
+		<p class="args">
+			<b>Smith-Waterman gap-open penalty for read-to-haplotype alignment.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">-30</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">0 ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--smith-waterman-read-to-haplotype-match-value">--smith-waterman-read-to-haplotype-match-value </a>
+			
+		</h3>
+		<p class="args">
+			<b>Smith-Waterman match value for read-to-haplotype alignment.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">10</span>
+			&nbsp;<span class="label label-warning">[ [ 0</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--smith-waterman-read-to-haplotype-mismatch-penalty">--smith-waterman-read-to-haplotype-mismatch-penalty </a>
+			
+		</h3>
+		<p class="args">
+			<b>Smith-Waterman mismatch penalty for read-to-haplotype alignment.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">-15</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">0 ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--soft-clip-low-quality-ends">--soft-clip-low-quality-ends </a>
+			
+		</h3>
+		<p class="args">
+			<b>If enabled will preserve low-quality read ends as softclips (used for DRAGEN-GATK BQD genotyper model)</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--tmp-dir">--tmp-dir </a>
+			
+		</h3>
+		<p class="args">
+			<b>Temp directory to use.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">GATKPath</span>
+			&nbsp;<span class="label">null</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--training-data-mode">--training-data-mode </a>
+			
+		</h3>
+		<p class="args">
+			<b>Output VCF contains featurized sets of reads for training a deep variant filter.</b><br />
+			Training data mode collects data on variant- and artifact-supporting read sets for fitting a deep learning filtering model
+		</p>
+		<p>
+		<span class="label label-info ">Boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--training-data-mode-ref-downsample">--training-data-mode-ref-downsample </a>
+			
+		</h3>
+		<p class="args">
+			<b>Downsample ref reads to this count in training data mode.</b><br />
+			Downsample ref reads in training data mode
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">2147483647</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--tumor-lod-to-emit">--tumor-lod-to-emit </a>
+			 / <small>-emit-lod</small>
+		</h3>
+		<p class="args">
+			<b>Log 10 odds threshold to emit variant to VCF.</b><br />
+			Only variants with tumor LODs exceeding this threshold will be written to the VCF, regardless of filter status.
+ Set to less than or equal to tumor_lod. Increase argument value to reduce false positives in the callset.
+ Default setting of 3 is permissive and will emit some amount of negative training data that 
+ {@link FilterMutectCalls} should then filter.
+		</p>
+		<p>
+		<span class="label label-info ">double</span>
+			&nbsp;<span class="label">3.0</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--tumor-sample">--tumor-sample </a>
+			 / <small>-tumor</small>
+		</h3>
+		<p class="args">
+			<b>BAM sample name of tumor.  May be URL-encoded as output by GetSampleName with -encode argument.</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">String</span>
+			&nbsp;<span class="label">null</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--use-jdk-deflater">--use-jdk-deflater </a>
+			 / <small>-jdk-deflater</small>
+		</h3>
+		<p class="args">
+			<b>Whether to use the JdkDeflater (as opposed to IntelDeflater)</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--use-jdk-inflater">--use-jdk-inflater </a>
+			 / <small>-jdk-inflater</small>
+		</h3>
+		<p class="args">
+			<b>Whether to use the JdkInflater (as opposed to IntelInflater)</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--verbosity">--verbosity </a>
+			 / <small>-verbosity</small>
+		</h3>
+		<p class="args">
+			<b>Control verbosity of logging.</b><br />
+			
+		</p>
+			<p>
+				The --verbosity argument is an enumerated type (LogLevel), which can have one of the following values:
+			<dl class="enum">
+					<dt class="enum">ERROR</dt>
+					<dd class="enum"></dd>
+					<dt class="enum">WARNING</dt>
+					<dd class="enum"></dd>
+					<dt class="enum">INFO</dt>
+					<dd class="enum"></dd>
+					<dt class="enum">DEBUG</dt>
+					<dd class="enum"></dd>
+			</dl>
+			</p>
+		<p>
+		<span class="label label-info ">LogLevel</span>
+			&nbsp;<span class="label">INFO</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--version">--version </a>
+			
+		</h3>
+		<p class="args">
+			<b>display the version number for this tool</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">boolean</span>
+			&nbsp;<span class="label">false</span>
+		</p>
+
+        <hr>
+        <p><a href='#top'><i class='fa fa-chevron-up'></i> Return to top</a></p>
+        <hr>
+        <p class="see-also">See also 
+        	<a href="https://software.broadinstitute.org/gatk/documentation/">General Documentation</a> |
+        	<a class="hide_me_php" href="index.html">Tool Docs Index</a> <a class="hide_me_html" href="index">Tool Documentation Index</a> |
+        	<a href="https://gatkforums.broadinstitute.org/gatk/">Support Forum</a>
+        </p>
+
+        <p class="version">GATK version 4.2.4.0 built at Wed, 15 Dec 2021 12:49:57 -0500.
+        </p>
+
+</div></div>
+
+	<?php printFooter($module); ?>

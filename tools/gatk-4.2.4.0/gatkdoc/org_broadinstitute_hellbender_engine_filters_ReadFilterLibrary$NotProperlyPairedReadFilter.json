@@ -1,0 +1,9 @@
+{
+  "summary": "Keep only paired reads that are not properly paired",
+  "arguments": [],
+  "description": "Keep only paired reads that are marked as not properly paired (0x1 and !0x2). Removes unpaired reads.",
+  "name": "NotProperlyPairedReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

@@ -1,0 +1,9 @@
+{
+  "summary": "Median base quality of bases supporting each allele (MBQ)",
+  "arguments": [],
+  "description": "Median base quality of bases supporting each allele.\n\n \u003cp\u003eThe output is an array containing, for each allele, the median base quality at the variant (for SNVs) and one base before the variant (for indels) over all reads that best match that allele.\u003c/p\u003e\n\n \u003cp\u003eFor example, for variant context with ref allele A and alt allele C we use base qualities at the A and C.  For variant context with ref allele AG and alt allele A (deletion),\n we use base qualities at the A.  For variant context with ref allele A and alt allele AG (insertion) we use base qualities at the A.\u003c/p\u003e",
+  "name": "BaseQuality",
+  "group": "Variant Annotations",
+  "beta": false,
+  "experimental": false
+}

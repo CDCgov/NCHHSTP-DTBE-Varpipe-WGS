@@ -1,0 +1,9 @@
+{
+  "summary": "Filter out reads representing supplementary alignments",
+  "arguments": [],
+  "description": "Filter out reads representing supplementary alignments (0x800).",
+  "name": "NotSupplementaryAlignmentReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

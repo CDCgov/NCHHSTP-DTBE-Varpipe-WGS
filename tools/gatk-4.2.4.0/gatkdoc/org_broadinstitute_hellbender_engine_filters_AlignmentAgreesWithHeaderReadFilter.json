@@ -1,0 +1,9 @@
+{
+  "summary": "Filters out reads where the alignment does not match the contents of the header",
+  "arguments": [],
+  "description": "Filter out reads where the alignment does not match the contents of the header.\n\n \u003cp\u003eThe read does not match the contents of the header if:\u003c/p\u003e\n\n \u003cul\u003e\n     \u003cli\u003eIt is aligned to a non-existing contig\u003c/li\u003e\n     \u003cli\u003eIt is aligned to a point after the end of the contig\u003c/li\u003e\n \u003c/ul\u003e",
+  "name": "AlignmentAgreesWithHeaderReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

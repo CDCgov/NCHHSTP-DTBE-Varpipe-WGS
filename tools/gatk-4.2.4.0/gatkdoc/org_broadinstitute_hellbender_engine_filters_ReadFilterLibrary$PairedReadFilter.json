@@ -1,0 +1,9 @@
+{
+  "summary": "Filter out unpaired reads",
+  "arguments": [],
+  "description": "Filter out unpaired reads (not 0x1).",
+  "name": "PairedReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

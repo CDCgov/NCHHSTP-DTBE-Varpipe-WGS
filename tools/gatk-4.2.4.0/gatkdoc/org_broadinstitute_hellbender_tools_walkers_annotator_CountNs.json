@@ -1,0 +1,9 @@
+{
+  "summary": "Number of Ns at the pileup",
+  "arguments": [],
+  "description": "Apply a read-based annotation that reports the number of Ns seen at a given site. This is intended for use on consensus called data.",
+  "name": "CountNs",
+  "group": "Variant Annotations",
+  "beta": false,
+  "experimental": false
+}

@@ -1,0 +1,9 @@
+{
+  "summary": "Filter out reads failing platfor/vendor quality checks",
+  "arguments": [],
+  "description": "Filter out reads failing platform/vendor quality checks (0x200).",
+  "name": "PassesVendorQualityCheckReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

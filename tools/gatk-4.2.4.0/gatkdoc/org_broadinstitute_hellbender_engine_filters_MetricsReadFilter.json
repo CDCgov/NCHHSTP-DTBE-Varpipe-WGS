@@ -1,0 +1,9 @@
+{
+  "summary": "Filter out reads that fail platform quality checks, are unmapped and represent secondary/supplementary alignments",
+  "arguments": [],
+  "description": "Filter out reads that:\n\n \u003cul\u003e\n     \u003cli\u003eFail platform/vendor quality checks (0x200)\u003c/li\u003e\n     \u003cli\u003eAre unmapped (0x4)\u003c/li\u003e\n     \u003cli\u003eRepresent secondary/supplementary alignments (0x100 or 0x800)\u003c/li\u003e\n \u003c/ul\u003e",
+  "name": "MetricsReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

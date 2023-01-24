@@ -1,0 +1,9 @@
+{
+  "summary": "Median mapping quality of reads supporting each allele (MMQ)",
+  "arguments": [],
+  "description": "Median mapping quality of reads supporting each alt allele.\n\n \u003cp\u003eThe output is an array containing, for each alt allele, the median mapping quality over all reads that best match that allele.\u003c/p\u003e",
+  "name": "MappingQuality",
+  "group": "Variant Annotations",
+  "beta": false,
+  "experimental": false
+}

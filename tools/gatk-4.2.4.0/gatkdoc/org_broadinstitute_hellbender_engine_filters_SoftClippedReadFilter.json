@@ -1,0 +1,55 @@
+{
+  "summary": "Filter out reads that are over-soft-clipped",
+  "arguments": [
+    {
+      "summary": "Inverts the results from this filter, causing all variants that would pass to fail and visa-versa.",
+      "name": "--invert-soft-clip-ratio-filter",
+      "synonyms": "NA",
+      "type": "boolean",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "false",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    },
+    {
+      "summary": "Threshold ratio of soft clipped bases (leading / trailing the cigar string) to total bases in read for read to be filtered.",
+      "name": "--soft-clipped-leading-trailing-ratio",
+      "synonyms": "NA",
+      "type": "Double",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "null",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    },
+    {
+      "summary": "Threshold ratio of soft clipped bases (anywhere in the cigar string) to total bases in read for read to be filtered.",
+      "name": "--soft-clipped-ratio-threshold",
+      "synonyms": "NA",
+      "type": "Double",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "null",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    }
+  ],
+  "description": "Filter out reads where the ratio of soft-clipped bases to total bases exceeds some given value.\n\n Can choose to filter by number of soft-clipped bases, or by the leading/trailing soft-clipped bases only.",
+  "name": "SoftClippedReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

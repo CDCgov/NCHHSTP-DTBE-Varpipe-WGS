@@ -1,0 +1,9 @@
+{
+  "summary": "Keep only reads that are first of pair",
+  "arguments": [],
+  "description": "Keep only reads that are first of pair (0x1 and 0x40).",
+  "name": "FirstOfPairReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

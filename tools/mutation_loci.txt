@@ -1,0 +1,4 @@
+H37Rv gene	H37Rv gene id	start	stop	type	coding strand
+rrs	MTB000019	1471846	1473382	rRNA	forward
+rrl	MTB000020	1473658	1476795	rRNA	forward
+crfA	crfA	2718665	2719060	CDS	forward

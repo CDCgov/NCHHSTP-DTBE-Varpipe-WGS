@@ -1,0 +1,31 @@
+FROM ghcr.io/iqbal-lab-org/clockwork:v0.11.3
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV LANG=C.UTF-8
+ENV LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
+RUN apt-get update && apt-get install -y python2.7 zlib1g-dev wget libbz2-dev liblzma-dev bzip2 make gcc libncurses5-dev \
+					 automake build-essential cmake curl gawk git gnuplot graphviz libarchive-dev libcurl4-gnutls-dev \
+					 libhts-dev libncursesw5-dev libvcflib-tools libssl-dev pkg-config python3-dev python3-pip \
+					 python3-setuptools r-base-core rsync unzip tabix libssl-dev openjdk-8-jdk
+
+COPY --chmod=755 ./tools /varpipe_wgs/tools
+
+RUN mkdir /build && cd /build &&\
+    wget -O- https://github.com/samtools/samtools/releases/download/1.11/samtools-1.11.tar.bz2 >samtools-1.11.tar.bz2 &&\
+    tar -xvjf samtools-1.11.tar.bz2 && cd samtools-1.11/ && ./configure --prefix=/varpipe_wgs/tools/a/samtools && make && make install &&\
+    cp /varpipe_wgs/tools/a/samtools/bin/samtools /varpipe_wgs/tools/ && cd / && rm -rf /build
+
+RUN ln -s /usr/bin/python2.7 /usr/bin/python &&\
+    wget -O- https://bootstrap.pypa.io/pip/2.7/get-pip.py >get-pip.py && python get-pip.py &&\
+    pip2 install pyyaml fpdf
+
+RUN cd /varpipe_wgs/tools && wget -qO- https://get.nextflow.io | bash && chmod +x nextflow
+
+ENV PATH=$PATH:/varpipe_wgs/tools:/varpipe_wgs/tools/htslib/bin:/varpipe_wgs/tools/samtools/bin
+
+RUN cp -R /clockwork/nextflow /varpipe_wgs/tools/clockwork-0.11.3
+
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+CMD /bin/bash

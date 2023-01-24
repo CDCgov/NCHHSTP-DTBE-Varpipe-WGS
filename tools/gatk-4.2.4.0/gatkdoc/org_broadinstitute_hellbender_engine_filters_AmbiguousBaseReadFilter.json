@@ -1,0 +1,40 @@
+{
+  "summary": "Filters out reads that have greater than the threshold number of N bases",
+  "arguments": [
+    {
+      "summary": "Threshold number of ambiguous bases. If null, uses threshold fraction; otherwise, overrides threshold fraction.",
+      "name": "--ambig-filter-bases",
+      "synonyms": "NA",
+      "type": "Integer",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "null",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    },
+    {
+      "summary": "Threshold fraction of ambiguous bases",
+      "name": "--ambig-filter-frac",
+      "synonyms": "NA",
+      "type": "double",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "0.05",
+      "minValue": "-Infinity",
+      "maxValue": "Infinity",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    }
+  ],
+  "description": "Filters out reads that have greater than the threshold number for unknown (N) bases.",
+  "name": "AmbiguousBaseReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

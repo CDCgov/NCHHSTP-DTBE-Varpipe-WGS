@@ -1,0 +1,9 @@
+{
+  "summary": "Keep only reads representing primary alignments (those that satisfy both the NotSecondaryAlignment and\n NotSupplementaryAlignment filters, or in terms of SAM flag values, must have neither of the 0x100 or\n 0x800 flags set).",
+  "arguments": [],
+  "description": "Keep only reads representing primary alignments (those that satisfy both the NotSecondaryAlignment and\n NotSupplementaryAlignment filters, or in terms of SAM flag values, must have neither of the 0x100 or\n 0x800 flags set).\n\n \u003cp\u003eNote that this filter represents a stronger criteria for \"primary alignment\" than the\n SAM flag 0x100 (representing \"\"not primary alignment\" in some contexts).\u003c/p\u003e\n\n \u003cp\u003eFor example, a read that has only the supplementary flag (0x800) set, but not the secondary (0x100)\n flag will be filtered out from processing by the PrimaryLineReadFilter, but would NOT be filtered out by\n other software that uses the looser notion of \"not primary\" that only depends on the \"secondary\" flag being set.\u003c/p\u003e",
+  "name": "PrimaryLineReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

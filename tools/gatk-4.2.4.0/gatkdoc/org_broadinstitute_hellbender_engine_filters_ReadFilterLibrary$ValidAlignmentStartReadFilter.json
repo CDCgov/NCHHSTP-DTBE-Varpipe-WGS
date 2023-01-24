@@ -1,0 +1,9 @@
+{
+  "summary": "Keep only reads with a valid alignment start",
+  "arguments": [],
+  "description": "Keep only reads with a valid alignment start (POS larger than 0) or is unmapped.\n\n \u003cp\u003eSee MappedReadFilter for criteria defining an unmapped read.\u003c/p\u003e",
+  "name": "ValidAlignmentStartReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

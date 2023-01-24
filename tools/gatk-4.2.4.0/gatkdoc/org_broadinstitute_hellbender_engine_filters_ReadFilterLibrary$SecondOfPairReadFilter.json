@@ -1,0 +1,9 @@
+{
+  "summary": "Keep only paired reads that are second of pair",
+  "arguments": [],
+  "description": "Keep only paired reads (0x1) that are second of pair (0x80).",
+  "name": "SecondOfPairReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

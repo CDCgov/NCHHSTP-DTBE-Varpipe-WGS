@@ -1,3 +1,4 @@
 data/*fastq.gz
 data/Output*
 tools/*pyc
+tools/clockwork-0.11.3/OUT/ref.fa*

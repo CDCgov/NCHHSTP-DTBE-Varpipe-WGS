@@ -1,0 +1,9 @@
+{
+  "summary": "Keep only reads where the read end is properly aligned",
+  "arguments": [],
+  "description": "Keep only reads where the read end corresponds to a proper alignment -- that is, the read ends after the start\n (non-negative number of bases in the reference).\n\n \u003cp\u003eThis is calculated as:\u003c/p\u003e\n\n \u003cp\u003e\n \u003ccode\u003e\n end - start + 1 \u0026ge; 0\u003cbr\u003e\n where\u003cbr\u003e\n  start \u003d 1-based inclusive leftmost position of the clipped sequence (0 if no position)\u003cbr\u003e\n  end \u003d 1-based inclusive rightmost position of the clipped sequence (0 if unmapped)\u003cbr\u003e\n \u003c/code\u003e\n \u003c/p\u003e\n\n \u003cp\u003eNote: keep also unmapped reads (align to zero bases in the reference). See MappedReadFilter for criteria defining an unmapped read.\u003c/p\u003e",
+  "name": "ValidAlignmentEndReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

@@ -1,0 +1,9 @@
+{
+  "summary": "Filters reads whose original alignment was chimeric.",
+  "arguments": [],
+  "description": "If original alignment and mate original alignment tags exist, filter reads that were originally chimeric (mates were on different contigs).",
+  "name": "NonChimericOriginalAlignmentReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

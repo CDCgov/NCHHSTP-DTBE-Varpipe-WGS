@@ -1,0 +1,1733 @@
+<?php
+
+    include '../../../../common/include/common.php';
+    include_once '../../../config.php';
+    $module = modules::GATK;
+    $name = docSN::toolDocs;
+
+    printHeader($module, $name, topSN::guide);
+
+    $selected_major_version = 4;
+    $dirs = lookupVersionDirs($selected_major_version);
+?>
+
+<link type='text/css' rel='stylesheet' href='gatkDoc.css'>
+
+<div class='row'>
+
+    <aside class="col-md-3">
+
+        <?php echo produceGuideNav($module, $name) . makeTwitterFeed(); ?>
+
+    </aside>
+
+    <div class='col-md-9'>
+
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <h1 id="top"><i class='<?php print ico::toolDocsIcon; ?>'></i> Tool Documentation Index</h1>
+            </div>
+            <div class="col-md-6">
+                <div class="btn-group pull-right" style='margin-top:14px;'>
+                    <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#">
+                        Version 4.2.4.0
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <?php foreach($dirs as $dir) { ?>
+                            <li class="hide_me_html"><a tabindex='-1' href='../<?=$dir?>' ><?=$dir?></a></li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="hide_me_html">
+            <hr />
+            <em>Showing docs for version 4.2.4.0 | The latest version is <?php print $latest_version; ?></em>
+            <hr />
+        </div>
+
+        <div class="accordion" id="index">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#CopyNumberVariantDiscovery">
+                    <h4>Copy Number Variant Discovery</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="CopyNumberVariantDiscovery">
+                <div class="accordion-inner">
+                    <p class="lead">Tools that analyze read coverage to detect copy number variants.</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_copynumber_AnnotateIntervals.html">AnnotateIntervals</a></td>
+                                        <td>Annotates intervals with GC content, mappability, and segmental-duplication content</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_copynumber_CallCopyRatioSegments.html">CallCopyRatioSegments</a></td>
+                                        <td>Calls copy-ratio segments as amplified, deleted, or copy-number neutral</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_copynumber_CreateReadCountPanelOfNormals.html">CreateReadCountPanelOfNormals</a></td>
+                                        <td>Creates a panel of normals for read-count denoising</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_copynumber_DenoiseReadCounts.html">DenoiseReadCounts</a></td>
+                                        <td>Denoises read counts to produce denoised copy ratios</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_copynumber_DetermineGermlineContigPloidy.html">DetermineGermlineContigPloidy</a></td>
+                                        <td>Determines the baseline contig ploidy for germline samples given counts data</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_copynumber_FilterIntervals.html">FilterIntervals</a></td>
+                                        <td>Filters intervals based on annotations and/or count statistics</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_copynumber_GermlineCNVCaller.html">GermlineCNVCaller</a></td>
+                                        <td>Calls copy-number variants in germline samples given their counts and the output of DetermineGermlineContigPloidy</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_copynumber_ModelSegments.html">ModelSegments</a></td>
+                                        <td>Models segmented copy ratios from denoised copy ratios and segmented minor-allele fractions from allelic counts</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_copynumber_plotting_PlotDenoisedCopyRatios.html">PlotDenoisedCopyRatios</a></td>
+                                        <td>Creates plots of denoised copy ratios</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_copynumber_plotting_PlotModeledSegments.html">PlotModeledSegments</a></td>
+                                        <td>Creates plots of denoised and segmented copy-ratio and minor-allele-fraction estimates</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_copynumber_PostprocessGermlineCNVCalls.html">PostprocessGermlineCNVCalls</a></td>
+                                        <td>Postprocesses the output of GermlineCNVCaller and generates VCFs and denoised copy ratios</td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#CoverageAnalysis">
+                    <h4>Coverage Analysis</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="CoverageAnalysis">
+                <div class="accordion-inner">
+                    <p class="lead">Tools that count coverage, e.g. depth per allele</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_rnaseq_ASEReadCounter.html">ASEReadCounter</a></td>
+                                        <td>Generates table of filtered base counts at het sites for allele specific expression</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_AnalyzeSaturationMutagenesis.html">AnalyzeSaturationMutagenesis</a></td>
+                                        <td>**BETA** (EXPERIMENTAL) Processes reads from a MITESeq or other saturation mutagenesis experiment.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_copynumber_CollectAllelicCounts.html">CollectAllelicCounts</a></td>
+                                        <td>Collects reference and alternate allele counts at specified sites</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_copynumber_CollectReadCounts.html">CollectReadCounts</a></td>
+                                        <td>Collects read counts at specified intervals</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_CountBases.html">CountBases</a></td>
+                                        <td>Count bases in a SAM/BAM/CRAM file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pipelines_CountBasesSpark.html">CountBasesSpark</a></td>
+                                        <td>Counts bases in the input SAM/BAM</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_CountReads.html">CountReads</a></td>
+                                        <td>Count reads in a SAM/BAM/CRAM file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pipelines_CountReadsSpark.html">CountReadsSpark</a></td>
+                                        <td>Counts reads in the input SAM/BAM</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_coverage_DepthOfCoverage.html">DepthOfCoverage</a></td>
+                                        <td>**BETA** Generate coverage summary information for reads data</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_rnaseq_GeneExpressionEvaluation.html">GeneExpressionEvaluation</a></td>
+                                        <td>**BETA** Evaluate gene expression from RNA-seq reads aligned to genome.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_contamination_GetPileupSummaries.html">GetPileupSummaries</a></td>
+                                        <td>Tabulates pileup metrics for inferring contamination</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_LocalAssembler.html">LocalAssembler</a></td>
+                                        <td>**BETA** Local assembler for SVs</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_qc_Pileup.html">Pileup</a></td>
+                                        <td>Prints read alignments in samtools pileup format</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_PileupSpark.html">PileupSpark</a></td>
+                                        <td>**BETA** Prints read alignments in samtools pileup format</td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#DiagnosticsandQualityControl">
+                    <h4>Diagnostics and Quality Control</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="DiagnosticsandQualityControl">
+                <div class="accordion-inner">
+                    <p class="lead">Tools that collect sequencing quality related and comparative metrics</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="picard_vcf_AccumulateVariantCallingMetrics.html">AccumulateVariantCallingMetrics (Picard)</a></td>
+                                        <td>Combines multiple Variant Calling Metrics files into a single file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_bqsr_AnalyzeCovariates.html">AnalyzeCovariates</a></td>
+                                        <td>Evaluate and compare base quality score recalibration (BQSR) tables</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_BamIndexStats.html">BamIndexStats (Picard)</a></td>
+                                        <td>Generate index statistics from a BAM file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_sv_evidence_CalcMetadataSpark.html">CalcMetadataSpark</a></td>
+                                        <td>**BETA** (Internal) Collects read metrics relevant to structural variant discovery</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_contamination_CalculateContamination.html">CalculateContamination</a></td>
+                                        <td>Calculate the fraction of reads coming from cross-sample contamination</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_fingerprint_CalculateFingerprintMetrics.html">CalculateFingerprintMetrics (Picard)</a></td>
+                                        <td>Calculate statistics on fingerprints, checking their viability</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_CalculateReadGroupChecksum.html">CalculateReadGroupChecksum (Picard)</a></td>
+                                        <td>Creates a hash code based on the read groups (RG).  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_fingerprint_CheckFingerprint.html">CheckFingerprint (Picard)</a></td>
+                                        <td>Computes a fingerprint from the supplied input (SAM/BAM/CRAM or VCF) file and compares it to the provided genotypes</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_qc_CheckPileup.html">CheckPileup</a></td>
+                                        <td>Compare GATK's internal pileup to a reference Samtools mpileup</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_CheckTerminatorBlock.html">CheckTerminatorBlock (Picard)</a></td>
+                                        <td>Asserts the provided gzip file's (e.g., BAM) last block is well-formed; RC 100 otherwise</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_fingerprint_ClusterCrosscheckMetrics.html">ClusterCrosscheckMetrics (Picard)</a></td>
+                                        <td>Clusters the results of a CrosscheckFingerprints run by LOD score</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_CollectAlignmentSummaryMetrics.html">CollectAlignmentSummaryMetrics (Picard)</a></td>
+                                        <td><b>Produces a summary of alignment metrics from a SAM or BAM file.</b>  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_arrays_CollectArraysVariantCallingMetrics.html">CollectArraysVariantCallingMetrics (Picard)</a></td>
+                                        <td>Collects summary and per-sample from the provided arrays VCF file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_CollectBaseDistributionByCycle.html">CollectBaseDistributionByCycle (Picard)</a></td>
+                                        <td>Chart the nucleotide distribution per cycle in a SAM or BAM file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_CollectBaseDistributionByCycleSpark.html">CollectBaseDistributionByCycleSpark</a></td>
+                                        <td>**BETA** Collects base distribution per cycle in SAM/BAM/CRAM file(s).</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_CollectGcBiasMetrics.html">CollectGcBiasMetrics (Picard)</a></td>
+                                        <td>Collect metrics regarding GC bias. </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_illumina_quality_CollectHiSeqXPfFailMetrics.html">CollectHiSeqXPfFailMetrics (Picard)</a></td>
+                                        <td>Classify PF-Failing reads in a HiSeqX Illumina Basecalling directory into various categories.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_directed_CollectHsMetrics.html">CollectHsMetrics (Picard)</a></td>
+                                        <td>Collects hybrid-selection (HS) metrics for a SAM or BAM file.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_replicates_CollectIndependentReplicateMetrics.html">CollectIndependentReplicateMetrics (Picard)</a></td>
+                                        <td>**EXPERIMENTAL** Estimates the rate of independent replication rate of reads within a bam. 
+ </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_CollectInsertSizeMetrics.html">CollectInsertSizeMetrics (Picard)</a></td>
+                                        <td>Collect metrics about the insert size distribution of a paired-end library. </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_CollectInsertSizeMetricsSpark.html">CollectInsertSizeMetricsSpark</a></td>
+                                        <td>**BETA** Collects insert size distribution information on alignment data</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_CollectJumpingLibraryMetrics.html">CollectJumpingLibraryMetrics (Picard)</a></td>
+                                        <td>Collect jumping library metrics. </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_CollectMultipleMetrics.html">CollectMultipleMetrics (Picard)</a></td>
+                                        <td>Collect multiple classes of metrics. </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_CollectMultipleMetricsSpark.html">CollectMultipleMetricsSpark</a></td>
+                                        <td>**BETA** Runs multiple metrics collection modules for a given alignment file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_CollectOxoGMetrics.html">CollectOxoGMetrics (Picard)</a></td>
+                                        <td>Collect metrics to assess oxidative artifacts.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_CollectQualityYieldMetrics.html">CollectQualityYieldMetrics (Picard)</a></td>
+                                        <td>Collect metrics about reads that pass quality thresholds and Illumina-specific filters.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_CollectQualityYieldMetricsSpark.html">CollectQualityYieldMetricsSpark</a></td>
+                                        <td>**BETA** Collects quality yield metrics from SAM/BAM/CRAM file(s).</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_CollectRawWgsMetrics.html">CollectRawWgsMetrics (Picard)</a></td>
+                                        <td>Collect whole genome sequencing-related metrics.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_CollectRnaSeqMetrics.html">CollectRnaSeqMetrics (Picard)</a></td>
+                                        <td>Produces RNA alignment metrics for a SAM or BAM file.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_CollectRrbsMetrics.html">CollectRrbsMetrics (Picard)</a></td>
+                                        <td><b>Collects metrics from reduced representation bisulfite sequencing (Rrbs) data.</b>  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_SamErrorMetric_CollectSamErrorMetrics.html">CollectSamErrorMetrics (Picard)</a></td>
+                                        <td>Program to collect error metrics on bases stratified in various ways.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_artifacts_CollectSequencingArtifactMetrics.html">CollectSequencingArtifactMetrics (Picard)</a></td>
+                                        <td>Collect metrics to quantify single-base sequencing artifacts.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_directed_CollectTargetedPcrMetrics.html">CollectTargetedPcrMetrics (Picard)</a></td>
+                                        <td>Calculate PCR-related metrics from targeted sequencing data. </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_vcf_CollectVariantCallingMetrics.html">CollectVariantCallingMetrics (Picard)</a></td>
+                                        <td>Collects per-sample and aggregate (spanning all samples) metrics from the provided VCF file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_CollectWgsMetrics.html">CollectWgsMetrics (Picard)</a></td>
+                                        <td>Collect metrics about coverage and performance of whole genome sequencing (WGS) experiments.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_CollectWgsMetricsWithNonZeroCoverage.html">CollectWgsMetricsWithNonZeroCoverage (Picard)</a></td>
+                                        <td>**EXPERIMENTAL** Collect metrics about coverage and performance of whole genome sequencing (WGS) experiments.   </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_validation_CompareBaseQualities.html">CompareBaseQualities</a></td>
+                                        <td>Compares the base qualities of two SAM/BAM/CRAM files</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_validation_CompareDuplicatesSpark.html">CompareDuplicatesSpark</a></td>
+                                        <td>**BETA** Determine if two potentially identical BAMs have the same duplicate reads</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_CompareMetrics.html">CompareMetrics (Picard)</a></td>
+                                        <td>Compare two metrics files.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_CompareSAMs.html">CompareSAMs (Picard)</a></td>
+                                        <td>Compare two input ".sam" or ".bam" files.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_artifacts_ConvertSequencingArtifactToOxoG.html">ConvertSequencingArtifactToOxoG (Picard)</a></td>
+                                        <td>Extract OxoG metrics from generalized artifacts metrics.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_fingerprint_CrosscheckFingerprints.html">CrosscheckFingerprints (Picard)</a></td>
+                                        <td>Checks that all data in the input files appear to have come from the same individual</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_markduplicates_EstimateLibraryComplexity.html">EstimateLibraryComplexity (Picard)</a></td>
+                                        <td>Estimates the numbers of unique molecules in a sequencing library.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_FlagStat.html">FlagStat</a></td>
+                                        <td>Accumulate flag statistics given a BAM file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pipelines_FlagStatSpark.html">FlagStatSpark</a></td>
+                                        <td>Spark tool to accumulate flag statistics</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_GetSampleName.html">GetSampleName</a></td>
+                                        <td>Emit a single sample name</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_MeanQualityByCycle.html">MeanQualityByCycle (Picard)</a></td>
+                                        <td>Collect mean quality by cycle.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_MeanQualityByCycleSpark.html">MeanQualityByCycleSpark</a></td>
+                                        <td>**BETA** MeanQualityByCycle on Spark</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_analysis_QualityScoreDistribution.html">QualityScoreDistribution (Picard)</a></td>
+                                        <td>Chart the distribution of quality scores.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_QualityScoreDistributionSpark.html">QualityScoreDistributionSpark</a></td>
+                                        <td>**BETA** QualityScoreDistribution on Spark</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_ValidateSamFile.html">ValidateSamFile (Picard)</a></td>
+                                        <td>Validates a SAM or BAM file.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_ViewSam.html">ViewSam (Picard)</a></td>
+                                        <td>Prints a SAM or BAM file to the screen</td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#IntervalsManipulation">
+                    <h4>Intervals Manipulation</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="IntervalsManipulation">
+                <div class="accordion-inner">
+                    <p class="lead">Tools that process genomic intervals in various formats</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="picard_util_BedToIntervalList.html">BedToIntervalList (Picard)</a></td>
+                                        <td>Converts a BED file to a Picard Interval List.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_util_IntervalListToBed.html">IntervalListToBed (Picard)</a></td>
+                                        <td>Converts an Picard IntervalList file to a BED file.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_util_IntervalListTools.html">IntervalListTools (Picard)</a></td>
+                                        <td>A tool for performing various IntervalList manipulations</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_util_LiftOverIntervalList.html">LiftOverIntervalList (Picard)</a></td>
+                                        <td>Lifts over an interval list from one reference build to another. </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_copynumber_PreprocessIntervals.html">PreprocessIntervals</a></td>
+                                        <td>Prepares bins for coverage collection</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_SplitIntervals.html">SplitIntervals</a></td>
+                                        <td>Split intervals into sub-interval files.</td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#Metagenomics">
+                    <h4>Metagenomics</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="Metagenomics">
+                <div class="accordion-inner">
+                    <p class="lead">Tools that perform metagenomic analysis, e.g. microbial community composition and pathogen detection</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqBuildKmers.html">PathSeqBuildKmers</a></td>
+                                        <td>Builds set of host reference k-mers</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqBuildReferenceTaxonomy.html">PathSeqBuildReferenceTaxonomy</a></td>
+                                        <td>Builds a taxonomy datafile of the microbe reference</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqBwaSpark.html">PathSeqBwaSpark</a></td>
+                                        <td>Step 2: Aligns reads to the microbe reference</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqFilterSpark.html">PathSeqFilterSpark</a></td>
+                                        <td>Step 1: Filters low quality, low complexity, duplicate, and host reads</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqPipelineSpark.html">PathSeqPipelineSpark</a></td>
+                                        <td>Combined tool that performs all steps: read filtering, microbe reference alignment, and abundance scoring</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqScoreSpark.html">PathSeqScoreSpark</a></td>
+                                        <td>Step 3: Classifies pathogen-aligned reads and generates abundance scores</td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#Other">
+                    <h4>Other</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="Other">
+                <div class="accordion-inner">
+                    <p class="lead">Miscellaneous tools, e.g. those that aid in data streaming</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_CreateHadoopBamSplittingIndex.html">CreateHadoopBamSplittingIndex</a></td>
+                                        <td>**BETA** Create a Hadoop BAM splitting index</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_util_FifoBuffer.html">FifoBuffer (Picard)</a></td>
+                                        <td>Provides a large, FIFO buffer that can be used to buffer input and output streams between programs.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_bqsr_GatherBQSRReports.html">GatherBQSRReports</a></td>
+                                        <td>Gathers scattered BQSR recalibration reports into a single file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_vqsr_GatherTranches.html">GatherTranches</a></td>
+                                        <td>**BETA** Gathers scattered VQSLOD tranches into a single file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_IndexFeatureFile.html">IndexFeatureFile</a></td>
+                                        <td>Creates an index for a feature file, e.g. VCF or BED file.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_ParallelCopyGCSDirectoryIntoHDFSSpark.html">ParallelCopyGCSDirectoryIntoHDFSSpark</a></td>
+                                        <td>**BETA** Parallel copy a file or directory from Google Cloud Storage into the HDFS file system used by Spark</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_ReadAnonymizer.html">ReadAnonymizer</a></td>
+                                        <td>**EXPERIMENTAL** Replace bases in reads with reference bases. </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_variantutils_ReblockGVCF.html">ReblockGVCF</a></td>
+                                        <td>Condenses homRef blocks in a single-sample GVCF</td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#ReadDataManipulation">
+                    <h4>Read Data Manipulation</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="ReadDataManipulation">
+                <div class="accordion-inner">
+                    <p class="lead">Tools that manipulate read data in SAM, BAM or CRAM format</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="picard_sam_AddCommentsToBam.html">AddCommentsToBam (Picard)</a></td>
+                                        <td>Adds comments to the header of a BAM file.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_AddOATag.html">AddOATag (Picard)</a></td>
+                                        <td>Record current alignment information to OA tag.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_AddOrReplaceReadGroups.html">AddOrReplaceReadGroups (Picard)</a></td>
+                                        <td>Assigns all the reads in a file to a single new read-group.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_bqsr_ApplyBQSR.html">ApplyBQSR</a></td>
+                                        <td>Apply base quality score recalibration</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_ApplyBQSRSpark.html">ApplyBQSRSpark</a></td>
+                                        <td>**BETA** Apply base quality score recalibration on Spark</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pipelines_BQSRPipelineSpark.html">BQSRPipelineSpark</a></td>
+                                        <td>**BETA** Both steps of BQSR (BaseRecalibrator and ApplyBQSR) on Spark</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_fastq_BamToBfq.html">BamToBfq (Picard)</a></td>
+                                        <td>Converts a BAM file into a BFQ (binary fastq formatted) file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_bqsr_BaseRecalibrator.html">BaseRecalibrator</a></td>
+                                        <td>Generates recalibration table for Base Quality Score Recalibration (BQSR)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_BaseRecalibratorSpark.html">BaseRecalibratorSpark</a></td>
+                                        <td>**BETA** Generate recalibration table for Base Quality Score Recalibration (BQSR) on Spark</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_BuildBamIndex.html">BuildBamIndex (Picard)</a></td>
+                                        <td>Generates a BAM index ".bai" file.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pipelines_BwaAndMarkDuplicatesPipelineSpark.html">BwaAndMarkDuplicatesPipelineSpark</a></td>
+                                        <td>**BETA** Takes name-sorted file and runs BWA and MarkDuplicates.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_bwa_BwaSpark.html">BwaSpark</a></td>
+                                        <td>**BETA** Align reads to a given reference using BWA on Spark</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_CleanSam.html">CleanSam (Picard)</a></td>
+                                        <td>Cleans the provided SAM/BAM, soft-clipping beyond-end-of-reference alignments and setting MAPQ to 0 for unmapped reads</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_ClipReads.html">ClipReads</a></td>
+                                        <td>Clip reads in a SAM/BAM/CRAM file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_markduplicates_CollectDuplicateMetrics.html">CollectDuplicateMetrics (Picard)</a></td>
+                                        <td>Collect Duplicate metrics from marked file.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_ConvertHeaderlessHadoopBamShardToBam.html">ConvertHeaderlessHadoopBamShardToBam</a></td>
+                                        <td>**BETA** Convert a headerless BAM shard into a readable BAM</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_DownsampleSam.html">DownsampleSam (Picard)</a></td>
+                                        <td>Downsample a SAM or BAM file.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_sv_utils_ExtractOriginalAlignmentRecordsByNameSpark.html">ExtractOriginalAlignmentRecordsByNameSpark</a></td>
+                                        <td>**BETA** Subsets reads by name</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_FastqToSam.html">FastqToSam (Picard)</a></td>
+                                        <td>Converts a FASTQ file to an unaligned BAM or SAM file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_FilterSamReads.html">FilterSamReads (Picard)</a></td>
+                                        <td>Subsets reads from a SAM or BAM file by applying one of several filters.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_FixMateInformation.html">FixMateInformation (Picard)</a></td>
+                                        <td>Verify mate-pair information between mates and fix if needed.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_FixMisencodedBaseQualityReads.html">FixMisencodedBaseQualityReads</a></td>
+                                        <td>Fix Illumina base quality scores in a SAM/BAM/CRAM file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_GatherBamFiles.html">GatherBamFiles (Picard)</a></td>
+                                        <td>Concatenate efficiently BAM files that resulted from a scattered parallel analysis</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_LeftAlignIndels.html">LeftAlignIndels</a></td>
+                                        <td>Left-aligns indels from reads in a SAM/BAM/CRAM file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_markduplicates_MarkDuplicates.html">MarkDuplicates (Picard)</a></td>
+                                        <td>Identifies duplicate reads.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_transforms_markduplicates_MarkDuplicatesSpark.html">MarkDuplicatesSpark</a></td>
+                                        <td>MarkDuplicates on Spark</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_markduplicates_MarkDuplicatesWithMateCigar.html">MarkDuplicatesWithMateCigar (Picard)</a></td>
+                                        <td>Identifies duplicate reads, accounting for mate CIGAR.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_MergeBamAlignment.html">MergeBamAlignment (Picard)</a></td>
+                                        <td>Merge alignment data from a SAM or BAM with data in an unmapped BAM file.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_MergeSamFiles.html">MergeSamFiles (Picard)</a></td>
+                                        <td>Merges multiple SAM and/or BAM files into a single file.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_PositionBasedDownsampleSam.html">PositionBasedDownsampleSam (Picard)</a></td>
+                                        <td>Downsample a SAM or BAM file to retain a subset of the reads based on the reads location in each tile in the flowcell.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_PrintDistantMates.html">PrintDistantMates</a></td>
+                                        <td>Unmaps reads with distant mates.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_PrintReads.html">PrintReads</a></td>
+                                        <td>Print reads in the SAM/BAM/CRAM file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_PrintReadsHeader.html">PrintReadsHeader</a></td>
+                                        <td>Print the header from a SAM/BAM/CRAM file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pipelines_PrintReadsSpark.html">PrintReadsSpark</a></td>
+                                        <td>PrintReads on Spark</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_ReorderSam.html">ReorderSam (Picard)</a></td>
+                                        <td>Reorders reads in a SAM or BAM file to match ordering in a second reference file.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_ReplaceSamHeader.html">ReplaceSamHeader (Picard)</a></td>
+                                        <td>Replaces the SAMFileHeader in a SAM or BAM file.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_RevertBaseQualityScores.html">RevertBaseQualityScores</a></td>
+                                        <td>Revert Quality Scores in a SAM/BAM/CRAM file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_RevertOriginalBaseQualitiesAndAddMateCigar.html">RevertOriginalBaseQualitiesAndAddMateCigar (Picard)</a></td>
+                                        <td>Reverts the original base qualities and adds the mate cigar tag to read-group BAMs</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_RevertSam.html">RevertSam (Picard)</a></td>
+                                        <td>Reverts SAM or BAM files to a previous state.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_RevertSamSpark.html">RevertSamSpark</a></td>
+                                        <td>**BETA** Reverts SAM, BAM or CRAM files to a previous state.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_SamFormatConverter.html">SamFormatConverter (Picard)</a></td>
+                                        <td>Convert a BAM file to a SAM file, or a SAM to a BAM</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_SamToFastq.html">SamToFastq (Picard)</a></td>
+                                        <td>Converts a SAM or BAM file to FASTQ.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_SetNmAndUqTags.html">SetNmAndUqTags (Picard)</a></td>
+                                        <td>DEPRECATED: Use SetNmMdAndUqTags instead.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_SetNmMdAndUqTags.html">SetNmMdAndUqTags (Picard)</a></td>
+                                        <td>Fixes the NM, MD, and UQ tags in a SAM file </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_markduplicates_SimpleMarkDuplicatesWithMateCigar.html">SimpleMarkDuplicatesWithMateCigar (Picard)</a></td>
+                                        <td>**EXPERIMENTAL** Examines aligned records in the supplied SAM or BAM file to locate duplicate molecules. </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_SortSam.html">SortSam (Picard)</a></td>
+                                        <td>Sorts a SAM or BAM file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pipelines_SortSamSpark.html">SortSamSpark</a></td>
+                                        <td>**BETA** SortSam on Spark (works on SAM/BAM/CRAM)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_rnaseq_SplitNCigarReads.html">SplitNCigarReads</a></td>
+                                        <td>Split Reads with N in Cigar</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_SplitReads.html">SplitReads</a></td>
+                                        <td>Outputs reads from a SAM/BAM/CRAM by read group, sample and library name</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_SplitSamByLibrary.html">SplitSamByLibrary (Picard)</a></td>
+                                        <td>Splits a SAM or BAM file into individual files by library</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_SplitSamByNumberOfReads.html">SplitSamByNumberOfReads (Picard)</a></td>
+                                        <td>Splits a SAM or BAM file to multiple BAMs.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_markduplicates_UmiAwareMarkDuplicatesWithMateCigar.html">UmiAwareMarkDuplicatesWithMateCigar (Picard)</a></td>
+                                        <td>**EXPERIMENTAL** Identifies duplicate reads using information from read positions and UMIs.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_UnmarkDuplicates.html">UnmarkDuplicates</a></td>
+                                        <td>Clears the 0x400 duplicate SAM flag</td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#Reference">
+                    <h4>Reference</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="Reference">
+                <div class="accordion-inner">
+                    <p class="lead">Tools that analyze and manipulate FASTA format references</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="picard_util_BaitDesigner.html">BaitDesigner (Picard)</a></td>
+                                        <td>Designs oligonucleotide baits for hybrid selection reactions.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_BwaMemIndexImageCreator.html">BwaMemIndexImageCreator</a></td>
+                                        <td>Create a BWA-MEM index image file for use with GATK BWA tools</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_dragstr_ComposeSTRTableFile.html">ComposeSTRTableFile</a></td>
+                                        <td>Composes a genome-wide STR location table used for DragSTR model auto-calibration</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_fasta_CountBasesInReference.html">CountBasesInReference</a></td>
+                                        <td>Count the numbers of each base in a reference file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_sam_CreateSequenceDictionary.html">CreateSequenceDictionary (Picard)</a></td>
+                                        <td>Creates a sequence dictionary for a reference sequence.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_reference_ExtractSequences.html">ExtractSequences (Picard)</a></td>
+                                        <td>Subsets intervals from a reference sequence to a new FASTA file.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_fasta_FastaAlternateReferenceMaker.html">FastaAlternateReferenceMaker</a></td>
+                                        <td>Create an alternative reference by combining a fasta with a vcf.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_fasta_FastaReferenceMaker.html">FastaReferenceMaker</a></td>
+                                        <td>Create snippets of a fasta file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_sv_evidence_FindBadGenomicKmersSpark.html">FindBadGenomicKmersSpark</a></td>
+                                        <td>**BETA** Identifies sequences that occur at high frequency in a reference</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_reference_NonNFastaSize.html">NonNFastaSize (Picard)</a></td>
+                                        <td>Counts the number of non-N bases in a fasta file.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_reference_NormalizeFasta.html">NormalizeFasta (Picard)</a></td>
+                                        <td>Normalizes lines of sequence in a FASTA file to be of the same length.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_util_ScatterIntervalsByNs.html">ScatterIntervalsByNs (Picard)</a></td>
+                                        <td>Writes an interval list created by splitting a reference at Ns.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_fasta_ShiftFasta.html">ShiftFasta</a></td>
+                                        <td>**BETA** Creates a shifted fasta file and shift_back file</td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#ShortVariantDiscovery">
+                    <h4>Short Variant Discovery</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="ShortVariantDiscovery">
+                <div class="accordion-inner">
+                    <p class="lead">Tools that perform variant calling and genotyping for short variants (SNPs, SNVs and Indels)</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_dragstr_CalibrateDragstrModel.html">CalibrateDragstrModel</a></td>
+                                        <td>estimates the parameters for the DRAGstr model</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_CombineGVCFs.html">CombineGVCFs</a></td>
+                                        <td>Merges one or more HaplotypeCaller GVCF files into a single GVCF with appropriate annotations</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_genomicsdb_GenomicsDBImport.html">GenomicsDBImport</a></td>
+                                        <td>Import VCFs to GenomicsDB</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_GenotypeGVCFs.html">GenotypeGVCFs</a></td>
+                                        <td>Perform joint genotyping on one or more samples pre-called with HaplotypeCaller</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_gnarlyGenotyper_GnarlyGenotyper.html">GnarlyGenotyper</a></td>
+                                        <td>**BETA** Perform "quick and dirty" joint genotyping on one or more samples pre-called with HaplotypeCaller</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_haplotypecaller_HaplotypeCaller.html">HaplotypeCaller</a></td>
+                                        <td>Call germline SNPs and indels via local re-assembly of haplotypes</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_HaplotypeCallerSpark.html">HaplotypeCallerSpark</a></td>
+                                        <td>**BETA** HaplotypeCaller on Spark</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_readorientation_LearnReadOrientationModel.html">LearnReadOrientationModel</a></td>
+                                        <td>Get the maximum likelihood estimates of artifact prior probabilities in the orientation bias mixture model filter</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_mutect_Mutect2.html">Mutect2</a></td>
+                                        <td>Call somatic SNVs and indels via local assembly of haplotypes</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pipelines_ReadsPipelineSpark.html">ReadsPipelineSpark</a></td>
+                                        <td>**BETA** Runs BWA (if specified), MarkDuplicates, BQSR, and HaplotypeCaller on unaligned or aligned reads to generate a VCF.</td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#StructuralVariantDiscovery">
+                    <h4>Structural Variant Discovery</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="StructuralVariantDiscovery">
+                <div class="accordion-inner">
+                    <p class="lead">Tools that detect structural variants</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_sv_discovery_inference_CpxVariantReInterpreterSpark.html">CpxVariantReInterpreterSpark</a></td>
+                                        <td>**BETA** (Internal) Tries to extract simple variants from a provided GATK-SV CPX.vcf</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_sv_discovery_DiscoverVariantsFromContigAlignmentsSAMSpark.html">DiscoverVariantsFromContigAlignmentsSAMSpark</a></td>
+                                        <td>**BETA** (Internal) Examines aligned contigs from local assemblies and calls structural variants</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_sv_evidence_ExtractSVEvidenceSpark.html">ExtractSVEvidenceSpark</a></td>
+                                        <td>**BETA** (Internal) Extracts evidence of structural variations from reads</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_sv_evidence_FindBreakpointEvidenceSpark.html">FindBreakpointEvidenceSpark</a></td>
+                                        <td>**BETA** (Internal) Produces local assemblies of genomic regions that may harbor structural variants</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_sv_PrintSVEvidence.html">PrintSVEvidence</a></td>
+                                        <td>**EXPERIMENTAL** Prints SV evidence records </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_sv_StructuralVariationDiscoveryPipelineSpark.html">StructuralVariationDiscoveryPipelineSpark</a></td>
+                                        <td>**BETA** Runs the structural variation discovery workflow on a single sample</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_sv_discovery_SvDiscoverFromLocalAssemblyContigAlignmentsSpark.html">SvDiscoverFromLocalAssemblyContigAlignmentsSpark</a></td>
+                                        <td>**BETA** (Internal) Examines aligned contigs from local assemblies and calls structural variants or their breakpoints</td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#VariantEvaluationandRefinement">
+                    <h4>Variant Evaluation and Refinement</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="VariantEvaluationandRefinement">
+                <div class="accordion-inner">
+                    <p class="lead">Tools that evaluate and refine variant calls, e.g. with annotations not offered by the engine</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_validation_AnnotateVcfWithBamDepth.html">AnnotateVcfWithBamDepth</a></td>
+                                        <td>(Internal) Annotate a vcf with a bam's read depth at each variant locus</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_validation_AnnotateVcfWithExpectedAlleleFraction.html">AnnotateVcfWithExpectedAlleleFraction</a></td>
+                                        <td>(Internal) Annotate a vcf with expected allele fractions in pooled sequencing</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_variantutils_CalculateGenotypePosteriors.html">CalculateGenotypePosteriors</a></td>
+                                        <td>Calculate genotype posterior probabilities given family and/or known population genotypes</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_validation_CalculateMixingFractions.html">CalculateMixingFractions</a></td>
+                                        <td>(Internal) Calculate proportions of different samples in a pooled bam</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_validation_Concordance.html">Concordance</a></td>
+                                        <td>Evaluate concordance of an input VCF against a validated truth VCF</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_validation_CountFalsePositives.html">CountFalsePositives</a></td>
+                                        <td>**BETA** Count PASS variants</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_CountVariants.html">CountVariants</a></td>
+                                        <td>Counts variant records in a VCF file, regardless of filter status.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pipelines_CountVariantsSpark.html">CountVariantsSpark</a></td>
+                                        <td>CountVariants on Spark</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_validation_EvaluateInfoFieldConcordance.html">EvaluateInfoFieldConcordance</a></td>
+                                        <td>**BETA** Evaluate concordance of info fields in an input VCF against a validated truth VCF</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_funcotator_FilterFuncotations.html">FilterFuncotations</a></td>
+                                        <td>**EXPERIMENTAL** Filter variants based on clinically-significant Funcotations. </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_vcf_MendelianViolations_FindMendelianViolations.html">FindMendelianViolations (Picard)</a></td>
+                                        <td>Finds mendelian violations of all types within a VCF</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_funcotator_FuncotateSegments.html">FuncotateSegments</a></td>
+                                        <td>**BETA** Functional annotation for segment files.  The output formats are not well-defined and subject to change.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_funcotator_Funcotator.html">Funcotator</a></td>
+                                        <td>Functional Annotator</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_funcotator_FuncotatorDataSourceDownloader.html">FuncotatorDataSourceDownloader</a></td>
+                                        <td>Data source downloader for Funcotator.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_vcf_GenotypeConcordance.html">GenotypeConcordance (Picard)</a></td>
+                                        <td>Calculates the concordance between genotype data of one sample in each of two VCFs - truth (or reference) vs. calls.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_validation_basicshortmutpileup_ValidateBasicSomaticShortMutations.html">ValidateBasicSomaticShortMutations</a></td>
+                                        <td>**EXPERIMENTAL** Check variants against tumor-normal bams representing the same samples, though not the ones from the actual calls. </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_variantutils_ValidateVariants.html">ValidateVariants</a></td>
+                                        <td>Validate VCF</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_varianteval_VariantEval.html">VariantEval</a></td>
+                                        <td>**BETA** General-purpose tool for variant evaluation (% in dbSNP, genotype concordance, Ti/Tv ratios, and a lot more)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_variantutils_VariantsToTable.html">VariantsToTable</a></td>
+                                        <td>Extract fields from a VCF file to a tab-delimited table</td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#VariantFiltering">
+                    <h4>Variant Filtering</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="VariantFiltering">
+                <div class="accordion-inner">
+                    <p class="lead">Tools that filter variants by annotating the FILTER column</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_vqsr_ApplyVQSR.html">ApplyVQSR</a></td>
+                                        <td> Apply a score cutoff to filter variants based on a recalibration table</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_vqsr_CNNScoreVariants.html">CNNScoreVariants</a></td>
+                                        <td>Apply a Convolutional Neural Net to filter annotated variants</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_vqsr_CNNVariantTrain.html">CNNVariantTrain</a></td>
+                                        <td>**EXPERIMENTAL** Train a CNN model for filtering variants </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_vqsr_CNNVariantWriteTensors.html">CNNVariantWriteTensors</a></td>
+                                        <td>**EXPERIMENTAL** Write variant tensors for training a CNN to filter variants </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_mutect_CreateSomaticPanelOfNormals.html">CreateSomaticPanelOfNormals</a></td>
+                                        <td>**BETA** Make a panel of normals for use with Mutect2</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_realignmentfilter_FilterAlignmentArtifacts.html">FilterAlignmentArtifacts</a></td>
+                                        <td>**EXPERIMENTAL** Filter alignment artifacts from a vcf callset. </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_mutect_filtering_FilterMutectCalls.html">FilterMutectCalls</a></td>
+                                        <td>Filter somatic SNVs and indels called by Mutect2</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_vqsr_FilterVariantTranches.html">FilterVariantTranches</a></td>
+                                        <td>Apply tranche filtering</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_vcf_filter_FilterVcf.html">FilterVcf (Picard)</a></td>
+                                        <td>Hard filters a VCF.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_filters_VariantFiltration.html">VariantFiltration</a></td>
+                                        <td>Filter variant calls based on INFO and/or FORMAT annotations</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_vqsr_VariantRecalibrator.html">VariantRecalibrator</a></td>
+                                        <td>Build a recalibration model to score variant quality for filtering purposes</td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#VariantManipulation">
+                    <h4>Variant Manipulation</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="VariantManipulation">
+                <div class="accordion-inner">
+                    <p class="lead">Tools that manipulate variant call format (VCF) data</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="picard_vcf_FixVcfHeader.html">FixVcfHeader (Picard)</a></td>
+                                        <td>Replaces or fixes a VCF header.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_vcf_GatherVcfs.html">GatherVcfs (Picard)</a></td>
+                                        <td>Gathers multiple VCF files from a scatter operation into a single VCF file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_GatherVcfsCloud.html">GatherVcfsCloud</a></td>
+                                        <td>**BETA** Gathers multiple VCF files from a scatter operation into a single VCF file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_variantutils_LeftAlignAndTrimVariants.html">LeftAlignAndTrimVariants</a></td>
+                                        <td>Left align and trim vairants</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_vcf_LiftoverVcf.html">LiftoverVcf (Picard)</a></td>
+                                        <td>Lifts over a VCF file from one reference build to another.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_vcf_MakeSitesOnlyVcf.html">MakeSitesOnlyVcf (Picard)</a></td>
+                                        <td>Creates a VCF that contains all the site-level information for all records in the input VCF but no genotype information.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_vcf_MergeVcfs.html">MergeVcfs (Picard)</a></td>
+                                        <td>Combines multiple variant files into a single variant file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_spark_pipelines_PrintVariantsSpark.html">PrintVariantsSpark</a></td>
+                                        <td>Prints out variants from the input VCF.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_validation_RemoveNearbyIndels.html">RemoveNearbyIndels</a></td>
+                                        <td>(Internal) Remove indels from the VCF file that are close to each other.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_vcf_RenameSampleInVcf.html">RenameSampleInVcf (Picard)</a></td>
+                                        <td>Renames a sample within a VCF or BCF.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_variantutils_SelectVariants.html">SelectVariants</a></td>
+                                        <td>Select a subset of variants from a VCF file</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_vcf_SortVcf.html">SortVcf (Picard)</a></td>
+                                        <td>Sorts one or more VCF files.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_vcf_SplitVcfs.html">SplitVcfs (Picard)</a></td>
+                                        <td>Splits SNPs and INDELs into separate files.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_variantutils_UpdateVCFSequenceDictionary.html">UpdateVCFSequenceDictionary</a></td>
+                                        <td>Updates the sequence dictionary in a variant file.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_vcf_UpdateVcfSequenceDictionary.html">UpdateVcfSequenceDictionary (Picard)</a></td>
+                                        <td>Takes a VCF and a second file that contains a sequence dictionary and updates the VCF with the new sequence dictionary.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_VariantAnnotator.html">VariantAnnotator</a></td>
+                                        <td>Tool for adding annotations to VCF files</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_vcf_VcfFormatConverter.html">VcfFormatConverter (Picard)</a></td>
+                                        <td>Converts VCF to BCF or BCF to VCF.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_vcf_VcfToIntervalList.html">VcfToIntervalList (Picard)</a></td>
+                                        <td>Converts a VCF or BCF file to a Picard Interval List</td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#BaseCalling">
+                    <h4>Base Calling</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="BaseCalling">
+                <div class="accordion-inner">
+                    <p class="lead">Tools that process sequencing machine data, e.g. Illumina base calls, and detect sequencing level attributes, e.g. adapters</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="picard_illumina_CheckIlluminaDirectory.html">CheckIlluminaDirectory (Picard)</a></td>
+                                        <td>Asserts the validity for specified Illumina basecalling data.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_illumina_CollectIlluminaBasecallingMetrics.html">CollectIlluminaBasecallingMetrics (Picard)</a></td>
+                                        <td>Collects Illumina Basecalling metrics for a sequencing run.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_illumina_CollectIlluminaLaneMetrics.html">CollectIlluminaLaneMetrics (Picard)</a></td>
+                                        <td>Collects Illumina lane metrics for the given BaseCalling analysis directory.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_illumina_ExtractIlluminaBarcodes.html">ExtractIlluminaBarcodes (Picard)</a></td>
+                                        <td>Tool determines the barcode for each read in an Illumina lane.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_illumina_IlluminaBasecallsToFastq.html">IlluminaBasecallsToFastq (Picard)</a></td>
+                                        <td>Generate FASTQ file(s) from Illumina basecall read data.  </td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_illumina_IlluminaBasecallsToSam.html">IlluminaBasecallsToSam (Picard)</a></td>
+                                        <td>Transforms raw Illumina sequencing data into an unmapped SAM or BAM file.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_illumina_MarkIlluminaAdapters.html">MarkIlluminaAdapters (Picard)</a></td>
+                                        <td>Reads a SAM or BAM file and rewrites it with new adapter-trimming tags.  </td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#GenotypingArraysManipulation">
+                    <h4>Genotyping Arrays Manipulation</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="GenotypingArraysManipulation">
+                <div class="accordion-inner">
+                    <p class="lead">Tools that manipulate data generated by Genotyping arrays</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="picard_arrays_illumina_BpmToNormalizationManifestCsv.html">BpmToNormalizationManifestCsv (Picard)</a></td>
+                                        <td>Program to convert an Illumina bpm file into a bpm.csv file.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_arrays_CombineGenotypingArrayVcfs.html">CombineGenotypingArrayVcfs (Picard)</a></td>
+                                        <td>Program to combine multiple genotyping array VCF files into one VCF.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_arrays_CreateBafRegressMetricsFile.html">CreateBafRegressMetricsFile (Picard)</a></td>
+                                        <td>Program to generate a picard metrics file from the output of the bafRegress tool.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_arrays_CreateVerifyIDIntensityContaminationMetricsFile.html">CreateVerifyIDIntensityContaminationMetricsFile (Picard)</a></td>
+                                        <td>Program to generate a picard metrics file from the output of the VerifyIDIntensity tool.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_arrays_GtcToVcf.html">GtcToVcf (Picard)</a></td>
+                                        <td>Program to convert an Illumina GTC file to a VCF</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_arrays_MergePedIntoVcf.html">MergePedIntoVcf (Picard)</a></td>
+                                        <td>Program to merge a single-sample ped file from zCall into a single-sample VCF.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="picard_arrays_VcfToAdpc.html">VcfToAdpc (Picard)</a></td>
+                                        <td>Program to convert an Arrays VCF to an ADPC file.</td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#MethylationSpecificTools">
+                    <h4>Methylation-Specific Tools</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="MethylationSpecificTools">
+                <div class="accordion-inner">
+                    <p class="lead">Tools that perform methylation calling, processing bisulfite sequenced, methylation-aware aligned BAM</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_MethylationTypeCaller.html">MethylationTypeCaller</a></td>
+                                        <td>**EXPERIMENTAL** Identify methylated bases from bisulfite sequenced, methylation-aware BAMs </td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#ReadFilters">
+                    <h4>Read Filters</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="ReadFilters">
+                <div class="accordion-inner">
+                    <p class="lead">Applied by engine to select reads for analysis</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_AlignmentAgreesWithHeaderReadFilter.html">AlignmentAgreesWithHeaderReadFilter</a></td>
+                                        <td>Filters out reads where the alignment does not match the contents of the header</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$AllowAllReadsReadFilter.html">AllowAllReadsReadFilter</a></td>
+                                        <td>Do not filter out any read</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_AmbiguousBaseReadFilter.html">AmbiguousBaseReadFilter</a></td>
+                                        <td>Filters out reads that have greater than the threshold number of N bases</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$CigarContainsNoNOperator.html">CigarContainsNoNOperator</a></td>
+                                        <td>Filter out reads with CIGAR containing N operator</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$FirstOfPairReadFilter.html">FirstOfPairReadFilter</a></td>
+                                        <td>Keep only reads that are first of pair</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_FragmentLengthReadFilter.html">FragmentLengthReadFilter</a></td>
+                                        <td>Keep only read pairs with insert length less than or equal to the given value</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$GoodCigarReadFilter.html">GoodCigarReadFilter</a></td>
+                                        <td>Keep only reads containing good CIGAR string</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$HasReadGroupReadFilter.html">HasReadGroupReadFilter</a></td>
+                                        <td>Filter out reads without Read Group</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_IntervalOverlapReadFilter.html">IntervalOverlapReadFilter</a></td>
+                                        <td>Filters out reads that don't overlap the specified region. NOTE: This approach to extracting overlapping reads is very slow compared to using PrintReads and -L on an indexed bam file.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_LibraryReadFilter.html">LibraryReadFilter</a></td>
+                                        <td>Keep only reads from the specified library</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MappedReadFilter.html">MappedReadFilter</a></td>
+                                        <td>Filter out unmapped reads</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MappingQualityAvailableReadFilter.html">MappingQualityAvailableReadFilter</a></td>
+                                        <td>Filter out reads without available mapping quality</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MappingQualityNotZeroReadFilter.html">MappingQualityNotZeroReadFilter</a></td>
+                                        <td>Filter out reads with mapping quality equal to zero</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_MappingQualityReadFilter.html">MappingQualityReadFilter</a></td>
+                                        <td>Keep only reads with mapping qualities within a specified range</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MatchingBasesAndQualsReadFilter.html">MatchingBasesAndQualsReadFilter</a></td>
+                                        <td>Filter out reads where the bases and qualities do not match</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MateDifferentStrandReadFilter.html">MateDifferentStrandReadFilter</a></td>
+                                        <td>Keep only reads with mates mapped on the different strand</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_MateDistantReadFilter.html">MateDistantReadFilter</a></td>
+                                        <td>Keep only paired reads with mates mapped >= mate-too-distant-length (default 1KB) apart or on different contigs</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MateOnSameContigOrNoMappedMateReadFilter.html">MateOnSameContigOrNoMappedMateReadFilter</a></td>
+                                        <td>Keep only reads whose mate maps to the same contig or is unmapped</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MateUnmappedAndUnmappedReadFilter.html">MateUnmappedAndUnmappedReadFilter</a></td>
+                                        <td>Filters reads whose mate is unmapped as well as unmapped reads.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_MetricsReadFilter.html">MetricsReadFilter</a></td>
+                                        <td>Filter out reads that fail platform quality checks, are unmapped and represent secondary/supplementary alignments</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NonChimericOriginalAlignmentReadFilter.html">NonChimericOriginalAlignmentReadFilter</a></td>
+                                        <td>Filters reads whose original alignment was chimeric.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NonZeroFragmentLengthReadFilter.html">NonZeroFragmentLengthReadFilter</a></td>
+                                        <td>Filter out reads with fragment length different from zero</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NonZeroReferenceLengthAlignmentReadFilter.html">NonZeroReferenceLengthAlignmentReadFilter</a></td>
+                                        <td>Filter out reads that do not align to the reference</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NotDuplicateReadFilter.html">NotDuplicateReadFilter</a></td>
+                                        <td>Filter out reads marked as duplicate</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NotProperlyPairedReadFilter.html">NotProperlyPairedReadFilter</a></td>
+                                        <td>Keep only paired reads that are not properly paired</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NotSecondaryAlignmentReadFilter.html">NotSecondaryAlignmentReadFilter</a></td>
+                                        <td>Filter out reads representing secondary alignments</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NotSupplementaryAlignmentReadFilter.html">NotSupplementaryAlignmentReadFilter</a></td>
+                                        <td>Filter out reads representing supplementary alignments</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_OverclippedReadFilter.html">OverclippedReadFilter</a></td>
+                                        <td>Filter out reads that are over-soft-clipped</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$PairedReadFilter.html">PairedReadFilter</a></td>
+                                        <td>Filter out unpaired reads</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$PassesVendorQualityCheckReadFilter.html">PassesVendorQualityCheckReadFilter</a></td>
+                                        <td>Filter out reads failing platfor/vendor quality checks</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_PlatformReadFilter.html">PlatformReadFilter</a></td>
+                                        <td>Keep only reads with matching Read Group platform</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_PlatformUnitReadFilter.html">PlatformUnitReadFilter</a></td>
+                                        <td>Filter out reads with matching platform unit attribute</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$PrimaryLineReadFilter.html">PrimaryLineReadFilter</a></td>
+                                        <td>Keep only reads representing primary alignments (those that satisfy both the NotSecondaryAlignment and
+ NotSupplementaryAlignment filters, or in terms of SAM flag values, must have neither of the 0x100 or
+ 0x800 flags set).</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$ProperlyPairedReadFilter.html">ProperlyPairedReadFilter</a></td>
+                                        <td>Keep only reads that are properly paired</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadGroupBlackListReadFilter.html">ReadGroupBlackListReadFilter</a></td>
+                                        <td>Keep records that don't match the specified filter string(s).</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadGroupReadFilter.html">ReadGroupReadFilter</a></td>
+                                        <td>Keep only reads from the specified read group</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$ReadLengthEqualsCigarLengthReadFilter.html">ReadLengthEqualsCigarLengthReadFilter</a></td>
+                                        <td>Filter out reads  where the read and CIGAR do not match in length</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadLengthReadFilter.html">ReadLengthReadFilter</a></td>
+                                        <td>Keep only reads whose length is within a certain range</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadNameReadFilter.html">ReadNameReadFilter</a></td>
+                                        <td>Keep only reads with this read name</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadStrandFilter.html">ReadStrandFilter</a></td>
+                                        <td>Keep only reads whose strand is as specified</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_SampleReadFilter.html">SampleReadFilter</a></td>
+                                        <td>Keep only reads for a given sample</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$SecondOfPairReadFilter.html">SecondOfPairReadFilter</a></td>
+                                        <td>Keep only paired reads that are second of pair</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$SeqIsStoredReadFilter.html">SeqIsStoredReadFilter</a></td>
+                                        <td>Keep only reads with sequenced bases</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_SoftClippedReadFilter.html">SoftClippedReadFilter</a></td>
+                                        <td>Filter out reads that are over-soft-clipped</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$ValidAlignmentEndReadFilter.html">ValidAlignmentEndReadFilter</a></td>
+                                        <td>Keep only reads where the read end is properly aligned</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$ValidAlignmentStartReadFilter.html">ValidAlignmentStartReadFilter</a></td>
+                                        <td>Keep only reads with a valid alignment start</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_engine_filters_WellformedReadFilter.html">WellformedReadFilter</a></td>
+                                        <td>Keep only reads that are well-formed</td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#index" href="#VariantAnnotations">
+                    <h4>Variant Annotations</h4>
+                </a>
+            </div>
+            <div class="accordion-body collapse" id="VariantAnnotations">
+                <div class="accordion-inner">
+                    <p class="lead">Available to HaplotypeCaller, Mutect2, VariantAnnotator and GenotypeGVCFs. See https://software.broadinstitute.org/gatk/documentation/article?id=10836</p>
+                    <table class="table table-striped table-bordered table-condensed cozy">
+                        <tr>
+                            <th>Name</th>
+                            <th>Summary</th>
+                        </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_BaseQualityRankSumTest.html">AS_BaseQualityRankSumTest</a></td>
+                                        <td>Allele-specific rank sum test of REF versus ALT base quality scores (AS_BaseQRankSum)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_FisherStrand.html">AS_FisherStrand</a></td>
+                                        <td>Allele-specific strand bias estimated using Fisher's exact test (AS_FS)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_InbreedingCoeff.html">AS_InbreedingCoeff</a></td>
+                                        <td>Allele-specific likelihood-based test for the consanguinity among samples (AS_InbreedingCoeff)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_MappingQualityRankSumTest.html">AS_MappingQualityRankSumTest</a></td>
+                                        <td>Allele-specific rank sum test for mapping qualities of REF versus ALT reads (AS_MQRankSum)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_QualByDepth.html">AS_QualByDepth</a></td>
+                                        <td>Allele-specific call confidence normalized by depth of sample reads supporting the allele (AS_QD)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_RMSMappingQuality.html">AS_RMSMappingQuality</a></td>
+                                        <td>Allele-specific root-mean-square of the mapping quality of reads across all samples (AS_MQ)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_ReadPosRankSumTest.html">AS_ReadPosRankSumTest</a></td>
+                                        <td>Allele-specific rank sum test for relative positioning of REF versus ALT allele within reads (AS_ReadPosRankSum)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_StrandOddsRatio.html">AS_StrandOddsRatio</a></td>
+                                        <td>Allele-specific strand bias estimated by the symmetric odds ratio test (AS_SOR)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_AlleleFraction.html">AlleleFraction</a></td>
+                                        <td>Variant allele fraction for a genotype</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_AllelePseudoDepth.html">AllelePseudoDepth</a></td>
+                                        <td>Total depth of coverage per sample and over all samples (DP)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_AssemblyComplexity.html">AssemblyComplexity</a></td>
+                                        <td>Describe the complexity of an assembly region</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_BaseQuality.html">BaseQuality</a></td>
+                                        <td>Median base quality of bases supporting each allele (MBQ)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_BaseQualityRankSumTest.html">BaseQualityRankSumTest</a></td>
+                                        <td>Rank sum test of REF versus ALT base quality scores (BaseQRankSum)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_ChromosomeCounts.html">ChromosomeCounts</a></td>
+                                        <td>Counts and frequency of alleles in called genotypes (AC, AF, AN)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_ClippingRankSumTest.html">ClippingRankSumTest</a></td>
+                                        <td>Rank sum test for hard-clipped bases on REF versus ALT reads (ClippingRankSum)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_CountNs.html">CountNs</a></td>
+                                        <td>Number of Ns at the pileup</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_Coverage.html">Coverage</a></td>
+                                        <td>Total depth of coverage per sample and over all samples (DP)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_DepthPerAlleleBySample.html">DepthPerAlleleBySample</a></td>
+                                        <td>Depth of coverage of each allele per sample (AD)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_DepthPerSampleHC.html">DepthPerSampleHC</a></td>
+                                        <td>Depth of informative coverage for each sample (DP)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_ExcessHet.html">ExcessHet</a></td>
+                                        <td>Phred-scaled p-value for exact test of excess heterozygosity (ExcessHet)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_FeaturizedReadSets.html">FeaturizedReadSets</a></td>
+                                        <td>Featurized read sets for Mutect3 training data</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_FisherStrand.html">FisherStrand</a></td>
+                                        <td>Strand bias estimated using Fisher's exact test (FS)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_FragmentDepthPerAlleleBySample.html">FragmentDepthPerAlleleBySample</a></td>
+                                        <td>Depth of coverage of each allele per sample (AD)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_FragmentLength.html">FragmentLength</a></td>
+                                        <td>Median fragment length of reads supporting each allele (MFRL)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_GenotypeSummaries.html">GenotypeSummaries</a></td>
+                                        <td>Summary of genotype statistics from all samples (NCC, GQ_MEAN, GQ_STDDEV)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_InbreedingCoeff.html">InbreedingCoeff</a></td>
+                                        <td>Likelihood-based test for the consanguinity among samples (InbreedingCoeff)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_LikelihoodRankSumTest.html">LikelihoodRankSumTest</a></td>
+                                        <td>Rank sum test of per-read likelihoods of REF versus ALT reads (LikelihoodRankSum)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_MappingQuality.html">MappingQuality</a></td>
+                                        <td>Median mapping quality of reads supporting each allele (MMQ)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_MappingQualityRankSumTest.html">MappingQualityRankSumTest</a></td>
+                                        <td>Rank sum test for mapping qualities of REF versus ALT reads (MQRankSum)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_MappingQualityZero.html">MappingQualityZero</a></td>
+                                        <td>Count of all reads with MAPQ = 0 across all samples (MQ0)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_OrientationBiasReadCounts.html">OrientationBiasReadCounts</a></td>
+                                        <td>Count of read pairs in the F1R2 and F2R1 configurations supporting REF and ALT alleles (F1R2, F2R1)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_OriginalAlignment.html">OriginalAlignment</a></td>
+                                        <td>Number of alt reads with an OA tag that doesn't match the current alignment contig.</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_PossibleDeNovo.html">PossibleDeNovo</a></td>
+                                        <td>Existence of a de novo mutation in at least one of the given families (hiConfDeNovo, loConfDeNovo)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_QualByDepth.html">QualByDepth</a></td>
+                                        <td>Variant confidence normalized by unfiltered depth of variant samples (QD)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_RMSMappingQuality.html">RMSMappingQuality</a></td>
+                                        <td>Root mean square of the mapping quality of reads across all samples (MQ)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_ReadPosRankSumTest.html">ReadPosRankSumTest</a></td>
+                                        <td>Rank sum test for relative positioning of REF versus ALT alleles within reads (ReadPosRankSum)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_ReadPosition.html">ReadPosition</a></td>
+                                        <td>Median distance of variant starts from ends of reads supporting each allele (MPOS)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_ReferenceBases.html">ReferenceBases</a></td>
+                                        <td>Annotate with local reference bases (REF_BASES)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_SampleList.html">SampleList</a></td>
+                                        <td>List of samples that are not homozygous reference at a variant site (Samples)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_StrandBiasBySample.html">StrandBiasBySample</a></td>
+                                        <td>Number of forward and reverse reads that support REF and ALT alleles (SB)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_StrandOddsRatio.html">StrandOddsRatio</a></td>
+                                        <td>Strand bias estimated by the symmetric odds ratio test (SOR)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_TandemRepeat.html">TandemRepeat</a></td>
+                                        <td>Tandem repeat unit composition and counts per allele (STR, RU, RPA)</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="org_broadinstitute_hellbender_tools_walkers_annotator_UniqueAltReadCount.html">UniqueAltReadCount</a></td>
+                                        <td>Number of non-duplicate-insert ALT reads (AS_UNIQ_ALT_READ_COUNT)</td>
+                                </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <hr>
+        <p><a href='#top'><i class='fa fa-chevron-up'></i> Return to top</a></p>
+        <hr>
+        <p class="see-also">See also 
+        	<a href="https://software.broadinstitute.org/gatk/documentation/">General Documentation</a> |
+        	<a class="hide_me_php" href="index.html">Tool Docs Index</a> <a class="hide_me_html" href="index">Tool Documentation Index</a> |
+        	<a href="https://gatkforums.broadinstitute.org/gatk/">Support Forum</a>
+        </p>
+
+        <p class="version">GATK version 4.2.4.0 built at Wed, 15 Dec 2021 12:49:57 -0500.
+        </p>
+
+</div></div>
+
+<?php
+
+    printFooter($module);
+
+?>

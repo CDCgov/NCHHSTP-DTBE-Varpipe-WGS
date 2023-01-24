@@ -1,0 +1,1286 @@
+<?php
+
+	include '../../../../common/include/common.php';
+    include_once '../../../config.php';
+    $module = modules::GATK;
+    $name = docSN::toolDocs;
+
+    printHeader($module, $name, topSN::guide);
+
+    $selected_major_version = 4;
+    $dirs = lookupVersionDirs($selected_major_version);
+?>
+
+<link type='text/css' rel='stylesheet' href='gatkDoc.css'>
+
+<div class="row hide_me_html" style="margin: 14px 3px 14px 3px;" id="tippy-top">
+
+	<i class='<?php print ico::toolDocsIcon; ?>'></i> <em>Showing tool doc from version 4.2.4.0 | The latest version is <?php print $latest_version; ?></em>
+	<div class="btn-group pull-right">
+		<a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#">
+			4.2.4.0
+			<span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<?php foreach($dirs as $dir) { ?>
+			<li class="hide_me_html"><a tabindex='-1' href='../<?=$dir?>' ><?=$dir?></a></li>
+			<?php } ?>
+		</ul>
+	</div>
+	<hr />
+
+</div>
+
+
+<div class='row' id="top">
+
+
+
+	<?php $group = 'Read Filters'; ?>
+
+	<section class="col-md-4">
+		<aside class="well">
+			<a class="hide_me_php" href="index.html"><h4><i class='fa fa-chevron-left'></i> Back to Tool Documentation Index</h4></a>
+			<a class="hide_me_html" href=".."><h4><i class='fa fa-chevron-left'></i> Back to Tool Documentation Index</h4></a>
+		</aside>
+		<aside class="well hide_me_html">
+			<h3>Browse tools by category</h3>
+
+        <style>
+            #sidenav .accordion-body a {
+                color : gray;
+            }
+
+            .accordion-body li {
+                list-style : none;
+            }
+        </style>
+
+        <ul class="nav nav-pills nav-stacked" id="sidenav">
+        		<hr>
+        		<hr>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#CopyNumberVariantDiscovery">Copy Number Variant Discovery</a>
+							<div id="CopyNumberVariantDiscovery"
+								<?php echo ($group == 'Copy Number Variant Discovery')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_AnnotateIntervals.html">AnnotateIntervals</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_CallCopyRatioSegments.html">CallCopyRatioSegments</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_CreateReadCountPanelOfNormals.html">CreateReadCountPanelOfNormals</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_DenoiseReadCounts.html">DenoiseReadCounts</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_DetermineGermlineContigPloidy.html">DetermineGermlineContigPloidy</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_FilterIntervals.html">FilterIntervals</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_GermlineCNVCaller.html">GermlineCNVCaller</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_ModelSegments.html">ModelSegments</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_plotting_PlotDenoisedCopyRatios.html">PlotDenoisedCopyRatios</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_plotting_PlotModeledSegments.html">PlotModeledSegments</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_PostprocessGermlineCNVCalls.html">PostprocessGermlineCNVCalls</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#CoverageAnalysis">Coverage Analysis</a>
+							<div id="CoverageAnalysis"
+								<?php echo ($group == 'Coverage Analysis')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_rnaseq_ASEReadCounter.html">ASEReadCounter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_AnalyzeSaturationMutagenesis.html">AnalyzeSaturationMutagenesis</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_CollectAllelicCounts.html">CollectAllelicCounts</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_CollectReadCounts.html">CollectReadCounts</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_CountBases.html">CountBases</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_CountBasesSpark.html">CountBasesSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_CountReads.html">CountReads</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_CountReadsSpark.html">CountReadsSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_coverage_DepthOfCoverage.html">DepthOfCoverage</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_rnaseq_GeneExpressionEvaluation.html">GeneExpressionEvaluation</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_contamination_GetPileupSummaries.html">GetPileupSummaries</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_LocalAssembler.html">LocalAssembler</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_qc_Pileup.html">Pileup</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_PileupSpark.html">PileupSpark</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#DiagnosticsandQualityControl">Diagnostics and Quality Control</a>
+							<div id="DiagnosticsandQualityControl"
+								<?php echo ($group == 'Diagnostics and Quality Control')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="picard_vcf_AccumulateVariantCallingMetrics.html">AccumulateVariantCallingMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_bqsr_AnalyzeCovariates.html">AnalyzeCovariates</a>
+											</li>
+											<li>
+												<a href="picard_sam_BamIndexStats.html">BamIndexStats (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_evidence_CalcMetadataSpark.html">CalcMetadataSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_contamination_CalculateContamination.html">CalculateContamination</a>
+											</li>
+											<li>
+												<a href="picard_fingerprint_CalculateFingerprintMetrics.html">CalculateFingerprintMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_CalculateReadGroupChecksum.html">CalculateReadGroupChecksum (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_fingerprint_CheckFingerprint.html">CheckFingerprint (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_qc_CheckPileup.html">CheckPileup</a>
+											</li>
+											<li>
+												<a href="picard_sam_CheckTerminatorBlock.html">CheckTerminatorBlock (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_fingerprint_ClusterCrosscheckMetrics.html">ClusterCrosscheckMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectAlignmentSummaryMetrics.html">CollectAlignmentSummaryMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_arrays_CollectArraysVariantCallingMetrics.html">CollectArraysVariantCallingMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectBaseDistributionByCycle.html">CollectBaseDistributionByCycle (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_CollectBaseDistributionByCycleSpark.html">CollectBaseDistributionByCycleSpark</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectGcBiasMetrics.html">CollectGcBiasMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_illumina_quality_CollectHiSeqXPfFailMetrics.html">CollectHiSeqXPfFailMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_directed_CollectHsMetrics.html">CollectHsMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_replicates_CollectIndependentReplicateMetrics.html">CollectIndependentReplicateMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectInsertSizeMetrics.html">CollectInsertSizeMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_CollectInsertSizeMetricsSpark.html">CollectInsertSizeMetricsSpark</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectJumpingLibraryMetrics.html">CollectJumpingLibraryMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectMultipleMetrics.html">CollectMultipleMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_CollectMultipleMetricsSpark.html">CollectMultipleMetricsSpark</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectOxoGMetrics.html">CollectOxoGMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectQualityYieldMetrics.html">CollectQualityYieldMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_CollectQualityYieldMetricsSpark.html">CollectQualityYieldMetricsSpark</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectRawWgsMetrics.html">CollectRawWgsMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectRnaSeqMetrics.html">CollectRnaSeqMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectRrbsMetrics.html">CollectRrbsMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_SamErrorMetric_CollectSamErrorMetrics.html">CollectSamErrorMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_artifacts_CollectSequencingArtifactMetrics.html">CollectSequencingArtifactMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_directed_CollectTargetedPcrMetrics.html">CollectTargetedPcrMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_vcf_CollectVariantCallingMetrics.html">CollectVariantCallingMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectWgsMetrics.html">CollectWgsMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CollectWgsMetricsWithNonZeroCoverage.html">CollectWgsMetricsWithNonZeroCoverage (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_validation_CompareBaseQualities.html">CompareBaseQualities</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_validation_CompareDuplicatesSpark.html">CompareDuplicatesSpark</a>
+											</li>
+											<li>
+												<a href="picard_analysis_CompareMetrics.html">CompareMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_CompareSAMs.html">CompareSAMs (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_analysis_artifacts_ConvertSequencingArtifactToOxoG.html">ConvertSequencingArtifactToOxoG (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_fingerprint_CrosscheckFingerprints.html">CrosscheckFingerprints (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_markduplicates_EstimateLibraryComplexity.html">EstimateLibraryComplexity (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_FlagStat.html">FlagStat</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_FlagStatSpark.html">FlagStatSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_GetSampleName.html">GetSampleName</a>
+											</li>
+											<li>
+												<a href="picard_analysis_MeanQualityByCycle.html">MeanQualityByCycle (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_MeanQualityByCycleSpark.html">MeanQualityByCycleSpark</a>
+											</li>
+											<li>
+												<a href="picard_analysis_QualityScoreDistribution.html">QualityScoreDistribution (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_metrics_QualityScoreDistributionSpark.html">QualityScoreDistributionSpark</a>
+											</li>
+											<li>
+												<a href="picard_sam_ValidateSamFile.html">ValidateSamFile (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_ViewSam.html">ViewSam (Picard)</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#IntervalsManipulation">Intervals Manipulation</a>
+							<div id="IntervalsManipulation"
+								<?php echo ($group == 'Intervals Manipulation')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="picard_util_BedToIntervalList.html">BedToIntervalList (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_util_IntervalListToBed.html">IntervalListToBed (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_util_IntervalListTools.html">IntervalListTools (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_util_LiftOverIntervalList.html">LiftOverIntervalList (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_copynumber_PreprocessIntervals.html">PreprocessIntervals</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_SplitIntervals.html">SplitIntervals</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#Metagenomics">Metagenomics</a>
+							<div id="Metagenomics"
+								<?php echo ($group == 'Metagenomics')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqBuildKmers.html">PathSeqBuildKmers</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqBuildReferenceTaxonomy.html">PathSeqBuildReferenceTaxonomy</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqBwaSpark.html">PathSeqBwaSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqFilterSpark.html">PathSeqFilterSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqPipelineSpark.html">PathSeqPipelineSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pathseq_PathSeqScoreSpark.html">PathSeqScoreSpark</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#Other">Other</a>
+							<div id="Other"
+								<?php echo ($group == 'Other')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_CreateHadoopBamSplittingIndex.html">CreateHadoopBamSplittingIndex</a>
+											</li>
+											<li>
+												<a href="picard_util_FifoBuffer.html">FifoBuffer (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_bqsr_GatherBQSRReports.html">GatherBQSRReports</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_vqsr_GatherTranches.html">GatherTranches</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_IndexFeatureFile.html">IndexFeatureFile</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_ParallelCopyGCSDirectoryIntoHDFSSpark.html">ParallelCopyGCSDirectoryIntoHDFSSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_ReadAnonymizer.html">ReadAnonymizer</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_variantutils_ReblockGVCF.html">ReblockGVCF</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#ReadDataManipulation">Read Data Manipulation</a>
+							<div id="ReadDataManipulation"
+								<?php echo ($group == 'Read Data Manipulation')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="picard_sam_AddCommentsToBam.html">AddCommentsToBam (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_AddOATag.html">AddOATag (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_AddOrReplaceReadGroups.html">AddOrReplaceReadGroups (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_bqsr_ApplyBQSR.html">ApplyBQSR</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_ApplyBQSRSpark.html">ApplyBQSRSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_BQSRPipelineSpark.html">BQSRPipelineSpark</a>
+											</li>
+											<li>
+												<a href="picard_fastq_BamToBfq.html">BamToBfq (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_bqsr_BaseRecalibrator.html">BaseRecalibrator</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_BaseRecalibratorSpark.html">BaseRecalibratorSpark</a>
+											</li>
+											<li>
+												<a href="picard_sam_BuildBamIndex.html">BuildBamIndex (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_BwaAndMarkDuplicatesPipelineSpark.html">BwaAndMarkDuplicatesPipelineSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_bwa_BwaSpark.html">BwaSpark</a>
+											</li>
+											<li>
+												<a href="picard_sam_CleanSam.html">CleanSam (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_ClipReads.html">ClipReads</a>
+											</li>
+											<li>
+												<a href="picard_sam_markduplicates_CollectDuplicateMetrics.html">CollectDuplicateMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_ConvertHeaderlessHadoopBamShardToBam.html">ConvertHeaderlessHadoopBamShardToBam</a>
+											</li>
+											<li>
+												<a href="picard_sam_DownsampleSam.html">DownsampleSam (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_utils_ExtractOriginalAlignmentRecordsByNameSpark.html">ExtractOriginalAlignmentRecordsByNameSpark</a>
+											</li>
+											<li>
+												<a href="picard_sam_FastqToSam.html">FastqToSam (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_FilterSamReads.html">FilterSamReads (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_FixMateInformation.html">FixMateInformation (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_FixMisencodedBaseQualityReads.html">FixMisencodedBaseQualityReads</a>
+											</li>
+											<li>
+												<a href="picard_sam_GatherBamFiles.html">GatherBamFiles (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_LeftAlignIndels.html">LeftAlignIndels</a>
+											</li>
+											<li>
+												<a href="picard_sam_markduplicates_MarkDuplicates.html">MarkDuplicates (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_transforms_markduplicates_MarkDuplicatesSpark.html">MarkDuplicatesSpark</a>
+											</li>
+											<li>
+												<a href="picard_sam_markduplicates_MarkDuplicatesWithMateCigar.html">MarkDuplicatesWithMateCigar (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_MergeBamAlignment.html">MergeBamAlignment (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_MergeSamFiles.html">MergeSamFiles (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_PositionBasedDownsampleSam.html">PositionBasedDownsampleSam (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_PrintDistantMates.html">PrintDistantMates</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_PrintReads.html">PrintReads</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_PrintReadsHeader.html">PrintReadsHeader</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_PrintReadsSpark.html">PrintReadsSpark</a>
+											</li>
+											<li>
+												<a href="picard_sam_ReorderSam.html">ReorderSam (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_ReplaceSamHeader.html">ReplaceSamHeader (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_RevertBaseQualityScores.html">RevertBaseQualityScores</a>
+											</li>
+											<li>
+												<a href="picard_sam_RevertOriginalBaseQualitiesAndAddMateCigar.html">RevertOriginalBaseQualitiesAndAddMateCigar (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_RevertSam.html">RevertSam (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_RevertSamSpark.html">RevertSamSpark</a>
+											</li>
+											<li>
+												<a href="picard_sam_SamFormatConverter.html">SamFormatConverter (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_SamToFastq.html">SamToFastq (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_SetNmAndUqTags.html">SetNmAndUqTags (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_SetNmMdAndUqTags.html">SetNmMdAndUqTags (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_markduplicates_SimpleMarkDuplicatesWithMateCigar.html">SimpleMarkDuplicatesWithMateCigar (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_SortSam.html">SortSam (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_SortSamSpark.html">SortSamSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_rnaseq_SplitNCigarReads.html">SplitNCigarReads</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_SplitReads.html">SplitReads</a>
+											</li>
+											<li>
+												<a href="picard_sam_SplitSamByLibrary.html">SplitSamByLibrary (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_SplitSamByNumberOfReads.html">SplitSamByNumberOfReads (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_sam_markduplicates_UmiAwareMarkDuplicatesWithMateCigar.html">UmiAwareMarkDuplicatesWithMateCigar (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_UnmarkDuplicates.html">UnmarkDuplicates</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#Reference">Reference</a>
+							<div id="Reference"
+								<?php echo ($group == 'Reference')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="picard_util_BaitDesigner.html">BaitDesigner (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_BwaMemIndexImageCreator.html">BwaMemIndexImageCreator</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_dragstr_ComposeSTRTableFile.html">ComposeSTRTableFile</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_fasta_CountBasesInReference.html">CountBasesInReference</a>
+											</li>
+											<li>
+												<a href="picard_sam_CreateSequenceDictionary.html">CreateSequenceDictionary (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_reference_ExtractSequences.html">ExtractSequences (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_fasta_FastaAlternateReferenceMaker.html">FastaAlternateReferenceMaker</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_fasta_FastaReferenceMaker.html">FastaReferenceMaker</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_evidence_FindBadGenomicKmersSpark.html">FindBadGenomicKmersSpark</a>
+											</li>
+											<li>
+												<a href="picard_reference_NonNFastaSize.html">NonNFastaSize (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_reference_NormalizeFasta.html">NormalizeFasta (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_util_ScatterIntervalsByNs.html">ScatterIntervalsByNs (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_fasta_ShiftFasta.html">ShiftFasta</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#ShortVariantDiscovery">Short Variant Discovery</a>
+							<div id="ShortVariantDiscovery"
+								<?php echo ($group == 'Short Variant Discovery')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_dragstr_CalibrateDragstrModel.html">CalibrateDragstrModel</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_CombineGVCFs.html">CombineGVCFs</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_genomicsdb_GenomicsDBImport.html">GenomicsDBImport</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_GenotypeGVCFs.html">GenotypeGVCFs</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_gnarlyGenotyper_GnarlyGenotyper.html">GnarlyGenotyper</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_haplotypecaller_HaplotypeCaller.html">HaplotypeCaller</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_HaplotypeCallerSpark.html">HaplotypeCallerSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_readorientation_LearnReadOrientationModel.html">LearnReadOrientationModel</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_mutect_Mutect2.html">Mutect2</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_ReadsPipelineSpark.html">ReadsPipelineSpark</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#StructuralVariantDiscovery">Structural Variant Discovery</a>
+							<div id="StructuralVariantDiscovery"
+								<?php echo ($group == 'Structural Variant Discovery')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_discovery_inference_CpxVariantReInterpreterSpark.html">CpxVariantReInterpreterSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_discovery_DiscoverVariantsFromContigAlignmentsSAMSpark.html">DiscoverVariantsFromContigAlignmentsSAMSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_evidence_ExtractSVEvidenceSpark.html">ExtractSVEvidenceSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_evidence_FindBreakpointEvidenceSpark.html">FindBreakpointEvidenceSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_sv_PrintSVEvidence.html">PrintSVEvidence</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_StructuralVariationDiscoveryPipelineSpark.html">StructuralVariationDiscoveryPipelineSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_sv_discovery_SvDiscoverFromLocalAssemblyContigAlignmentsSpark.html">SvDiscoverFromLocalAssemblyContigAlignmentsSpark</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#VariantEvaluationandRefinement">Variant Evaluation and Refinement</a>
+							<div id="VariantEvaluationandRefinement"
+								<?php echo ($group == 'Variant Evaluation and Refinement')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_validation_AnnotateVcfWithBamDepth.html">AnnotateVcfWithBamDepth</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_validation_AnnotateVcfWithExpectedAlleleFraction.html">AnnotateVcfWithExpectedAlleleFraction</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_variantutils_CalculateGenotypePosteriors.html">CalculateGenotypePosteriors</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_validation_CalculateMixingFractions.html">CalculateMixingFractions</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_validation_Concordance.html">Concordance</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_validation_CountFalsePositives.html">CountFalsePositives</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_CountVariants.html">CountVariants</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_CountVariantsSpark.html">CountVariantsSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_validation_EvaluateInfoFieldConcordance.html">EvaluateInfoFieldConcordance</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_funcotator_FilterFuncotations.html">FilterFuncotations</a>
+											</li>
+											<li>
+												<a href="picard_vcf_MendelianViolations_FindMendelianViolations.html">FindMendelianViolations (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_funcotator_FuncotateSegments.html">FuncotateSegments</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_funcotator_Funcotator.html">Funcotator</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_funcotator_FuncotatorDataSourceDownloader.html">FuncotatorDataSourceDownloader</a>
+											</li>
+											<li>
+												<a href="picard_vcf_GenotypeConcordance.html">GenotypeConcordance (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_validation_basicshortmutpileup_ValidateBasicSomaticShortMutations.html">ValidateBasicSomaticShortMutations</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_variantutils_ValidateVariants.html">ValidateVariants</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_varianteval_VariantEval.html">VariantEval</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_variantutils_VariantsToTable.html">VariantsToTable</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#VariantFiltering">Variant Filtering</a>
+							<div id="VariantFiltering"
+								<?php echo ($group == 'Variant Filtering')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_vqsr_ApplyVQSR.html">ApplyVQSR</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_vqsr_CNNScoreVariants.html">CNNScoreVariants</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_vqsr_CNNVariantTrain.html">CNNVariantTrain</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_vqsr_CNNVariantWriteTensors.html">CNNVariantWriteTensors</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_mutect_CreateSomaticPanelOfNormals.html">CreateSomaticPanelOfNormals</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_realignmentfilter_FilterAlignmentArtifacts.html">FilterAlignmentArtifacts</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_mutect_filtering_FilterMutectCalls.html">FilterMutectCalls</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_vqsr_FilterVariantTranches.html">FilterVariantTranches</a>
+											</li>
+											<li>
+												<a href="picard_vcf_filter_FilterVcf.html">FilterVcf (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_filters_VariantFiltration.html">VariantFiltration</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_vqsr_VariantRecalibrator.html">VariantRecalibrator</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#VariantManipulation">Variant Manipulation</a>
+							<div id="VariantManipulation"
+								<?php echo ($group == 'Variant Manipulation')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="picard_vcf_FixVcfHeader.html">FixVcfHeader (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_vcf_GatherVcfs.html">GatherVcfs (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_GatherVcfsCloud.html">GatherVcfsCloud</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_variantutils_LeftAlignAndTrimVariants.html">LeftAlignAndTrimVariants</a>
+											</li>
+											<li>
+												<a href="picard_vcf_LiftoverVcf.html">LiftoverVcf (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_vcf_MakeSitesOnlyVcf.html">MakeSitesOnlyVcf (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_vcf_MergeVcfs.html">MergeVcfs (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_spark_pipelines_PrintVariantsSpark.html">PrintVariantsSpark</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_validation_RemoveNearbyIndels.html">RemoveNearbyIndels</a>
+											</li>
+											<li>
+												<a href="picard_vcf_RenameSampleInVcf.html">RenameSampleInVcf (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_variantutils_SelectVariants.html">SelectVariants</a>
+											</li>
+											<li>
+												<a href="picard_vcf_SortVcf.html">SortVcf (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_vcf_SplitVcfs.html">SplitVcfs (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_variantutils_UpdateVCFSequenceDictionary.html">UpdateVCFSequenceDictionary</a>
+											</li>
+											<li>
+												<a href="picard_vcf_UpdateVcfSequenceDictionary.html">UpdateVcfSequenceDictionary (Picard)</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_VariantAnnotator.html">VariantAnnotator</a>
+											</li>
+											<li>
+												<a href="picard_vcf_VcfFormatConverter.html">VcfFormatConverter (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_vcf_VcfToIntervalList.html">VcfToIntervalList (Picard)</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+        		<hr>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#BaseCalling">Base Calling</a>
+							<div id="BaseCalling"
+								<?php echo ($group == 'Base Calling')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="picard_illumina_CheckIlluminaDirectory.html">CheckIlluminaDirectory (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_illumina_CollectIlluminaBasecallingMetrics.html">CollectIlluminaBasecallingMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_illumina_CollectIlluminaLaneMetrics.html">CollectIlluminaLaneMetrics (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_illumina_ExtractIlluminaBarcodes.html">ExtractIlluminaBarcodes (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_illumina_IlluminaBasecallsToFastq.html">IlluminaBasecallsToFastq (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_illumina_IlluminaBasecallsToSam.html">IlluminaBasecallsToSam (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_illumina_MarkIlluminaAdapters.html">MarkIlluminaAdapters (Picard)</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#GenotypingArraysManipulation">Genotyping Arrays Manipulation</a>
+							<div id="GenotypingArraysManipulation"
+								<?php echo ($group == 'Genotyping Arrays Manipulation')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="picard_arrays_illumina_BpmToNormalizationManifestCsv.html">BpmToNormalizationManifestCsv (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_arrays_CombineGenotypingArrayVcfs.html">CombineGenotypingArrayVcfs (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_arrays_CreateBafRegressMetricsFile.html">CreateBafRegressMetricsFile (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_arrays_CreateVerifyIDIntensityContaminationMetricsFile.html">CreateVerifyIDIntensityContaminationMetricsFile (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_arrays_GtcToVcf.html">GtcToVcf (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_arrays_MergePedIntoVcf.html">MergePedIntoVcf (Picard)</a>
+											</li>
+											<li>
+												<a href="picard_arrays_VcfToAdpc.html">VcfToAdpc (Picard)</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#MethylationSpecificTools">Methylation-Specific Tools</a>
+							<div id="MethylationSpecificTools"
+								<?php echo ($group == 'Methylation-Specific Tools')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_MethylationTypeCaller.html">MethylationTypeCaller</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+        		<hr>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#ReadFilters">Read Filters</a>
+							<div id="ReadFilters"
+								<?php echo ($group == 'Read Filters')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_AlignmentAgreesWithHeaderReadFilter.html">AlignmentAgreesWithHeaderReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$AllowAllReadsReadFilter.html">AllowAllReadsReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_AmbiguousBaseReadFilter.html">AmbiguousBaseReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$CigarContainsNoNOperator.html">CigarContainsNoNOperator</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$FirstOfPairReadFilter.html">FirstOfPairReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_FragmentLengthReadFilter.html">FragmentLengthReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$GoodCigarReadFilter.html">GoodCigarReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$HasReadGroupReadFilter.html">HasReadGroupReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_IntervalOverlapReadFilter.html">IntervalOverlapReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_LibraryReadFilter.html">LibraryReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MappedReadFilter.html">MappedReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MappingQualityAvailableReadFilter.html">MappingQualityAvailableReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MappingQualityNotZeroReadFilter.html">MappingQualityNotZeroReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_MappingQualityReadFilter.html">MappingQualityReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MatchingBasesAndQualsReadFilter.html">MatchingBasesAndQualsReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MateDifferentStrandReadFilter.html">MateDifferentStrandReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_MateDistantReadFilter.html">MateDistantReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MateOnSameContigOrNoMappedMateReadFilter.html">MateOnSameContigOrNoMappedMateReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$MateUnmappedAndUnmappedReadFilter.html">MateUnmappedAndUnmappedReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_MetricsReadFilter.html">MetricsReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NonChimericOriginalAlignmentReadFilter.html">NonChimericOriginalAlignmentReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NonZeroFragmentLengthReadFilter.html">NonZeroFragmentLengthReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NonZeroReferenceLengthAlignmentReadFilter.html">NonZeroReferenceLengthAlignmentReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NotDuplicateReadFilter.html">NotDuplicateReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NotProperlyPairedReadFilter.html">NotProperlyPairedReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NotSecondaryAlignmentReadFilter.html">NotSecondaryAlignmentReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$NotSupplementaryAlignmentReadFilter.html">NotSupplementaryAlignmentReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_OverclippedReadFilter.html">OverclippedReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$PairedReadFilter.html">PairedReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$PassesVendorQualityCheckReadFilter.html">PassesVendorQualityCheckReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_PlatformReadFilter.html">PlatformReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_PlatformUnitReadFilter.html">PlatformUnitReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$PrimaryLineReadFilter.html">PrimaryLineReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$ProperlyPairedReadFilter.html">ProperlyPairedReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadGroupBlackListReadFilter.html">ReadGroupBlackListReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadGroupReadFilter.html">ReadGroupReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$ReadLengthEqualsCigarLengthReadFilter.html">ReadLengthEqualsCigarLengthReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadLengthReadFilter.html">ReadLengthReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadNameReadFilter.html">ReadNameReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadStrandFilter.html">ReadStrandFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_SampleReadFilter.html">SampleReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$SecondOfPairReadFilter.html">SecondOfPairReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$SeqIsStoredReadFilter.html">SeqIsStoredReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_SoftClippedReadFilter.html">SoftClippedReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$ValidAlignmentEndReadFilter.html">ValidAlignmentEndReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_ReadFilterLibrary$ValidAlignmentStartReadFilter.html">ValidAlignmentStartReadFilter</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_engine_filters_WellformedReadFilter.html">WellformedReadFilter</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+						<li><a data-toggle="collapse" data-parent="#sidenav" href="#VariantAnnotations">Variant Annotations</a>
+							<div id="VariantAnnotations"
+								<?php echo ($group == 'Variant Annotations')? 'class="accordion-body collapse in"'.chr(62) : 'class="accordion-body collapse"'.chr(62);?>
+								<ul>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_BaseQualityRankSumTest.html">AS_BaseQualityRankSumTest</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_FisherStrand.html">AS_FisherStrand</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_InbreedingCoeff.html">AS_InbreedingCoeff</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_MappingQualityRankSumTest.html">AS_MappingQualityRankSumTest</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_QualByDepth.html">AS_QualByDepth</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_RMSMappingQuality.html">AS_RMSMappingQuality</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_ReadPosRankSumTest.html">AS_ReadPosRankSumTest</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_allelespecific_AS_StrandOddsRatio.html">AS_StrandOddsRatio</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_AlleleFraction.html">AlleleFraction</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_AllelePseudoDepth.html">AllelePseudoDepth</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_AssemblyComplexity.html">AssemblyComplexity</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_BaseQuality.html">BaseQuality</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_BaseQualityRankSumTest.html">BaseQualityRankSumTest</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_ChromosomeCounts.html">ChromosomeCounts</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_ClippingRankSumTest.html">ClippingRankSumTest</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_CountNs.html">CountNs</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_Coverage.html">Coverage</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_DepthPerAlleleBySample.html">DepthPerAlleleBySample</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_DepthPerSampleHC.html">DepthPerSampleHC</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_ExcessHet.html">ExcessHet</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_FeaturizedReadSets.html">FeaturizedReadSets</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_FisherStrand.html">FisherStrand</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_FragmentDepthPerAlleleBySample.html">FragmentDepthPerAlleleBySample</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_FragmentLength.html">FragmentLength</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_GenotypeSummaries.html">GenotypeSummaries</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_InbreedingCoeff.html">InbreedingCoeff</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_LikelihoodRankSumTest.html">LikelihoodRankSumTest</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_MappingQuality.html">MappingQuality</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_MappingQualityRankSumTest.html">MappingQualityRankSumTest</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_MappingQualityZero.html">MappingQualityZero</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_OrientationBiasReadCounts.html">OrientationBiasReadCounts</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_OriginalAlignment.html">OriginalAlignment</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_PossibleDeNovo.html">PossibleDeNovo</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_QualByDepth.html">QualByDepth</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_RMSMappingQuality.html">RMSMappingQuality</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_ReadPosRankSumTest.html">ReadPosRankSumTest</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_ReadPosition.html">ReadPosition</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_ReferenceBases.html">ReferenceBases</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_SampleList.html">SampleList</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_StrandBiasBySample.html">StrandBiasBySample</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_StrandOddsRatio.html">StrandOddsRatio</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_TandemRepeat.html">TandemRepeat</a>
+											</li>
+											<li>
+												<a href="org_broadinstitute_hellbender_tools_walkers_annotator_UniqueAltReadCount.html">UniqueAltReadCount</a>
+											</li>
+								</ul>
+							</div>
+						</li>
+        </ul>
+		</aside>
+
+	</section>
+
+	<div class="col-md-8">
+
+			<h1>ReadLengthReadFilter</h1>
+
+			<p>Keep only reads whose length is within a certain range</p>
+
+			<h3>Category
+				<small> Read Filters</small>
+			</h3>
+		<hr>
+		<h2>Overview</h2>
+		Keep only reads whose length is &ge; min value and &le; max value.
+
+
+				<h3>ReadLengthReadFilter specific arguments</h3>
+				<p>This table summarizes the command-line arguments that are specific to this tool. For more details on each argument, see the list further down below the table or click on an argument name to jump directly to that entry in the list.</p>
+				<table class="table table-striped table-bordered table-condensed cozy">
+					<thead>
+					<tr>
+						<th>Argument name(s)</th>
+						<th>Default value</th>
+						<th>Summary</th>
+					</tr>
+					</thead>
+					<tbody>
+			<tr>
+				<th colspan="4" id="row-divider">Required Arguments</th>
+			</tr>
+				<tr>
+					<td><a href="#--max-read-length">--max-read-length</a><br />
+					</td>
+					<!--<td>Integer</td> -->
+						<td></td>
+					<td>Keep only reads with length at most equal to the specified value</td>
+				</tr>
+			<tr>
+				<th colspan="4" id="row-divider">Optional Tool Arguments</th>
+			</tr>
+				<tr>
+					<td><a href="#--min-read-length">--min-read-length</a><br />
+					</td>
+					<!--<td>int</td> -->
+						<td>1</td>
+					<td>Keep only reads with length at least equal to the specified value</td>
+				</tr>
+					</tbody>
+				</table>
+
+					<h3>Argument details</h3>
+					<p>Arguments in this list are specific to this tool. Keep in mind that other arguments are available that are shared with other tools (e.g. command-line GATK arguments); see Inherited arguments above.</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--max-read-length">--max-read-length </a>
+			
+		</h3>
+		<p class="args">
+			<b>Keep only reads with length at most equal to the specified value</b><br />
+			
+		</p>
+		<p>
+				<span class="badge badge-important">R</span>
+		<span class="label label-info ">Integer</span>
+			&nbsp;<span class="label">null</span>
+		</p>
+		<hr style="border-bottom: dotted 1px #C0C0C0;" />
+		<h3><a name="--min-read-length">--min-read-length </a>
+			
+		</h3>
+		<p class="args">
+			<b>Keep only reads with length at least equal to the specified value</b><br />
+			
+		</p>
+		<p>
+		<span class="label label-info ">int</span>
+			&nbsp;<span class="label">1</span>
+			&nbsp;<span class="label label-warning">[ [ -∞</span>
+			&nbsp;<span class="label label-warning">∞ ] ]</span>
+		</p>
+
+        <hr>
+        <p><a href='#top'><i class='fa fa-chevron-up'></i> Return to top</a></p>
+        <hr>
+        <p class="see-also">See also 
+        	<a href="https://software.broadinstitute.org/gatk/documentation/">General Documentation</a> |
+        	<a class="hide_me_php" href="index.html">Tool Docs Index</a> <a class="hide_me_html" href="index">Tool Documentation Index</a> |
+        	<a href="https://gatkforums.broadinstitute.org/gatk/">Support Forum</a>
+        </p>
+
+        <p class="version">GATK version 4.2.4.0 built at Wed, 15 Dec 2021 12:49:57 -0500.
+        </p>
+
+</div></div>
+
+	<?php printFooter($module); ?>

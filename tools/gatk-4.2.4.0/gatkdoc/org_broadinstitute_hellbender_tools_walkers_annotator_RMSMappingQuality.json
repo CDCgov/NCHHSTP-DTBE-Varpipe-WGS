@@ -1,0 +1,25 @@
+{
+  "summary": "Root mean square of the mapping quality of reads across all samples (MQ)",
+  "arguments": [
+    {
+      "summary": "Override to allow old RMSMappingQuality annotated VCFs to function",
+      "name": "--allow-old-rms-mapping-quality-annotation-data",
+      "synonyms": "NA",
+      "type": "boolean",
+      "required": "no",
+      "fulltext": "",
+      "defaultValue": "false",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "optional",
+      "options": []
+    }
+  ],
+  "description": "Root Mean Square of the mapping quality of reads across all samples.\n\n \u003cp\u003eThis annotation provides an estimation of the overall mapping quality of reads supporting a variant call, averaged over all samples in a cohort.\u003c/p\u003e\n\n \u003cp\u003eThe raw data format for this annotation consists of a list of two entries: the sum of the squared mapping qualities and the number of reads across variant (not homRef) genotypes\u003c/p\u003e\n\n \u003ch3\u003eStatistical notes\u003c/h3\u003e\n \u003cp\u003eThe root mean square is equivalent to the mean of the mapping qualities plus the standard deviation of the mapping qualities.\u003c/p\u003e\n\n \u003ch3\u003eRelated annotations\u003c/h3\u003e\n \u003cul\u003e\n     \u003cli\u003e\u003cb\u003eMappingQualityRankSumTest\u003c/b\u003e compares the mapping quality of reads supporting the REF and ALT alleles.\u003c/li\u003e\n \u003c/ul\u003e",
+  "name": "RMSMappingQuality",
+  "group": "Variant Annotations",
+  "beta": false,
+  "experimental": false
+}

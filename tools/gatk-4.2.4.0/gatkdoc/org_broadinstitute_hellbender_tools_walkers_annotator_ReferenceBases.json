@@ -1,0 +1,9 @@
+{
+  "summary": "Annotate with local reference bases (REF_BASES)",
+  "arguments": [],
+  "description": "Local reference context at a variant position.\n\n \u003c/p\u003eThe annotation gives ten reference bases each to the left and right of the variant start and the start base for a total of 21 reference bases.\n Start position is defined as one base before indels.  For example, the reference context AAAAAAAAAACTTTTTTTTTT would apply to a SNV variant\n context with ref allele C and alt allele G as well as to a deletion variant context with ref allele CT and alt allele C.\u003c/p\u003e",
+  "name": "ReferenceBases",
+  "group": "Variant Annotations",
+  "beta": false,
+  "experimental": false
+}

@@ -1,0 +1,9 @@
+{
+  "summary": "Number of alt reads with an OA tag that doesn\u0027t match the current alignment contig.",
+  "arguments": [],
+  "description": "Original Alignment annotation counts the number of alt reads where the original alignment contig doesn\u0027t match the current alignment contig\n\n \u003cp\u003eIf reads were realigned to multiple references (for example the full human reference followed by just the\n mitochondrial contig) and the original alignment tag was recorded before realigning, then we can count the number of alt\n reads that have been realigned from other contigs to this one. This can be useful for downstream filtering if an alt\n allele has all or most of its support originally from a different contig. In the mitochondrial case this can be useful\n for filtering known NuMTs that are present in other contigs in the reference.  \u003c/p\u003e\n\n \u003ch3\u003eCaveat\u003c/h3\u003e\n \u003cp\u003eThis annotation can only be calculated if an OA tag is present in the bam and can only be run by Mutect2.\u003c/p\u003e",
+  "name": "OriginalAlignment",
+  "group": "Variant Annotations",
+  "beta": false,
+  "experimental": false
+}

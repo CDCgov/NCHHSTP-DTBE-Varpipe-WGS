@@ -1,0 +1,25 @@
+{
+  "summary": "Filter out reads with matching platform unit attribute",
+  "arguments": [
+    {
+      "summary": "Platform unit (PU) to filter out",
+      "name": "--black-listed-lanes",
+      "synonyms": "NA",
+      "type": "Set[String]",
+      "required": "yes",
+      "fulltext": "",
+      "defaultValue": "[]",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "required",
+      "options": []
+    }
+  ],
+  "description": "Filter out reads where the the platform unit attribute (PU tag) contains the given string.\n\n \u003cp\u003eNote: Matching is done by exact case-sensitive text matching.\u003c/p\u003e",
+  "name": "PlatformUnitReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

@@ -1,0 +1,25 @@
+{
+  "summary": "Filters out reads that don\u0027t overlap the specified region. NOTE: This approach to extracting overlapping reads is very slow compared to using PrintReads and -L on an indexed bam file.",
+  "arguments": [
+    {
+      "summary": "One or more genomic intervals to keep",
+      "name": "--keep-intervals",
+      "synonyms": "NA",
+      "type": "List[String]",
+      "required": "yes",
+      "fulltext": "",
+      "defaultValue": "[]",
+      "minValue": "NA",
+      "maxValue": "NA",
+      "minRecValue": "NA",
+      "maxRecValue": "NA",
+      "kind": "required",
+      "options": []
+    }
+  ],
+  "description": "A simple read filter that allows for the user to specify intervals at the filtering stage.\n\n NOTE: This class is intended to be a convenience method for the very specific case where a user might want to subset\n       a bam file by intervals but they cannot for whatever reason index/resort the file to be sorted by position. As\n       a consequence a file subsetted using this filter will involve reading over the entire bam input and will consequently\n       be very slow. The preferred method for subsetting a bam file in this case is to use the -L command to subset using\n       an index to avoid reading parts of the bam outside of the specified subset.",
+  "name": "IntervalOverlapReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

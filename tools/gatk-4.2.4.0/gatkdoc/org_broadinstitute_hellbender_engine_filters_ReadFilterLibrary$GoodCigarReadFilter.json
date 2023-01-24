@@ -1,0 +1,9 @@
+{
+  "summary": "Keep only reads containing good CIGAR string",
+  "arguments": [],
+  "description": "Keep only reads containing good CIGAR strings.\n\n \u003cp\u003eGood CIGAR strings have the following properties:\u003c/p\u003e\n\n \u003cul\u003e\n     \u003cli\u003eValid according to the \u003ca href\u003d\"http://samtools.github.io/hts-specs/SAMv1.pdf\"\u003eSAM specifications.\u003c/a\u003e\u003c/li\u003e\n     \u003cli\u003eDoes not start or end with deletions (with or without preceding clips).\u003c/li\u003e\n     \u003cli\u003eDoes not have consecutive deletion/insertion operators.\u003c/li\u003e\n \u003c/ul\u003e",
+  "name": "GoodCigarReadFilter",
+  "group": "Read Filters",
+  "beta": false,
+  "experimental": false
+}

@@ -1,0 +1,9 @@
+{
+  "summary": "Depth of coverage of each allele per sample (AD)",
+  "arguments": [],
+  "description": "Fragment depth of coverage of each allele per sample\n\n \u003cp\u003eThis annotation is identical to DepthPerAlleleBySample except that allele support is considered per read pair, not per individual read.\u003c/p\u003e",
+  "name": "FragmentDepthPerAlleleBySample",
+  "group": "Variant Annotations",
+  "beta": false,
+  "experimental": false
+}
