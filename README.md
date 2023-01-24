@@ -22,14 +22,14 @@ To use the image with references, run the following commands
 
 ```console
 docker pull ghcr.io/cdcgov/varpipe_wgs_with_refs:latest
-docker run -it -v ./data:/varpipe_wgs/data ghcr.io/cdcgov/varpipe_wgs_with_refs:latest
+docker run -it -v \<path to data\>:/varpipe_wgs/data ghcr.io/cdcgov/varpipe_wgs_with_refs:latest
 ```
 
 To use the image without references you will need to change the container name in the command to varpipe_wgs_without_refs:latest, and you will also need to specify a folder with the references to be used by clockwork. This folder must be mounted to the container as /varpipe_wgs/tools/clockwork-0.11.3/OUT.
 
 ```console
 docker pull ghcr.io/cdcgov/varpipe_wgs_with_refs:latest
-docker run -it -v ./data:/varpipe_wgs/data -v <path to references>:/varpipe_wgs/tools/clockwork-0.11.3/OUT ghcr.io/cdcgov/varpipe_wgs_without_refs:latest
+docker run -it -v ./data:/varpipe_wgs/data -v \<path to references\>:/varpipe_wgs/tools/clockwork-0.11.3/OUT ghcr.io/cdcgov/varpipe_wgs_without_refs:latest
 ```
 
 ### Run the pipeline ###
@@ -43,7 +43,7 @@ cd /varpipe_wgs/data
 ./runVarpipeline.sh
 ```
 
-That will identify all gzipped fastq files in the directory and run the pipeline over them, creating a results folder named "Output_<MM>_<DD>_<YYYY>"
+That will identify all gzipped fastq files in the directory and run the pipeline over them, creating a results folder named "Output_\<MM\>_\<DD\>_\<YYYY\>"
 
 When the pipeline is finished you can disconnect from and close the container by pressing CTRL+D. You can then review the results.
 
