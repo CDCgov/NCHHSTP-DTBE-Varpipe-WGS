@@ -1,0 +1,3 @@
+data/*fastq.gz
+data/Output*
+tools/*pyc

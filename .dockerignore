@@ -1,0 +1,9 @@
+.git/
+.nextflow/
+.work/
+work/
+*.simg
+*.sif
+*.img
+data/*fastq.gz
+data/Output*
