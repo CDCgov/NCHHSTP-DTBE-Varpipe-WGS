@@ -4,7 +4,7 @@
 # Description:
 # Usage:
 # Date Created: 2023-01-23 14:30
-# Last Modified: Mon 23 Jan 2023 08:22:39 PM EST
+# Last Modified: Wed 25 Jan 2023 10:02:39 AM EST
 # Author: Reagan Kelly (ylb9@cdc.gov)
 #
 
@@ -12,8 +12,8 @@ DL_URL='https://github.com/broadinstitute/gatk/releases/download/4.2.4.0/gatk-4.
 
 mkdir tmp
 cd tmp
-wget -O- $URL >gatk-4.2.4.0.zip
+wget -O- $DL_URL >gatk-4.2.4.0.zip
 unzip gatk-4.2.4.0.zip
-mv gatk-package-4.2.4.0-local.jar ../tools/gatk-4.2.4.0/
+mv gatk-4.2.4.0/gatk-package-4.2.4.0-local.jar ../tools/gatk-4.2.4.0/
 cd ../
 rm -rf tmp/
