@@ -16,7 +16,7 @@ RUN mkdir /build && cd /build &&\
     tar -xvjf samtools-1.11.tar.bz2 && cd samtools-1.11/ && ./configure --prefix=/varpipe_wgs/tools/a/samtools && make && make install &&\
     cp /varpipe_wgs/tools/a/samtools/bin/samtools /varpipe_wgs/tools/ && cd / && rm -rf /build
 
-RUN ln -s /usr/bin/python2.7 /usr/bin/python &&\
+RUN ln -s /usr/bin/python2.7 /usr/bin/python && ln -s /usr/bin/python2.7 /usr/bin/python2 &&\
     wget -O- https://bootstrap.pypa.io/pip/2.7/get-pip.py >get-pip.py && python get-pip.py &&\
     pip2 install pyyaml fpdf
 

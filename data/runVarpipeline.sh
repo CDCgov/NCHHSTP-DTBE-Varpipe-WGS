@@ -1,5 +1,11 @@
 #!/usr/bin/bash
 
+if [ -z "$1" ]; then
+    THREADS=4
+else
+    THREADS="$1"
+fi
+
 if [ -n '*_L001_R2_001*' ]
 then
 
@@ -35,8 +41,9 @@ then
 
 fi
 
-ls *_R1_001.fastq.gz | sed 's/_R1_001.fastq.gz//g' | awk '{print "../tools/Varpipeline -q "$0"_R1_001.fastq.gz -r ../tools/ref2.fa -n "$0" -q2 "$0"_R2_001.fastq.gz -a -v"}' > run_3.sh
+ls *_R1_001.fastq.gz | sed 's/_R1_001.fastq.gz//g' | awk '{print "../tools/Varpipeline -q "$0"_R1_001.fastq.gz -r ../tools/ref2.fa -n "$0" -q2 "$0"_R2_001.fastq.gz -a -v -t '${THREADS}' "}' > run_3.sh
 
+cat run_3.sh
 
 sh run_3.sh
 rm *.fastq.gz

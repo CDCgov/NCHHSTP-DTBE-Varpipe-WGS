@@ -32,4 +32,4 @@ scripts:
     create_report: /create_report.py
     print_report: /pdf_print.py
 other:
-    threads: '12'
+    threads: '4'

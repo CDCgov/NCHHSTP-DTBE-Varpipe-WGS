@@ -36,11 +36,11 @@ docker run -it -v <path to data>:/varpipe_wgs/data -v <path to references>:/varp
 
 Those commands will download the most recent version of the pipeline and then start the container and connect to it.
 
-When connected to the container you will be in the directory /varpipe_wgs/data. From there simply start the pipeline with the command
+When connected to the container you will be in the directory /varpipe_wgs/data. From there simply start the pipeline with the command, where \<threads\> is the number of threads you would like to run (Default: 4)
 
 ```console
 cd /varpipe_wgs/data
-./runVarpipeline.sh
+./runVarpipeline.sh <threads>
 ```
 
 That will identify all gzipped fastq files in the directory and run the pipeline over them, creating a results folder named "Output_\<MM\>_\<DD\>_\<YYYY\>"
@@ -99,7 +99,7 @@ When connected to the container you will be in your home directory. You must cd 
 
 ```console
 cd /varpipe_wgs/data
-./runVarpipeline.sh
+./runVarpipeline.sh <threads>
 ```
 
 That will identify all gzipped fastq files in the directory and run the pipeline over them, creating a results folder named "Output_\<MM\>_\<DD\>_\<YYYY\>"
@@ -113,6 +113,7 @@ When the pipeline is finished you can disconnect from and close the container by
 To run the pipeline locally, you will need to have the following programs installed:
 
  - Python 2.7
+ - Python 3
  - Java 1.8
  - Singularity >=3.5
 
@@ -136,11 +137,11 @@ Latly, update the script tools/clockwork-0.11.3/clockwork script to correctly po
 
 ### Run the Pipeline ###
 
-After the data has been added to the data/ directory, cd into data/ and run the pipeline with the commands
+After the data has been added to the data/ directory, cd into data/ and run the pipeline with the command, where \<threads\> is the number of threads you would like to run (Default: 4)
 
 ```console
 cd data/
-./runVarpipeline.sh
+./runVarpipeline.sh <threads>
 ```
 
 That will identify all gzipped fastq files in the directory and run the pipeline over them, creating a results folder named "Output_\<MM\>_\<DD\>_\<YYYY\>"

@@ -14,7 +14,7 @@ from datetime import datetime
 
 class snp():
 
-    def __init__(self, input, outdir, reference, name, paired,input2, verbose, argString):
+    def __init__(self, input, outdir, reference, name, paired,input2, verbose, threads, argString):
         i                       = datetime.now()
         self.name               = name
         self.flog               = "Output_" + i.strftime('%m_%d_%Y')
@@ -39,6 +39,7 @@ class snp():
         self.__mixed            = ''
         self._low		= ''
         self.__exception        = ''
+        self.__threads          = threads
                 
 
         # Create the output directory, and start the log file.
