@@ -74,7 +74,7 @@ class snp():
         fh20.close()
 
         with open(os.path.join(cwd, "config.yml"), 'r') as ymlfile:
-             cfg       = yaml.load(ymlfile, Loader=yaml.FullLoader)
+             cfg       = yaml.load(ymlfile, Loader=yaml.Loader)
         self.__logFH   = open(self.__log, 'w')
         self.__logFH2  = open(self.__qlog, 'a')
         self.__logFH.write(argString + "\n\n")
