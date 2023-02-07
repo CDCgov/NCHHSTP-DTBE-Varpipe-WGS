@@ -2,8 +2,6 @@
 
 ## Overview ##
 
-# Installing and Using the varpipe_wgs pipeline #
-
 This repository contains the Varpipe_wgs pipeline developed by the Division of TB Elimination. The pipeline cleans the data and performs analyses, including typing and variant detection. While originally build to analyze Tuberculosis data, the pipeline accepts other references, allowing it be used more broadly.
 
 End users can run the pipeline using [docker](#use-docker), [singularity](#use-singularity), or their [local](#use-local) machine.
