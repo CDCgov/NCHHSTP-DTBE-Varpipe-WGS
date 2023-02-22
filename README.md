@@ -2,13 +2,13 @@
 
 ## Overview ##
 
-This repository contains the Varpipe_wgs pipeline developed by the Division of TB Elimination. The pipeline cleans the data and performs analyses, including typing and variant detection. While originally build to analyze Tuberculosis data, the pipeline accepts other references, allowing it be used more broadly.
+This repository contains the Varpipe_wgs pipeline developed by the Division of TB Elimination. The pipeline provides for the detection and interpretation of variants detected in loci known to be associated with resistance.
 
 End users can run the pipeline using [docker](#use-docker), [singularity](#use-singularity), or their [local](#use-local) machine.
 
 ## Prepare the Data ##                 
 
-First, copy the gzipped fastq files you wish to analyze to the data/ directory in this repository
+First, copy the gzipped fastq files you wish to analyze to the data/ directory in this repository. Fastq files should be named with Illumina standard format.
 
 ## Use Docker ##
 
@@ -200,5 +200,5 @@ for more information about [contributing to this repository](https://github.com/
 [public domain notices and disclaimers](https://github.com/CDCgov/template/blob/master/DISCLAIMER.md),
 and [code of conduct](https://github.com/CDCgov/template/blob/master/code-of-conduct.md).
 
-## Disclaimer##
+## Disclaimer
 The Laboratory Branch (LB) of the Division of Tuberculosis Elimination developed this bioinformatic pipeline for analyzing whole genome sequencing data generated on Illumina platforms. This is not a controlled document. The performance characteristics as generated at Centers for Disease Control and Prevention (CDC) are specific to the version as written. These documents are provided by LB solely as an example for how this test performed within LB. The recipient testing laboratory is responsible for generating validation or verification data as applicable to establish performance characteristics as required by the testing laboratory’s policies, applicable regulations, and quality system standards. These data are only for the sample and specimen types and conditions described in this procedure. Tests or protocols may include hazardous reagents or biological agents. No indemnification for any loss, claim, damage, or liability is provided for the party receiving an assay or protocol. Use of trade names and commercial sources are for identification only and do not constitute endorsement by the Public Health Service, the United States Department of Health and Human Services, or the Centers for Disease Control and Prevention.
