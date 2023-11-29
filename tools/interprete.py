@@ -241,7 +241,7 @@ elif "FQ" in dictargets.values():
    print input6 + "\t" + "FQ" + "\t" + "No reportable variant detected" + "\t" + "Review coverage"
    print >> fh6, "FQ" + "\t" + "No reportable variant detected" + "\t" + "Review coverage"
 else:
-  print input6 + "FQ" + "\t" + "No reportable variant detected" + "\t" + "FQ-S"
+  print input6 + "\t" + "FQ" + "\t" + "No reportable variant detected" + "\t" + "FQ-S"
   print >> fh6, "FQ" + "\t" + "No reportable variant detected" + "\t" + "FQ-S"
 if any("EMB" in string for string in arraylist):
    print input6 + "\t" + "EMB" + "\t" + emb_varstring + "\t" + emb_interpstring
