@@ -2,8 +2,6 @@
 
 ## Overview ##
 
-# Installing and Using the varpipe_wgs pipeline #
-
 This repository contains the Varpipe_wgs pipeline developed by the Division of TB Elimination. The pipeline cleans the data and performs analyses, including typing and variant detection. While originally build to analyze Tuberculosis data, the pipeline accepts other references, allowing it be used more broadly.
 
 End users can run the pipeline using [docker](#use-docker), [singularity](#use-singularity), or their [local](#use-local) machine.
@@ -43,7 +41,7 @@ cd /varpipe_wgs/data
 ./runVarpipeline.sh <threads>
 ```
 
-That will identify all gzipped fastq files in the directory and run the pipeline over them, creating a results folder named "Output_\<MM\>_\<DD\>_\<YYYY\>"
+That will identify all gzipped fastq files in the directory and run the pipeline over them, creating a results folder named "Output_\<MM\>_\<DD\>_\<YYYY\>" with subfolders containing the results for each sample.
 
 When the pipeline is finished you can disconnect from and close the container by pressing CTRL+D. You can then review the results.
 
@@ -102,7 +100,7 @@ cd /varpipe_wgs/data
 ./runVarpipeline.sh <threads>
 ```
 
-That will identify all gzipped fastq files in the directory and run the pipeline over them, creating a results folder named "Output_\<MM\>_\<DD\>_\<YYYY\>"
+That will identify all gzipped fastq files in the directory and run the pipeline over them, creating a results folder named "Output_\<MM\>_\<DD\>_\<YYYY\>" with subfolders containing the results for each sample
 
 When the pipeline is finished you can disconnect from and close the container by pressing CTRL+D. You can then review the results.
 
@@ -144,7 +142,13 @@ cd data/
 ./runVarpipeline.sh <threads>
 ```
 
-That will identify all gzipped fastq files in the directory and run the pipeline over them, creating a results folder named "Output_\<MM\>_\<DD\>_\<YYYY\>"
+That will identify all gzipped fastq files in the directory and run the pipeline over them, creating a results folder named "Output_\<MM\>_\<DD\>_\<YYYY\>" with subfolders containing the results for each sample.
+
+## Troubleshooting ##
+
+This pipeline requires a large amount of memory, a minimum of 32GB of RAM is necessary for the clockwork decontamination step. If the log includes a line with the word "Killed" in the clockwork output and trimmomatic shows are error that the fastq.gz files are not found, the most likely cause is insufficent RAM.
+
+If you have difficulty downloading this image (specifically the message "failed to register layer: ApplyLayer exit status 1" and ending with "no space left on device") then you may need to increase the base device size to something larger than 18GB. This problem should only occur when using the devicemapper storage driver and an older version of Docker engine.
 
 ## Public Domain Standard Notice
 This repository constitutes a work of the United States Government and is not
