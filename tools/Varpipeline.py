@@ -266,7 +266,7 @@ class snp():
         samDir = self.outdir + "/SamTools"
         i = datetime.now()
 
-        self.__CallCommand(['samtools depth', samDir + '/coverage.txt'],['samtools','depth', '-a', self.__finalBam])
+        self.__CallCommand(['samtools depth', samDir + '/coverage.txt'],['samtools','depth', '-s', '-a', self.__finalBam])
         #self.__CallCommand(['bedtools coverage', samDir + '/bed_amp_coverage.txt' ],
                            #[self.__bedtools, 'coverage', '-abam', self.__finalBam, '-b', self.__bedlist_amp])
         #self.__CallCommand(['sort', samDir + '/bed_amp_sorted_coverage.txt' ],['sort', '-nk', '6', samDir + '/bed_amp_coverage.txt'])
