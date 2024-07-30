@@ -360,7 +360,7 @@ class snp():
         if self.__finalVCF:
            self.__ifVerbose("Annotating final VCF.")
            self.__CallCommand(['SnpEff', self.fOut + "/" + self.name +'_DR_loci_raw_annotation.txt'],
-                                ['java', '-Xmx4g', '-jar', self.__annotator, 'NC_000962', self.__finalVCF])
+                                ['java', '-Xmx4g', '-jar', self.__annotator, '-noLog', 'NC_000962', self.__finalVCF])
            self.__annotation = self.fOut + "/" + self.name +'_DR_loci_raw_annotation.txt'
         if self.__fullVCF:
            self.__ifVerbose("Annotating full VCF.")
