@@ -365,7 +365,7 @@ class snp():
         if self.__fullVCF:
            self.__ifVerbose("Annotating full VCF.")
            self.__CallCommand(['SnpEff', self.fOut + "/" + self.name +'_full_raw_annotation.txt'],
-                                ['java', '-Xmx4g', '-jar', self.__annotator, 'NC_000962', self.__fullVCF])
+                                ['java', '-Xmx4g', '-jar', self.__annotator, '-noLog', 'NC_000962', self.__fullVCF])
            self.__full_annotation = self.fOut + "/" + self.name +'_full_raw_annotation.txt'
            self.__ifVerbose("Parsing final Annotation.")
            self.__CallCommand(['create annotation', self.fOut + "/" + self.name +'_DR_loci_annotation.txt'],
