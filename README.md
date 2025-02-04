@@ -6,6 +6,8 @@ This repository contains the Varpipe_wgs pipeline developed by the Division of T
 
 End users can run the pipeline using [docker](#use-docker), [singularity](#use-singularity), or their [local](#use-local) machine.
 
+Details on third-party tools version, parameter settings and implementation of the pipeline can be found in the documentation [here](/docs/) .
+
 ## Prepare the Data ##                 
 
 First, copy the gzipped fastq files you wish to analyze to the data/ directory in this repository. Fastq files should be named with Illumina standard format.
@@ -131,7 +133,7 @@ Then, simply run setup.sh to finish the installation. This script runs several s
  - Builds a reference fasta and creates BWA indexes
 
 
-Latly, update the script tools/clockwork-0.11.3/clockwork script to correctly point to the clockwork 0.11.3 image
+Lastly, update the script tools/clockwork-0.11.3/clockwork script to correctly point to the clockwork 0.11.3 image
 
 ### Run the Pipeline ###
 
